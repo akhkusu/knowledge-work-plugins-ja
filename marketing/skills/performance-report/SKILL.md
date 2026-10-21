@@ -1,392 +1,425 @@
 ---
 name: performance-report
-description: Build a marketing performance report with key metrics, trend analysis, wins and misses, and prioritized optimization recommendations. Use when wrapping a campaign, when preparing weekly, monthly, or quarterly channel summaries for stakeholders, or when you need data translated into an executive summary with next-period priorities.
-argument-hint: "<time period or campaign>"
+description: 主要指標、傾向分析、成果と未達、優先順位付きの改善提案を含むマーケティング効果レポートを作成します。キャンペーンの振り返り、週次・月次・四半期のチャネル報告、データを経営層向け要約と次期の優先事項にまとめる際に使います。
+argument-hint: "<対象期間またはキャンペーン>"
 ---
 
-# Performance Report
+# 効果レポート
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続されているツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Generate a marketing performance report with key metrics, trend analysis, insights, and optimization recommendations.
+主要指標、傾向分析、知見、改善提案を含むマーケティング効果レポートを作成します。
 
-## Trigger
+## 開始条件
 
-User runs `/performance-report` or asks for a marketing report, performance analysis, campaign results, or metrics summary.
+ユーザーが`/performance-report`を実行するか、マーケティング報告、効果分析、キャンペーン結果、指標の要約を依頼したとき。
 
-## Inputs
+## 入力情報
 
-1. **Report type** — determine which type of report the user needs:
-   - **Campaign report** — performance of a specific campaign
-   - **Channel report** — performance across a specific channel (email, social, paid, SEO, etc.)
-   - **Content performance** — how content pieces are performing
-   - **Overall marketing report** — cross-channel summary (weekly, monthly, quarterly)
-   - **Custom** — user-defined scope
+1. **種類**：必要な報告を判断します。
+   - **キャンペーン報告**：特定の施策の実績
+   - **チャネル報告**：メール、SNS、有料広告、SEOなど特定チャネルの実績
+   - **コンテンツ実績**：個々のコンテンツの成果
+   - **全体報告**：チャネル横断の週次・月次・四半期の要約
+   - **任意の範囲**：ユーザーが定義
 
-2. **Time period** — the reporting window (last week, last month, last quarter, custom date range)
+2. **期間**：先週、先月、前四半期、任意の日付範囲
 
-3. **Data source**:
-   - If ~~marketing analytics is connected, discover what accounts and platforms are available, then pull performance data automatically
-   - If ~~product analytics is connected: pull performance data automatically
-   - If not connected: ask the user to provide metrics. Prompt with: "Please paste or share your performance data. I can work with spreadsheets, CSV data, dashboard screenshots described in text, or just the key numbers."
+3. **データソース**：
+   - ~~marketing analyticsが接続済みなら、利用可能なアカウントと基盤を確認し、実績を自動取得
+   - ~~product analyticsが接続済みなら、実績を自動取得
+   - 未接続なら、「実績データを貼り付けるか共有してください。表計算、CSV、ダッシュボード画像の文章による説明、主要な数値だけでも対応できます」と依頼
 
-4. **Comparison period** (optional) — prior period or year-over-year for trend context
+4. **比較期間**（任意）：前期や前年同期
 
-5. **Stakeholder audience** (optional) — who will read this report (executive summary style vs. detailed analyst view)
+5. **読者**（任意）：経営層向けの要約か、分析担当者向けの詳細か
 
-## Report Structure
+## 構成
 
-### 1. Executive Summary
-- 2-3 sentence overview of performance in the period
-- Headline metric with trend direction (up/down/flat vs. prior period)
-- One key win and one area of concern
+### 1. 経営層向け要約
 
-### 2. Key Metrics Dashboard
+- 期間中の実績を2〜3文
+- 主要指標と前期比の方向（上昇・低下・横ばい）
+- 主な成果1点と懸念1点
 
-Present core metrics in a summary table:
+### 2. 主要指標ダッシュボード
 
-| Metric | This Period | Prior Period | Change | Target | Status |
+中心となる指標を表にまとめます。
+
+| 指標 | 今期 | 前期 | 変化 | 目標 | 状況 |
 |--------|------------|--------------|--------|--------|--------|
 
-Status indicators:
-- On track (meeting or exceeding target)
-- At risk (below target but within acceptable range)
-- Off track (significantly below target)
+状況：
 
-#### Metrics by Report Type
+- 順調（目標以上）
+- 要注意（目標未満だが許容範囲）
+- 未達（目標を大幅に下回る）
 
-**Campaign Report:**
-- Impressions and reach
-- Click-through rate (CTR)
-- Conversion rate
-- Cost per acquisition (CPA)
-- Return on ad spend (ROAS) or ROI
-- Total conversions/signups/leads
+#### 報告別の指標
 
-**Channel Report (Email):**
-- Emails sent, delivered, bounced
-- Open rate
-- Click-through rate
-- Unsubscribe rate
-- Conversion rate
+**キャンペーン報告：**
 
-**Channel Report (Social):**
-- Impressions and reach
-- Engagement rate (likes, comments, shares)
-- Follower growth
-- Click-through rate
-- Top-performing posts
+- 表示回数とリーチ
+- クリック率（CTR）
+- コンバージョン率
+- 獲得単価（CPA）
+- 広告費用対効果（ROAS）またはROI
+- コンバージョン・登録・見込み顧客の総数
 
-**Channel Report (Paid):**
-- Spend
-- Impressions and clicks
+**メールのチャネル報告：**
+
+- 送信数、到達数、不達数
+- 開封率
+- クリック率
+- 配信停止率
+- コンバージョン率
+
+**SNSのチャネル報告：**
+
+- 表示回数とリーチ
+- エンゲージメント率（いいね、コメント、共有）
+- フォロワー増加
+- クリック率
+- 成果の高い投稿
+
+**有料広告のチャネル報告：**
+
+- 支出
+- 表示回数とクリック数
 - CTR
-- CPC and CPM
-- Conversions and CPA
+- CPCとCPM
+- コンバージョンとCPA
 - ROAS
 
-**Channel Report (SEO/Organic):**
-- Organic sessions
-- Keyword rankings (movement)
-- Pages indexed
-- Backlinks acquired
-- Top-performing pages
+**SEO・自然流入のチャネル報告：**
 
-**Content Performance:**
-- Pageviews and unique visitors
-- Time on page
-- Bounce rate
-- Social shares
-- Conversions attributed to content
-- Top and bottom performers
+- 自然検索セッション
+- 検索順位と変動
+- インデックス済みページ
+- 獲得した被リンク
+- 成果の高いページ
 
-**Overall Marketing Report:**
-- Total leads generated
-- Marketing qualified leads (MQLs)
-- Pipeline contribution
-- Customer acquisition cost (CAC)
-- Channel-by-channel summary
+**コンテンツ実績：**
 
-### 3. Trend Analysis
-- Performance trend over the period (week-over-week or month-over-month)
-- Notable inflection points and what caused them
-- Seasonal or cyclical patterns observed
-- Comparison to benchmarks or targets
+- ページビューとユニーク訪問者
+- 滞在時間
+- 直帰率
+- SNS共有
+- コンテンツに帰属するコンバージョン
+- 成果の上位・下位
 
-### 4. What Worked
-- Top 3-5 wins with specific data
-- Why these performed well (hypothesis)
-- How to replicate or scale
+**全体報告：**
 
-### 5. What Needs Improvement
-- Bottom 3-5 performers with specific data
-- Hypotheses for underperformance
-- Recommended fixes
+- 獲得した見込み顧客の総数
+- MQL（マーケティング基準を満たす見込み顧客）
+- 商談への貢献
+- 顧客獲得費用（CAC）
+- チャネル別の要約
 
-### 6. Insights and Observations
-- Patterns in the data that are not obvious from the metrics alone
-- Audience behavior insights
-- Content or creative themes that resonated
-- External factors that may have influenced performance (seasonality, news, competitive moves)
+### 3. 傾向分析
 
-### 7. Recommendations
-For each recommendation:
-- What to do
-- Why (linked to a specific insight from the data)
-- Expected impact (high, medium, low)
-- Effort to implement (high, medium, low)
-- Priority (immediate, next sprint, next quarter)
+- 期間内の推移（週次・月次）
+- 主な転換点と原因
+- 観察した季節性や周期性
+- 基準値や目標との比較
 
-Prioritize recommendations in a 2x2 matrix format:
+### 4. うまくいったこと
 
-| | Low Effort | High Effort |
+- 上位3〜5件の成果と具体的なデータ
+- 好調だった理由の仮説
+- 再現・拡大する方法
+
+### 5. 改善が必要なこと
+
+- 下位3〜5件と具体的なデータ
+- 不振の原因仮説
+- 推奨する修正
+
+### 6. 知見と観察
+
+- 指標だけでは見えにくいパターン
+- 対象者の行動に関する知見
+- 響いたコンテンツや素材のテーマ
+- 季節性、ニュース、競合の動きなど、影響した可能性のある外部要因
+
+### 7. 提案
+
+各提案に次を含めます。
+
+- 何をするか
+- 理由（具体的なデータの知見に結び付ける）
+- 想定効果（高・中・低）
+- 実施工数（高・中・低）
+- 優先時期（直ちに、次のスプリント、次の四半期）
+
+2×2の表で優先順位を整理します。
+
+| | 低工数 | 高工数 |
 |---|---|---|
-| **High Impact** | Do first | Plan for next sprint |
-| **Low Impact** | Do if time allows | Deprioritize |
+| **高効果** | 最初に実行 | 次のスプリントに計画 |
+| **低効果** | 時間があれば実行 | 優先度を下げる |
 
-### 8. Next Period Focus
-- Top 3 priorities for the upcoming period
-- Tests or experiments to run
-- Targets for key metrics
+### 8. 次期の重点
 
-## Metric Definitions and Benchmarks
+- 上位3つの優先事項
+- 実施するテストや実験
+- 主要指標の目標
 
-### Email Marketing
+## 指標の定義と目安
 
-| Metric | Definition | Benchmark Range | What It Tells You |
+### メールマーケティング
+
+| 指標 | 定義 | 目安 | 分かること |
 |--------|-----------|----------------|-------------------|
-| Delivery rate | Emails delivered / emails sent | 95-99% | List health and sender reputation |
-| Open rate | Unique opens / emails delivered | 15-30% | Subject line and sender effectiveness |
-| Click-through rate (CTR) | Unique clicks / emails delivered | 2-5% | Content relevance and CTA effectiveness |
-| Click-to-open rate (CTOR) | Unique clicks / unique opens | 10-20% | Email content quality (for those who opened) |
-| Unsubscribe rate | Unsubscribes / emails delivered | <0.5% | Content-audience fit and frequency tolerance |
-| Bounce rate | Bounces / emails sent | <2% | List quality and data hygiene |
-| Conversion rate | Conversions / emails delivered | 1-5% | End-to-end email effectiveness |
-| Revenue per email | Total revenue / emails sent | Varies | Direct revenue attribution |
-| List growth rate | (New subscribers - unsubscribes) / total list | 2-5% monthly | Audience building health |
+| 到達率 | 到達数 / 送信数 | 95〜99% | リストの状態と送信者の評価 |
+| 開封率 | ユニーク開封数 / 到達数 | 15〜30% | 件名と送信者の効果 |
+| クリック率（CTR） | ユニーククリック数 / 到達数 | 2〜5% | 内容の関連性とCTAの効果 |
+| 開封後クリック率（CTOR） | ユニーククリック数 / ユニーク開封数 | 10〜20% | 開封者に対する内容の質 |
+| 配信停止率 | 配信停止数 / 到達数 | <0.5% | 内容と対象者の適合、頻度の許容度 |
+| 不達率 | 不達数 / 送信数 | <2% | リストの品質とデータ整備 |
+| コンバージョン率 | コンバージョン数 / 到達数 | 1〜5% | メール全体の効果 |
+| 1通当たり売上 | 総売上 / 送信数 | 一定しない | 直接的な売上貢献 |
+| リスト成長率 | （新規購読者 - 配信停止者）/ リスト全体 | 月2〜5% | 対象者基盤の成長 |
 
-### Social Media
+### SNS
 
-| Metric | Definition | What It Tells You |
+| 指標 | 定義 | 分かること |
 |--------|-----------|-------------------|
-| Impressions | Number of times content was displayed | Content distribution and reach |
-| Reach | Number of unique users who saw content | Audience breadth |
-| Engagement rate | (Likes + comments + shares) / reach | Content resonance |
-| Click-through rate | Link clicks / impressions | Traffic driving effectiveness |
-| Follower growth rate | Net new followers / total followers per period | Audience building |
-| Share/Repost rate | Shares / reach | Content virality and advocacy |
-| Video view rate | Views / impressions | Video content hook effectiveness |
-| Video completion rate | Completed views / total views | Video content quality and length fit |
-| Social share of voice | Your mentions / total category mentions | Brand visibility vs. competitors |
+| 表示回数 | コンテンツが表示された回数 | 配信と広がり |
+| リーチ | 見たユニークユーザー数 | 対象者の広さ |
+| エンゲージメント率 | （いいね + コメント + 共有）/ リーチ | 内容への共感 |
+| クリック率 | リンククリック数 / 表示回数 | 流入獲得の効果 |
+| フォロワー成長率 | 期間内の純増 / 総フォロワー数 | 対象者基盤の成長 |
+| 共有・再投稿率 | 共有数 / リーチ | 拡散と推奨 |
+| 動画視聴率 | 視聴数 / 表示回数 | 冒頭の訴求力 |
+| 動画完了率 | 完了視聴数 / 総視聴数 | 内容の質と長さの適合 |
+| SNSのシェア・オブ・ボイス | 自社への言及 / カテゴリー全体の言及 | 競合に対する露出 |
 
-### Paid Advertising (Search and Social)
+### 有料広告（検索・SNS）
 
-| Metric | Definition | What It Tells You |
+| 指標 | 定義 | 分かること |
 |--------|-----------|-------------------|
-| Impressions | Times ad was shown | Budget utilization and targeting breadth |
-| Click-through rate (CTR) | Clicks / impressions | Ad creative and targeting relevance |
-| Cost per click (CPC) | Total spend / clicks | Cost efficiency of traffic generation |
-| Cost per mille (CPM) | Cost per 1,000 impressions | Awareness cost efficiency |
-| Conversion rate | Conversions / clicks | Landing page and offer effectiveness |
-| Cost per acquisition (CPA) | Total spend / conversions | Full-funnel cost efficiency |
-| Return on ad spend (ROAS) | Revenue / ad spend | Revenue generation efficiency |
-| Quality Score (search) | Google's relevance rating (1-10) | Ad-keyword-landing page alignment |
-| Frequency | Average times a user sees the ad | Ad fatigue risk |
-| View-through conversions | Conversions from users who saw but did not click | Display/awareness campaign influence |
+| 表示回数 | 広告が表示された回数 | 予算消化と対象の広さ |
+| クリック率（CTR） | クリック数 / 表示回数 | 広告素材と対象設定の関連性 |
+| クリック単価（CPC） | 総支出 / クリック数 | 流入獲得の費用効率 |
+| CPM | 1,000表示当たりの費用 | 認知獲得の費用効率 |
+| コンバージョン率 | コンバージョン数 / クリック数 | ページと提案の効果 |
+| 獲得単価（CPA） | 総支出 / コンバージョン数 | 全段階を通じた費用効率 |
+| ROAS | 売上 / 広告費 | 売上獲得の効率 |
+| 品質スコア（検索） | Googleの関連性評価（1〜10） | 広告・検索語・ページの整合性 |
+| フリークエンシー | 1人が広告を見る平均回数 | 広告疲れのリスク |
+| ビュースルーコンバージョン | 広告を見たがクリックしなかった人の成果 | ディスプレイ・認知施策の影響 |
 
-### SEO / Organic Search
+### SEO・自然検索
 
-| Metric | Definition | What It Tells You |
+| 指標 | 定義 | 分かること |
 |--------|-----------|-------------------|
-| Organic sessions | Visits from organic search | SEO effectiveness and content reach |
-| Keyword rankings | Position for target keywords | Search visibility |
-| Organic CTR | Clicks / impressions in search results | Title and meta description effectiveness |
-| Pages indexed | Number of pages in search index | Crawlability and site health |
-| Domain authority | Third-party authority score | Overall site strength |
-| Backlinks | Number of external sites linking to you | Content authority and off-page SEO |
-| Page load speed | Time to interactive | User experience and ranking factor |
-| Organic conversion rate | Organic conversions / organic sessions | Content quality and intent alignment |
-| Top entry pages | Most-visited pages from organic search | Content driving the most organic traffic |
+| 自然検索セッション | 自然検索からの訪問 | SEOの効果と広がり |
+| 検索順位 | 対象キーワードの順位 | 検索での見つけやすさ |
+| 自然検索CTR | 検索結果のクリック数 / 表示回数 | タイトルと説明文の効果 |
+| インデックス済みページ | 検索登録されたページ数 | クロール可能性とサイトの状態 |
+| ドメイン権威性 | 第三者による評価スコア | サイト全体の強さ |
+| 被リンク | 自社へリンクする外部サイト数 | 内容の信頼性と外部SEO |
+| 読み込み速度 | 操作可能になるまでの時間 | UXと順位要因 |
+| 自然検索コンバージョン率 | 自然検索の成果 / 自然検索セッション | 内容の質と検索意図の一致 |
+| 主な入口ページ | 自然検索で最も訪問されるページ | 自然流入を多く生む内容 |
 
-### Content Marketing
+### コンテンツマーケティング
 
-| Metric | Definition | What It Tells You |
+| 指標 | 定義 | 分かること |
 |--------|-----------|-------------------|
-| Pageviews | Total views of content pages | Content reach and distribution |
-| Unique visitors | Distinct users viewing content | Audience size |
-| Average time on page | Time spent on content pages | Content engagement and depth |
-| Bounce rate | Single-page sessions / total sessions | Content-audience fit and UX |
-| Scroll depth | How far users scroll on a page | Content engagement through the piece |
-| Social shares | Times content was shared on social | Content resonance and virality |
-| Backlinks earned | External links to content | Content authority and SEO value |
-| Lead generation | Leads attributed to content | Content conversion effectiveness |
-| Content ROI | Revenue attributed / content production cost | Overall content investment return |
+| ページビュー | コンテンツページの総閲覧数 | 広がりと配信 |
+| ユニーク訪問者 | 閲覧した異なるユーザー数 | 対象者の規模 |
+| 平均滞在時間 | ページで過ごした時間 | 関与と読み込みの深さ |
+| 直帰率 | 1ページのセッション / 総セッション | 対象者との適合とUX |
+| スクロール深度 | ページをどこまで移動したか | 全文を通じた関与 |
+| SNS共有 | SNSで共有された回数 | 共感と拡散 |
+| 獲得した被リンク | コンテンツへの外部リンク | 信頼性とSEO価値 |
+| 見込み顧客獲得 | コンテンツに帰属する見込み顧客 | 獲得効果 |
+| コンテンツROI | 帰属する売上 / 制作費 | 投資全体の収益性 |
 
-### Overall Marketing / Pipeline
+### マーケティング全体・商談
 
-| Metric | Definition | What It Tells You |
+| 指標 | 定義 | 分かること |
 |--------|-----------|-------------------|
-| Marketing qualified leads (MQLs) | Leads meeting marketing qualification criteria | Top-of-funnel effectiveness |
-| Sales qualified leads (SQLs) | MQLs accepted by sales | Lead quality |
-| MQL to SQL conversion rate | SQLs / MQLs | Marketing-sales alignment and lead quality |
-| Pipeline generated | Dollar value of opportunities created | Marketing impact on revenue |
-| Pipeline velocity | How fast deals move through pipeline | Campaign urgency and quality |
-| Customer acquisition cost (CAC) | Total marketing + sales cost / new customers | Efficiency of customer acquisition |
-| CAC payback period | Months to recover CAC from revenue | Unit economics health |
-| Marketing-sourced revenue | Revenue from marketing-originated deals | Direct marketing contribution |
-| Marketing-influenced revenue | Revenue from deals where marketing touched | Broader marketing impact |
+| MQL | マーケティングの適格基準を満たす見込み顧客 | 初期段階の効果 |
+| SQL | 営業が受け入れたMQL | 見込み顧客の質 |
+| MQLからSQLへの転換率 | SQL / MQL | 営業との整合性と質 |
+| 創出した商談 | 生み出した案件の金額 | 売上への影響 |
+| 商談進行速度 | 案件が進む速さ | 施策の切迫度と質 |
+| CAC | （マーケティング費 + 営業費）/ 新規顧客数 | 顧客獲得の効率 |
+| CAC回収期間 | 売上でCACを回収する月数 | ユニットエコノミクスの健全性 |
+| マーケティング起点売上 | マーケティング由来の案件売上 | 直接貢献 |
+| マーケティング関与売上 | マーケティングが接触した案件売上 | より広い影響 |
 
-## Reporting Templates by Cadence
+## 頻度別の報告テンプレート
 
-### Weekly Marketing Report
-Quick-scan format for team standups:
-- **Top 3 metrics** with week-over-week change
-- **What worked** this week (1-2 bullet points with data)
-- **What needs attention** (1-2 bullet points with data)
-- **This week's priorities** (3-5 action items)
+### 週次報告
 
-### Monthly Marketing Report
-Standard stakeholder report:
-1. Executive summary (3-5 sentences)
-2. Key metrics dashboard (table with MoM and target comparison)
-3. Channel-by-channel performance summary
-4. Campaign highlights and results
-5. What worked and what did not (with hypotheses)
-6. Recommendations and next month priorities
-7. Budget spend vs. plan
+チームの短い定例で拾い読みできる形式にします。
 
-### Quarterly Business Review (QBR)
-Strategic review for leadership:
-1. Quarter performance vs. goals
-2. Year-to-date trajectory
-3. Channel ROI analysis
-4. Campaign performance summary
-5. Competitive and market observations
-6. Strategic recommendations for next quarter
-7. Budget request and allocation plan
-8. Key experiments and learnings
+- 前週比を含む**主要3指標**
+- **今週うまくいったこと**（データ付きで1〜2項目）
+- **注意が必要なこと**（データ付きで1〜2項目）
+- **今週の優先事項**（作業3〜5件）
 
-### Dashboard Design Principles
-- Lead with the metrics that map to business objectives (not vanity metrics)
-- Show trends over time, not just point-in-time snapshots
-- Include comparison context: prior period, target, benchmark
-- Use consistent color coding: green (on track), yellow (at risk), red (off track)
-- Group metrics by funnel stage or business question
-- Keep dashboards to one page/screen — detail goes in appendix
-- Update cadence should match decision cadence (real-time for paid, weekly for content)
+### 月次報告
 
-## Trend Analysis and Forecasting
+関係者向けの標準報告です。
 
-### Trend Identification
-When analyzing performance data, look for:
+1. 経営層向け要約（3〜5文）
+2. 主要指標の表（前月比・目標比較）
+3. チャネル別実績
+4. 主な施策と成果
+5. 成功・不振と原因仮説
+6. 提案と翌月の優先事項
+7. 予算計画と実績
 
-1. **Directional trends**: is the metric consistently going up, down, or flat over 4+ periods?
-2. **Inflection points**: where did performance change direction and what happened then?
-3. **Seasonality**: are there predictable patterns by day of week, month, or quarter?
-4. **Anomalies**: one-time spikes or drops — what caused them and are they repeatable?
-5. **Leading indicators**: which metrics change first and predict future outcomes?
+### 四半期事業レビュー（QBR）
 
-### Trend Analysis Process
-1. Chart the metric over time (at least 8-12 data points for meaningful trends)
-2. Identify the overall direction (upward, downward, flat, cyclical)
-3. Calculate the rate of change (is it accelerating or decelerating?)
-4. Overlay key events (campaigns launched, product changes, market events)
-5. Compare to benchmarks or targets
-6. Identify correlations with other metrics
-7. Form hypotheses about causation (and plan tests to validate)
+経営陣向けの戦略的な振り返りです。
 
-### Simple Forecasting Approaches
-- **Linear projection**: extend the current trend line forward (useful for stable metrics)
-- **Moving average**: smooth out noise by averaging the last 3-6 periods
-- **Year-over-year comparison**: use last year's pattern as a baseline, adjusted for growth rate
-- **Funnel math**: forecast outputs from inputs (e.g., if we generate X leads at Y conversion rate, we will get Z customers)
-- **Scenario modeling**: create best case, expected case, and worst case projections
+1. 四半期目標と実績
+2. 年初来の推移
+3. チャネル別ROI
+4. 施策の実績要約
+5. 競合と市場の観察
+6. 次四半期の戦略提案
+7. 予算要求と配分計画
+8. 主な実験と学び
 
-### Forecasting Caveats
-- Short-term forecasts (1-3 months) are more reliable than long-term
-- Forecasts based on fewer than 12 data points should be flagged as low confidence
-- External factors (market shifts, competitive moves, economic changes) can invalidate trend-based forecasts
-- Always present forecasts as ranges, not exact numbers
+### ダッシュボードの設計原則
 
-## Attribution Modeling Basics
+- 見栄えだけの数値ではなく、事業目標に結び付く指標を先に置く
+- 一時点だけでなく、時間の推移を示す
+- 前期、目標、基準値などの比較対象を含める
+- 緑（順調）、黄（要注意）、赤（未達）で色分けを統一
+- 購買段階や事業上の問いごとに指標をまとめる
+- 1ページ・1画面に収め、詳細は付録へ
+- 更新頻度を意思決定に合わせる（有料施策はリアルタイム、コンテンツは週次など）
 
-### What Is Attribution?
-Attribution determines which marketing touchpoints get credit for a conversion. This matters because buyers typically interact with multiple channels before converting.
+## 傾向分析と予測
 
-### Common Attribution Models
+### 傾向の見つけ方
 
-| Model | How It Works | Best For | Limitation |
+実績データでは次を探します。
+
+1. **方向性**：4期以上にわたり上昇・低下・横ばいが続くか
+2. **転換点**：方向が変わった時点と、そのときの出来事
+3. **季節性**：曜日、月、四半期ごとの予測可能なパターン
+4. **異常値**：一時的な急増・急落の原因と再現性
+5. **先行指標**：先に変化し、将来の成果を予測する指標
+
+### 分析の手順
+
+1. 時系列で図示する（意味のある傾向には最低8〜12点）
+2. 全体の方向を特定する（上昇、低下、横ばい、周期）
+3. 変化率を計算する（加速・減速しているか）
+4. 主要イベントを重ねる（施策開始、製品変更、市場の出来事）
+5. 基準値や目標と比較する
+6. 他の指標との相関を確認する
+7. 因果の仮説を立て、検証を計画する
+
+### 簡単な予測方法
+
+- **線形予測**：現在の傾向線を延長する（安定した指標向け）
+- **移動平均**：直近3〜6期を平均してノイズをならす
+- **前年比較**：前年のパターンを成長率で調整する
+- **段階別の計算**：入力から成果を予測する（例：見込み顧客X件、転換率Yなら顧客Z件）
+- **シナリオ**：最良、想定、最悪の予測を作る
+
+### 予測の注意点
+
+- 短期（1〜3か月）は長期より信頼しやすい
+- 12点未満のデータに基づく予測は、確信度が低いと示す
+- 市場、競合、経済などの外部変化で、傾向ベースの予測は成り立たなくなる
+- 常に幅で示し、正確な1つの数値として提示しない
+
+## アトリビューションの基礎
+
+### アトリビューションとは
+
+コンバージョンへの貢献を、どの接点に配分するかを決める方法です。購買者は通常、成果に至るまでに複数チャネルに触れるため重要です。
+
+### 主なモデル
+
+| モデル | 仕組み | 向く用途 | 制約 |
 |-------|-------------|----------|------------|
-| Last touch | 100% credit to last interaction before conversion | Understanding final conversion triggers | Ignores awareness and nurture |
-| First touch | 100% credit to first interaction | Understanding top-of-funnel effectiveness | Ignores nurture and conversion drivers |
-| Linear | Equal credit to all touchpoints | Fair representation of all channels | Does not reflect relative impact |
-| Time decay | More credit to touchpoints closer to conversion | Balanced view favoring recent interactions | May undervalue awareness |
-| Position-based (U-shaped) | 40% first, 40% last, 20% split among middle | Valuing both discovery and conversion | Somewhat arbitrary weighting |
-| Data-driven | Algorithmic credit based on conversion patterns | Most accurate representation | Requires significant data volume |
+| 最終接点 | 最後の接点に100% | 最後のきっかけを理解 | 認知・育成を無視 |
+| 初回接点 | 最初の接点に100% | 初期段階の効果を理解 | 育成・獲得要因を無視 |
+| 線形 | 全接点へ均等 | 全チャネルを公平に表現 | 相対的な影響差を反映しない |
+| 時間減衰 | 成果に近い接点ほど多く配分 | 最近の接点を重視した全体像 | 認知を過小評価し得る |
+| 位置ベース（U字型） | 最初40%、最後40%、中間に20% | 発見と獲得の両方を重視 | 重みがやや恣意的 |
+| データ駆動 | 成果パターンからアルゴリズムで配分 | 最も正確な表現 | 多くのデータが必要 |
 
-### Attribution Practical Guidance
-- Start with last-touch attribution if you have no model in place — it is the simplest and most actionable
-- Compare first-touch and last-touch to understand which channels drive awareness vs. conversion
-- Use position-based (U-shaped) as a reasonable middle ground for most B2B companies
-- Data-driven attribution requires high conversion volume to be statistically meaningful
-- No model is perfect — use attribution directionally, not as absolute truth
-- Multi-touch attribution is better than single-touch, but any model is better than none
+### 実務上の指針
 
-### Attribution Pitfalls
-- Do not optimize one channel in isolation based on single-touch attribution
-- Awareness channels (display, social, PR) will always look bad in last-touch models
-- Conversion channels (search, retargeting) will always look bad in first-touch models
-- Self-reported attribution ("how did you hear about us?") provides useful qualitative color but is unreliable as quantitative data
-- Cross-device and cross-channel tracking gaps mean attribution data is always incomplete
+- 未導入なら、最も単純で行動に結び付けやすい最終接点から始める
+- 初回・最終接点を比較し、認知と獲得に寄与するチャネルを理解する
+- 多くのB2B企業では、U字型が妥当な中間案になる
+- データ駆動型は、統計的に意味のある多くのコンバージョンが必要
+- 完璧なモデルはない。絶対的な事実ではなく、方向を知るために使う
+- 複数接点は単一接点よりよいが、何らかのモデルがある方が未導入よりよい
 
-## Optimization Recommendations Framework
+### 落とし穴
 
-### Optimization Process
-1. **Identify**: which metrics are underperforming vs. target or benchmark?
-2. **Diagnose**: where in the funnel is the problem? (impressions, clicks, conversions, retention)
-3. **Hypothesize**: what is causing the underperformance? (audience, message, creative, offer, timing, technical)
-4. **Prioritize**: which fixes will have the biggest impact with the least effort?
-5. **Test**: design an experiment to validate the hypothesis
-6. **Measure**: did the change improve the metric?
-7. **Scale or iterate**: roll out wins broadly; iterate on inconclusive or failed tests
+- 単一接点だけで、1チャネルを単独で最適化しない
+- 最終接点モデルでは、認知チャネル（ディスプレイ、SNS、広報）が低く見える
+- 初回接点モデルでは、獲得チャネル（検索、再訴求）が低く見える
+- 「どこで知りましたか」という自己申告は定性的には役立つが、定量データとしては信頼しにくい
+- デバイス・チャネル横断の追跡漏れにより、データは常に不完全
 
-### Optimization Levers by Funnel Stage
+## 改善提案の枠組み
 
-| Funnel Stage | Problem Signal | Optimization Levers |
+### 改善の手順
+
+1. **特定**：目標・基準を下回る指標は何か
+2. **診断**：表示、クリック、獲得、継続のどこに問題があるか
+3. **仮説**：対象者、メッセージ、素材、提案、時期、技術の何が原因か
+4. **優先付け**：最小の工数で最大の効果を出す修正は何か
+5. **テスト**：仮説を検証する実験を設計
+6. **測定**：指標が改善したか
+7. **展開・反復**：成功は広く展開し、不明・失敗は見直す
+
+### 段階別の改善手段
+
+| 段階 | 問題の兆候 | 改善手段 |
 |-------------|---------------|---------------------|
-| Awareness | Low impressions, low reach | Budget, targeting, channel mix, creative format |
-| Interest | Low CTR, low engagement | Ad creative, headlines, content hooks, audience targeting |
-| Consideration | High bounce rate, low time on page | Landing page content, page speed, content relevance, UX |
-| Conversion | Low conversion rate | Offer, CTA, form length, trust signals, page layout |
-| Retention | High churn, low repeat engagement | Onboarding, email nurture, product experience, support |
+| 認知 | 表示・リーチが少ない | 予算、対象設定、チャネル構成、素材形式 |
+| 関心 | CTR・反応が低い | 広告素材、見出し、冒頭、対象設定 |
+| 比較検討 | 直帰率が高く滞在が短い | ページ内容、速度、関連性、UX |
+| 獲得 | 転換率が低い | 提案、CTA、フォーム長、信頼の根拠、配置 |
+| 継続 | 解約が多く再反応が少ない | オンボーディング、育成メール、製品体験、サポート |
 
-### Testing Best Practices
-- Test one variable at a time for clean results
-- Define the success metric before launching the test
-- Calculate required sample size before starting (do not end tests early)
-- Run tests for a minimum of one full business cycle (typically one week for B2B)
-- Document all tests and results, regardless of outcome
-- Share learnings across the team — failed tests are valuable information
-- A test that confirms the status quo is not a failure — it builds confidence in your current approach
+### テストの指針
 
-### Continuous Optimization Cadence
-- **Daily**: monitor paid campaigns for budget pacing, anomalies, and disapproved ads
-- **Weekly**: review channel performance, pause underperformers, scale winners
-- **Bi-weekly**: refresh ad creative and test new variants
-- **Monthly**: full performance review, identify new optimization opportunities, update forecasts
-- **Quarterly**: strategic review of channel mix, budget allocation, and targeting strategy
+- 明確な結果を得るため、1度に変えるのは1変数
+- 開始前に成功指標を決める
+- 必要サンプル数を事前計算し、途中で早期終了しない
+- 最低1つの業務サイクル（B2Bなら通常1週間）続ける
+- 結果にかかわらず、すべてのテストと結果を記録
+- 学びをチームに共有する。失敗も有用な情報
+- 現状の有効性を確認したテストは失敗ではなく、現在の方法への確信を強める
 
-## Output Formatting
+### 継続改善の頻度
 
-- Use tables for data presentation
-- Bold key numbers and trends
-- Keep the executive summary concise (suitable for forwarding to leadership)
-- Include a "detailed appendix" section for granular data if the user provided a lot of metrics
+- **毎日**：有料施策の予算消化、異常、不承認広告を監視
+- **毎週**：チャネル実績を確認し、不振を止め、好調を拡大
+- **隔週**：広告素材を更新し、新案をテスト
+- **毎月**：全体実績を振り返り、改善機会を探し、予測を更新
+- **四半期**：チャネル構成、予算配分、対象設定を戦略的に見直す
 
-## After the Report
+## 出力の書式
 
-Ask: "Would you like me to:
-- Create a slide-ready summary of these results?
-- Draft a stakeholder email with the key takeaways?
-- Dive deeper into any specific metric or channel?
-- Set up a reporting template you can reuse next period?"
+- データは表で示す
+- 主要な数値と傾向を太字にする
+- 経営層向け要約は、そのまま転送できる簡潔さにする
+- 指標が多い場合、詳細データは付録にまとめる
+
+## 報告後
+
+「次のような対応が必要ですか？
+- スライドに使える要約を作る
+- 要点をまとめた関係者向けメールを下書きする
+- 特定の指標やチャネルを掘り下げる
+- 次期も使える報告テンプレートを作る」

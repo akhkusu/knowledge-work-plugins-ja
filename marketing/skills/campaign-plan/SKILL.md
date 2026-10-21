@@ -1,308 +1,343 @@
 ---
 name: campaign-plan
-description: Generate a full campaign brief with objectives, audience, messaging, channel strategy, content calendar, and success metrics. Use when planning a product launch, lead-gen push, or awareness campaign, when you need a week-by-week content calendar with dependencies, or when translating a marketing goal into a structured, executable plan.
-argument-hint: "<campaign objective or product>"
+description: 目的、対象者、メッセージ、チャネル戦略、コンテンツカレンダー、成功指標を含むキャンペーン企画書を作成します。製品公開、見込み顧客の獲得、認知向上施策の計画、依存関係を含む週別カレンダーの作成、マーケティング目標の実行可能な計画への落とし込みに使います。
+argument-hint: "<キャンペーンの目的または製品>"
 ---
 
-# Campaign Plan
+# キャンペーン計画
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続されているツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Generate a comprehensive marketing campaign brief with objectives, audience, messaging, channel strategy, content calendar, and success metrics.
+目的、対象者、メッセージ、チャネル戦略、コンテンツカレンダー、成功指標を含む、包括的なマーケティングキャンペーン企画書を作成します。
 
-## Trigger
+## 開始条件
 
-User runs `/campaign-plan` or asks to plan, design, or build a marketing campaign.
+ユーザーが`/campaign-plan`を実行するか、マーケティングキャンペーンの計画・設計・構築を依頼したとき。
 
-## Inputs
+## 入力情報
 
-Gather the following from the user. If not provided, ask before proceeding:
+次の情報をユーザーから集めます。未提示の場合は、作業前に確認します。
 
-1. **Campaign goal** — the primary objective (e.g., drive signups, increase awareness, launch a product, generate leads, re-engage churned users)
+1. **キャンペーンの目標**：主目的（登録の獲得、認知向上、製品公開、見込み顧客の獲得、離脱ユーザーへの再アプローチなど）
 
-2. **Target audience** — who the campaign is aimed at (demographics, roles, industries, pain points, buying stage)
+2. **対象者**：届けたい相手（属性、役割、業界、課題、購買段階）
 
-3. **Timeline** — campaign duration and any fixed dates (launch date, event date, seasonal deadline)
+3. **期間**：実施期間と固定日程（公開日、イベント日、季節に伴う期限）
 
-4. **Budget range** — approximate budget or budget tier (optional; if not provided, generate a channel-agnostic plan and note where budget allocation would matter)
+4. **予算の目安**：概算や予算規模（任意。未提示なら特定チャネルを前提にしない計画を作成し、予算配分が重要になる箇所を注記）
 
-5. **Additional context** (optional):
-   - Product or service being promoted
-   - Key differentiators or value propositions
-   - Previous campaign performance or learnings
-   - Brand guidelines or constraints
-   - Geographic focus
+5. **追加の背景情報**（任意）：
+   - 訴求する製品・サービス
+   - 主な差別化要素や価値提案
+   - 過去のキャンペーン実績や学び
+   - ブランドガイドラインや制約
+   - 対象地域
 
-## Campaign Brief Structure
+## 企画書の構成
 
-Generate a campaign brief with the following sections:
+次の節を含む企画書を作成します。
 
-### 1. Campaign Overview
-- Campaign name suggestion
-- One-sentence campaign summary
-- Primary objective with a specific, measurable goal
-- Secondary objectives (if applicable)
+### 1. キャンペーン概要
 
-### 2. Target Audience
-- Primary audience segment with description
-- Secondary audience segment (if applicable)
-- Audience pain points and motivations
-- Where they spend time (channels, communities, publications)
-- Buying stage alignment (awareness, consideration, decision)
+- キャンペーン名の提案
+- 1文での概要
+- 具体的で測定可能な主目標
+- 副目標（該当する場合）
 
-### 3. Key Messages
-- Core campaign message (one sentence)
-- 3-4 supporting messages tailored to audience pain points
-- Message variations by channel (if different tones are needed)
-- Proof points or evidence to support each message
+### 2. 対象者
 
-### 4. Channel Strategy
-Recommend channels based on audience and goal. For each channel, include:
-- Why this channel fits the audience and objective
-- Content format recommendations
-- Estimated effort level (low, medium, high)
-- Budget allocation suggestion (if budget was provided)
+- 主な対象セグメントと説明
+- 副次的な対象セグメント（該当する場合）
+- 対象者の課題と動機
+- 普段接するチャネル、コミュニティ、媒体
+- 購買段階との対応（認知、比較検討、意思決定）
 
-Consider channels from:
-- Owned: blog, email, website, social media profiles
-- Earned: PR, influencer partnerships, guest posts, community engagement
-- Paid: search ads, social ads, display, sponsored content, events
+### 3. 主要メッセージ
 
-### 5. Content Calendar
-Create a week-by-week (or day-by-day for short campaigns) content calendar:
-- What content to produce each week
-- Which channel each piece targets
-- Key milestones and deadlines
-- Dependencies between pieces (e.g., "landing page must be live before paid ads launch")
+- 中心となるメッセージ（1文）
+- 対象者の課題に合わせた補足メッセージ3〜4点
+- チャネル別の表現案（トーンを変える必要がある場合）
+- 各メッセージを裏付ける事実や根拠
 
-Format as a table:
+### 4. チャネル戦略
 
-| Week | Content Piece | Channel | Owner/Notes | Status |
+対象者と目標に基づいてチャネルを提案し、それぞれに次を含めます。
+
+- そのチャネルが対象者と目的に合う理由
+- コンテンツ形式の提案
+- 想定工数（低・中・高）
+- 予算配分案（予算が提示されている場合）
+
+次のチャネル群から検討します。
+
+- 自社保有：ブログ、メール、Webサイト、SNSアカウント
+- 獲得露出：広報、インフルエンサーとの協業、寄稿、コミュニティ活動
+- 有料：検索広告、SNS広告、ディスプレイ広告、スポンサーコンテンツ、イベント
+
+### 5. コンテンツカレンダー
+
+週別（短期施策なら日別）のカレンダーを作成します。
+
+- 各週に制作するコンテンツ
+- 各コンテンツの対象チャネル
+- 主要な節目と期限
+- コンテンツ間の依存関係（例：「有料広告の開始前にランディングページを公開する」）
+
+表形式にします。
+
+| 週 | コンテンツ | チャネル | 担当・備考 | 状況 |
 |------|--------------|---------|-------------|--------|
 
-### 6. Content Pieces Needed
-List every content asset required for the campaign:
-- Asset name and type (blog post, email, social post, ad creative, landing page, etc.)
-- Brief description of what it should contain
-- Priority (must-have vs. nice-to-have)
-- Suggested timeline for creation
+### 6. 必要なコンテンツ
 
-### 7. Success Metrics
-Define KPIs aligned to the campaign objective:
-- Primary KPI with target number
-- Secondary KPIs (3-5)
-- How each metric will be tracked
-- Reporting cadence recommendation
+キャンペーンに必要な素材をすべて列挙します。
 
-If ~~product analytics is connected, reference any available historical performance benchmarks to inform targets.
+- 名称と種類（ブログ、メール、SNS投稿、広告素材、ランディングページなど）
+- 含める内容の簡単な説明
+- 優先度（必須・あるとよい）
+- 制作時期の提案
 
-### 8. Budget Allocation (if budget provided)
-- Breakdown by channel or activity
-- Production costs vs. distribution costs
-- Contingency recommendation (typically 10-15%)
+### 7. 成功指標
 
-### 9. Risks and Mitigations
-- 2-3 potential risks (timeline, audience mismatch, channel underperformance)
-- Mitigation strategy for each
+目的に沿ったKPIを定義します。
 
-### 10. Next Steps
-- Immediate action items to kick off the campaign
-- Stakeholder approvals needed
-- Key decision points
+- 数値目標付きの主要KPI
+- 補助KPI（3〜5個）
+- 各指標の追跡方法
+- 報告頻度の提案
 
-## Planning Reference
+~~product analyticsが接続されていれば、利用可能な過去実績を参照して目標設定に生かします。
 
-### Campaign Framework: Objective, Audience, Message, Channel, Measure
+### 8. 予算配分（予算が提示されている場合）
 
-Every campaign should be built on this five-part framework:
+- チャネル別または活動別の内訳
+- 制作費と配信・出稿費
+- 予備費の提案（通常10〜15%）
 
-#### Objective
-Define what success looks like before planning anything else.
+### 9. リスクと対策
 
-- **Awareness**: increase brand or product visibility (measured by reach, impressions, share of voice)
-- **Consideration**: drive engagement and education (measured by content engagement, email signups, webinar attendance)
-- **Conversion**: generate leads or sales (measured by signups, demos, purchases, pipeline)
-- **Retention**: re-engage existing customers (measured by churn reduction, upsell, NPS)
-- **Advocacy**: turn customers into promoters (measured by referrals, reviews, UGC)
+- 想定リスク2〜3点（日程、対象者との不一致、チャネルの不振）
+- 各リスクへの軽減策
 
-Good objectives are SMART: Specific, Measurable, Achievable, Relevant, Time-bound.
+### 10. 次の作業
 
-Example: "Generate 200 marketing qualified leads from mid-market SaaS companies in North America within 6 weeks of campaign launch."
+- 開始のために直ちに行う作業
+- 必要な関係者の承認
+- 主な意思決定事項
 
-#### Audience
-Define who you are trying to reach with enough specificity to guide messaging and channel decisions.
+## 計画の参考情報
 
-- **Demographics**: role/title, seniority, company size, industry
-- **Psychographics**: motivations, pain points, goals, objections
-- **Behavioral**: where they consume content, how they buy, what they have engaged with before
-- **Buying stage**: are they unaware of the problem, researching solutions, or ready to buy?
+### 基本の枠組み：目的・対象者・メッセージ・チャネル・測定
 
-Create a brief audience profile (not a full persona) for campaign planning:
-> "[Role] at [company type] who is struggling with [pain point] and looking for [desired outcome]. They typically discover solutions through [channels] and care most about [priorities]."
+すべてのキャンペーンは、次の5要素を軸に組み立てます。
 
-#### Message
-Craft the core message and supporting points that will resonate with the audience.
+#### 目的
 
-- **Core message**: one sentence that captures what you want the audience to think, feel, or do
-- **Supporting messages**: 3-4 points that provide evidence, address objections, or elaborate on benefits
-- **Proof points**: data, case studies, testimonials, or third-party validation for each supporting message
-- **Differentiation**: what makes your offering different from alternatives (including doing nothing)
+他の計画に入る前に、成功の状態を定義します。
 
-Message hierarchy:
-1. Why should I care? (addresses the pain point or opportunity)
-2. What is the solution? (positions your offering)
-3. Why you? (differentiates from alternatives)
-4. What should I do? (call to action)
+- **認知**：ブランドや製品の露出を増やす（リーチ、表示回数、シェア・オブ・ボイスで測定）
+- **比較検討**：関心と理解を深める（コンテンツへの反応、メール登録、ウェビナー参加で測定）
+- **コンバージョン**：見込み顧客や売上を生む（登録、デモ、購入、商談で測定）
+- **継続利用**：既存顧客との関係を再び活性化する（解約減少、アップセル、NPSで測定）
+- **推奨**：顧客を推奨者にする（紹介、レビュー、UGCで測定）
 
-#### Channel
-Select channels based on where your audience is, not where you are most comfortable. See the Channel Selection Guide below.
+よい目標はSMART、つまり具体的・測定可能・達成可能・関連性がある・期限がある目標です。
 
-#### Measure
-Define how you will know the campaign worked. See Success Metrics by Campaign Type below.
+例：「開始から6週間以内に、北米の中堅SaaS企業からMQL（マーケティング基準を満たす見込み顧客）を200件獲得する」。
 
-### Channel Selection Guide
+#### 対象者
 
-#### Owned Channels
+メッセージやチャネルを決められるだけの具体性で、届けたい相手を定義します。
 
-| Channel | Best For | Typical Metrics | Effort |
+- **属性**：役割・職位、役職の高さ、企業規模、業界
+- **心理的特性**：動機、課題、目標、懸念
+- **行動**：情報収集の場所、購買方法、過去に反応したもの
+- **購買段階**：課題をまだ認識していない、解決策を調べている、購入準備ができている、のどの状態か
+
+計画用の簡潔な対象者像を作ります（完全なペルソナは不要）。
+
+> 「[企業の種類]で[役割]を担い、[課題]に悩み、[望む成果]を求めている。通常は[チャネル]で解決策を見つけ、[重視すること]を最も大切にする。」
+
+#### メッセージ
+
+対象者に響く中心メッセージと、その裏付けを作ります。
+
+- **中心メッセージ**：相手に何を考え、感じ、行ってほしいかを表す1文
+- **補足メッセージ**：根拠、懸念への回答、便益の詳しい説明を3〜4点
+- **裏付け**：各補足メッセージを支えるデータ、事例、推薦コメント、第三者の評価
+- **差別化**：他の選択肢（何もしないことも含む）との違い
+
+メッセージの階層：
+
+1. なぜ自分に関係があるのか（課題や機会）
+2. 解決策は何か（自社の提案）
+3. なぜこの会社なのか（他の選択肢との差）
+4. 何をすればよいか（行動喚起）
+
+#### チャネル
+
+自分たちが使い慣れているかではなく、対象者がいる場所で選びます。後述のチャネル選定ガイドを参照してください。
+
+#### 測定
+
+キャンペーンの成否をどう判断するか定義します。後述の種類別成功指標を参照してください。
+
+### チャネル選定ガイド
+
+#### 自社保有チャネル
+
+| チャネル | 得意な用途 | 一般的な指標 | 工数 |
 |---------|----------|----------------|--------|
-| Blog/Website | SEO, thought leadership, education | Traffic, time on page, conversions | Medium |
-| Email | Nurture, retention, announcements | Open rate, CTR, conversions | Low-Medium |
-| Social (organic) | Awareness, community, brand building | Engagement, reach, follower growth | Medium |
-| Webinars | Education, lead gen, product demos | Registrations, attendance, pipeline | High |
-| Podcast | Thought leadership, brand awareness | Downloads, subscriber growth | High |
+| ブログ・Webサイト | SEO、専門的な知見の発信、啓発 | 流入、滞在時間、コンバージョン | 中 |
+| メール | 育成、継続利用、告知 | 開封率、CTR、コンバージョン | 低〜中 |
+| SNS（自然投稿） | 認知、コミュニティ、ブランド形成 | 反応、リーチ、フォロワー増加 | 中 |
+| ウェビナー | 啓発、見込み顧客獲得、製品デモ | 登録、参加、商談 | 高 |
+| ポッドキャスト | 専門的な知見の発信、ブランド認知 | ダウンロード、購読者増加 | 高 |
 
-#### Earned Channels
+#### 獲得露出チャネル
 
-| Channel | Best For | Typical Metrics | Effort |
+| チャネル | 得意な用途 | 一般的な指標 | 工数 |
 |---------|----------|----------------|--------|
-| PR/Media | Awareness, credibility, launches | Coverage, share of voice, referral traffic | High |
-| Guest content | Audience expansion, SEO, credibility | Referral traffic, backlinks | Medium |
-| Influencer/Partner | Audience expansion, trust | Reach, engagement, referral conversions | Medium-High |
-| Community | Awareness, trust, feedback | Mentions, engagement, referral traffic | Medium |
-| Reviews/Ratings | Credibility, SEO, consideration | Review volume, rating, conversion lift | Low-Medium |
+| 広報・報道 | 認知、信頼性、公開告知 | 掲載、シェア・オブ・ボイス、参照元流入 | 高 |
+| 寄稿 | 対象者の拡大、SEO、信頼性 | 参照元流入、被リンク | 中 |
+| インフルエンサー・パートナー | 対象者の拡大、信頼 | リーチ、反応、紹介経由のコンバージョン | 中〜高 |
+| コミュニティ | 認知、信頼、意見収集 | 言及、反応、参照元流入 | 中 |
+| レビュー・評価 | 信頼性、SEO、比較検討 | レビュー数、評価、コンバージョン改善 | 低〜中 |
 
-#### Paid Channels
+#### 有料チャネル
 
-| Channel | Best For | Typical Metrics | Effort |
+| チャネル | 得意な用途 | 一般的な指標 | 工数 |
 |---------|----------|----------------|--------|
-| Search ads (SEM) | High-intent lead capture | CPC, CTR, conversion rate, CPA | Medium |
-| Social ads | Awareness, retargeting, lead gen | CPM, CPC, CTR, CPA, ROAS | Medium |
-| Display/Programmatic | Awareness, retargeting | Impressions, CPM, view-through conversions | Low-Medium |
-| Sponsored content | Thought leadership, lead gen | Engagement, leads, cost per lead | Medium |
-| Events/Sponsorships | Relationship building, brand | Leads, meetings, pipeline influenced | High |
+| 検索広告（SEM） | 検討意欲の高い見込み顧客の獲得 | CPC、CTR、コンバージョン率、CPA | 中 |
+| SNS広告 | 認知、再訴求、見込み顧客獲得 | CPM、CPC、CTR、CPA、ROAS | 中 |
+| ディスプレイ・運用型広告 | 認知、再訴求 | 表示回数、CPM、ビュースルーコンバージョン | 低〜中 |
+| スポンサーコンテンツ | 専門的な知見の発信、見込み顧客獲得 | 反応、見込み顧客、獲得単価 | 中 |
+| イベント・協賛 | 関係構築、ブランド | 見込み顧客、面談、影響を与えた商談 | 高 |
 
-#### Channel Selection Criteria
-When choosing channels, consider:
-- Where does your target audience spend time?
-- What is the buying stage you are targeting? (awareness channels vs. conversion channels)
-- What is your budget? (paid channels require spend; owned/earned require time)
-- What content assets do you already have or can you produce?
-- What has worked in the past? (reference historical data if available)
+#### 選定基準
 
-### Content Calendar Creation
+次の点を検討します。
 
-#### Calendar Planning Process
-1. **Start with milestones**: campaign launch, event dates, product releases, seasonal moments
-2. **Work backward**: what needs to be live and when? What is the production lead time?
-3. **Map content to funnel stages**: ensure coverage across awareness, consideration, and conversion
-4. **Batch by theme**: group related content pieces into weekly or bi-weekly themes
-5. **Balance channels**: do not over-index on one channel; ensure the audience sees the campaign across touchpoints
-6. **Build in flexibility**: leave 20% of calendar slots open for reactive or opportunistic content
+- 対象者はどこで時間を過ごしているか
+- どの購買段階を狙うか（認知向けか、獲得向けか）
+- 予算はいくらか（有料施策は費用、自社保有・獲得露出は時間が必要）
+- どの素材が既にあり、何を制作できるか
+- 過去に何が有効だったか（利用可能なら実績を参照）
 
-#### Content Cadence Guidelines
-- **Blog**: 1-4 posts per week depending on team size and goals
-- **Email newsletter**: weekly or bi-weekly for most audiences
-- **Social media**: 3-7 posts per week per platform (varies by platform)
-- **Paid campaigns**: continuous during campaign window with creative refreshes every 2-4 weeks
-- **Webinars**: monthly or quarterly depending on resources
+### コンテンツカレンダーの作成
 
-#### Production Timeline Benchmarks
-- Blog post: 3-5 business days (research, draft, review, publish)
-- Email campaign: 2-3 business days (copy, design, test, send)
-- Social media posts: 1-2 business days (draft, design, schedule)
-- Landing page: 5-7 business days (copy, design, development, QA)
-- Video content: 2-4 weeks (script, production, editing)
-- Ebook/whitepaper: 2-4 weeks (outline, draft, design, review)
+#### 計画の手順
 
-### Budget Allocation Approaches
+1. **節目から始める**：開始日、イベント日、製品公開日、季節の機会
+2. **逆算する**：何をいつ公開するか、制作にどの程度の期間が必要か
+3. **購買段階に対応させる**：認知、比較検討、獲得を網羅する
+4. **テーマでまとめる**：関連する内容を週別・隔週のテーマに整理する
+5. **チャネルのバランスを取る**：1つに偏らず、複数の接点で施策に触れてもらう
+6. **余地を残す**：枠の20%は、時事的・機会対応型の内容のために空ける
 
-#### Percentage of Revenue Method
-- Industry benchmark: 5-15% of revenue for marketing, with B2B typically at 5-10% and B2C at 10-15%
-- Startups and growth-stage companies often invest 15-25% of revenue in marketing
-- Within the marketing budget, allocate across brand (long-term) and performance (short-term)
+#### 配信頻度の目安
 
-#### Channel Allocation Framework
-A common starting framework (adjust based on goals and historical data):
+- **ブログ**：チーム規模と目標に応じて週1〜4件
+- **メールマガジン**：多くの対象者では毎週または隔週
+- **SNS**：媒体ごとに週3〜7件（媒体により異なる）
+- **有料施策**：実施期間中は継続し、素材を2〜4週間ごとに更新
+- **ウェビナー**：リソースに応じて毎月または四半期ごと
 
-| Category | Percentage of Budget | Examples |
+#### 制作期間の目安
+
+- ブログ：3〜5営業日（調査、下書き、レビュー、公開）
+- メール施策：2〜3営業日（文章、デザイン、テスト、送信）
+- SNS投稿：1〜2営業日（下書き、デザイン、予約）
+- ランディングページ：5〜7営業日（文章、デザイン、開発、品質確認）
+- 動画：2〜4週間（台本、撮影・制作、編集）
+- 電子書籍・ホワイトペーパー：2〜4週間（構成、原稿、デザイン、レビュー）
+
+### 予算配分の考え方
+
+#### 売上比率による方法
+
+- 業界の目安は売上の5〜15%。B2Bは通常5〜10%、B2Cは10〜15%
+- スタートアップや成長期の企業は15〜25%を投じることが多い
+- マーケティング予算の中で、長期のブランド施策と短期の獲得施策に配分する
+
+#### チャネル配分の枠組み
+
+一般的な出発点です。目標と過去実績に合わせて調整します。
+
+| 分類 | 予算比率 | 例 |
 |----------|---------------------|----------|
-| Paid acquisition | 30-40% | Search ads, social ads, display |
-| Content production | 20-30% | Blog, video, design, ebooks |
-| Events and sponsorships | 10-20% | Conferences, webinars, meetups |
-| Tools and technology | 10-15% | Analytics, automation, CRM |
-| Testing and experimentation | 5-10% | New channels, A/B tests, pilots |
+| 有料の顧客獲得 | 30〜40% | 検索広告、SNS広告、ディスプレイ |
+| コンテンツ制作 | 20〜30% | ブログ、動画、デザイン、電子書籍 |
+| イベント・協賛 | 10〜20% | カンファレンス、ウェビナー、交流会 |
+| ツール・技術 | 10〜15% | 分析、自動化、CRM |
+| テスト・実験 | 5〜10% | 新チャネル、A/Bテスト、試験施策 |
 
-#### Budget Optimization Principles
-- Start with your highest-confidence channel and allocate 60-70% of paid budget there
-- Reserve 15-20% for testing new channels or tactics
-- Shift budget monthly based on performance data (do not set and forget)
-- Account for production costs, not just media spend
-- Include a 10-15% contingency for unexpected opportunities or overruns
+#### 予算最適化の原則
 
-### Success Metrics by Campaign Type
+- 最も確度の高いチャネルに、有料施策予算の60〜70%を配分して始める
+- 新チャネルや手法の試行に15〜20%を確保する
+- 設定したままにせず、実績に応じて毎月配分を見直す
+- 媒体費だけでなく制作費も計上する
+- 想定外の機会や超過に備え、10〜15%の予備費を含める
 
-#### Awareness Campaign
-| Metric | What It Measures |
+### キャンペーンの種類別成功指標
+
+#### 認知向上
+
+| 指標 | 測るもの |
 |--------|-----------------|
-| Reach/Impressions | How many people saw the campaign |
-| Brand mention volume | Increase in brand conversations |
-| Share of voice | Your mentions vs. competitors |
-| Direct traffic | People coming to your site unprompted |
-| Social follower growth | Audience building |
+| リーチ・表示回数 | 施策を見た人数・回数 |
+| ブランド言及数 | ブランドに関する会話の増加 |
+| シェア・オブ・ボイス | 競合と比較した言及の割合 |
+| 直接流入 | 他の導線を経ずサイトに訪れた人 |
+| SNSフォロワー増加 | 対象者の基盤づくり |
 
-#### Lead Generation Campaign
-| Metric | What It Measures |
+#### 見込み顧客獲得
+
+| 指標 | 測るもの |
 |--------|-----------------|
-| Total leads | Volume of new contacts |
-| Marketing qualified leads (MQLs) | Leads meeting quality threshold |
-| Cost per lead (CPL) | Efficiency of spend |
-| Lead-to-MQL conversion rate | Quality of leads generated |
-| Pipeline influenced | Revenue opportunity created |
+| 見込み顧客総数 | 新しい連絡先の数 |
+| MQL | 品質基準を満たす見込み顧客 |
+| CPL | 支出の効率 |
+| 見込み顧客からMQLへの転換率 | 獲得した見込み顧客の質 |
+| 影響を与えた商談 | 生み出した売上機会 |
 
-#### Product Launch Campaign
-| Metric | What It Measures |
+#### 製品公開
+
+| 指標 | 測るもの |
 |--------|-----------------|
-| Signups or trials | Adoption of new product |
-| Activation rate | Users who complete key first action |
-| Media coverage | Earned media hits |
-| Social buzz | Mentions, shares, engagement spike |
-| Feature adoption | Usage of specific launched features |
+| 登録・試用 | 新製品の利用開始 |
+| アクティベーション率 | 重要な初回行動を完了したユーザー |
+| 報道掲載 | 獲得したメディア露出 |
+| SNSの反響 | 言及、共有、反応の増加 |
+| 機能利用 | 公開した機能の使用状況 |
 
-#### Retention/Engagement Campaign
-| Metric | What It Measures |
+#### 継続利用・関係強化
+
+| 指標 | 測るもの |
 |--------|-----------------|
-| Churn rate change | Customer retention improvement |
-| Engagement rate | Interactions with campaign content |
-| NPS or CSAT change | Satisfaction improvement |
-| Upsell/cross-sell revenue | Expansion revenue |
-| Feature adoption | Usage of promoted features |
+| 解約率の変化 | 顧客維持の改善 |
+| エンゲージメント率 | コンテンツへの反応 |
+| NPS・CSATの変化 | 満足度の改善 |
+| アップセル・クロスセル売上 | 既存顧客の売上拡大 |
+| 機能利用 | 訴求した機能の使用状況 |
 
-#### Event/Webinar Campaign
-| Metric | What It Measures |
+#### イベント・ウェビナー
+
+| 指標 | 測るもの |
 |--------|-----------------|
-| Registrations | Interest generated |
-| Attendance rate | Conversion from registration |
-| Engagement during event | Questions, polls, chat activity |
-| Post-event conversions | Leads or pipeline from attendees |
-| Content repurposing reach | Downstream audience from recordings |
+| 登録数 | 生み出した関心 |
+| 参加率 | 登録から参加への転換 |
+| 開催中の反応 | 質問、投票、チャット |
+| 終了後のコンバージョン | 参加者から生まれた見込み顧客や商談 |
+| コンテンツ再利用のリーチ | 録画などで後から接触した対象者 |
 
-## Output
+## 出力
 
-Present the full campaign brief with clear headings and formatting. After the brief, ask:
+明確な見出しと書式で企画書全体を提示し、その後、次を確認します。
 
-"Would you like me to:
-- Dive deeper into any section?
-- Draft specific content pieces from the calendar?
-- Create a competitive analysis to inform the messaging?
-- Adjust the plan for a different budget or timeline?"
+「次のような対応が必要ですか？
+- 特定の節を掘り下げる
+- カレンダーにあるコンテンツを下書きする
+- メッセージ検討のために競合分析を行う
+- 予算や期間を変えて計画を調整する」

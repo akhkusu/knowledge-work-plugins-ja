@@ -1,248 +1,248 @@
 ---
 name: customer-escalation
-description: Package an escalation for engineering, product, or leadership with full context. Use when a bug needs engineering attention beyond normal support, multiple customers report the same issue, a customer is threatening to churn, or an issue has sat unresolved past its SLA.
+description: 背景を整理し、開発・プロダクト部門や責任者向けのエスカレーション資料を作成します。通常のサポートでは対応できない不具合、複数顧客からの同一問題の報告、解約の懸念、SLAを超えて未解決の問題がある場合に使います。
 argument-hint: "<issue summary> [customer name]"
 ---
 
 # /customer-escalation
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続済みツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Package a support issue into a structured escalation brief for engineering, product, or leadership. Gathers context, structures reproduction steps, assesses business impact, and identifies the right escalation target.
+問い合わせを、開発・プロダクト部門や責任者向けの引き継ぎ資料にまとめます。背景を集め、再現手順を整理し、事業への影響を評価して、適切なエスカレーション先を特定します。
 
-## Usage
+## 使い方
 
 ```
 /customer-escalation <issue description> [customer name or account]
 ```
 
-Examples:
-- `/customer-escalation API returning 500 errors intermittently for Acme Corp`
-- `/customer-escalation Data export is missing rows — 3 customers reported this week`
-- `/customer-escalation SSO login loop affecting all Enterprise customers`
-- `/customer-escalation Customer threatening to churn over missing audit log feature`
+例：
+- `/customer-escalation Acme CorpでAPIが断続的に500エラーを返す`
+- `/customer-escalation データのエクスポートで行が欠落する — 今週3社から報告`
+- `/customer-escalation Enterpriseプラン全体でSSOログインがループする`
+- `/customer-escalation 監査ログ機能がないため、顧客が解約を検討している`
 
-## Workflow
+## 作業手順
 
-### 1. Understand the Issue
+### 1. 問題を把握する
 
-Parse the input and determine:
+入力を読み取り、次を確認します。
 
-- **What's broken or needed**: The core technical or product issue
-- **Who's affected**: Specific customer(s), segment, or all users
-- **How long**: When did this start? How long has the customer been waiting?
-- **What's been tried**: Any troubleshooting or workarounds attempted
-- **Why escalate now**: What makes this need attention beyond normal support
+- **不具合・要望の内容**：技術面または製品面の中心的な問題
+- **影響を受ける対象**：特定の顧客、顧客層、または全利用者
+- **継続期間**：いつ始まったか、顧客はどのくらい待っているか
+- **実施済みの対応**：調査や回避策として試したこと
+- **今エスカレーションする理由**：通常のサポートを超える対応が必要な理由
 
-Use the "When to Escalate vs. Handle in Support" criteria below to confirm this warrants escalation.
+後述の「サポート内で対応する場合とエスカレーションする場合」の基準に照らし、引き継ぎが必要か確認します。
 
-### 2. Gather Context
+### 2. 背景情報を集める
 
-Pull together relevant information from available sources:
+利用できる情報源から関連情報を集めます。
 
-- **~~support platform**: Related tickets, timeline of communications, previous troubleshooting
-- **~~CRM** (if connected): Account details, key contacts, previous escalations
-- **~~chat**: Internal discussions about this issue, similar reports from other customers
-- **~~project tracker** (if connected): Related bug reports or feature requests, engineering status
-- **~~knowledge base**: Known issues or workarounds, relevant documentation
+- **~~support platform**：関連チケット、やり取りの時系列、過去の調査内容
+- **~~CRM**（接続済みの場合）：企業情報、主な担当者、過去のエスカレーション
+- **~~chat**：この問題に関する社内議論、他の顧客からの類似報告
+- **~~project tracker**（接続済みの場合）：関連する不具合報告や機能要望、開発側の対応状況
+- **~~knowledge base**：既知の問題、回避策、関連文書
 
-### 3. Assess Business Impact
+### 3. 事業への影響を評価する
 
-Using the impact dimensions below, quantify:
+後述の影響評価の観点を使い、次を定量化します。
 
-- **Breadth**: How many customers/users affected? Growing?
-- **Depth**: Blocked vs. inconvenienced?
-- **Duration**: How long has this been going on?
-- **Revenue**: ARR at risk? Pending deals affected?
-- **Time pressure**: Hard deadline?
+- **範囲**：影響を受ける顧客・利用者の数と、その増加傾向
+- **深刻さ**：業務が停止しているか、不便が生じているか
+- **期間**：問題が続いている期間
+- **売上**：失うおそれのある年間経常収益（ARR）や、進行中の商談への影響
+- **時間的制約**：動かせない期限の有無
 
-### 4. Determine Escalation Target
+### 4. エスカレーション先を決める
 
-Using the escalation tiers below, identify the right target: L2 Support, Engineering, Product, Security, or Leadership.
+後述の段階別の基準を使い、2次サポート、開発、プロダクト、セキュリティ、責任者のうち適切な相手を特定します。
 
-### 5. Structure Reproduction Steps (for bugs)
+### 5. 再現手順を整理する（不具合の場合）
 
-If the issue is a bug, follow the reproduction step best practices below to document clear repro steps with environment details and evidence.
+不具合であれば、後述の実務上のポイントに従い、環境情報と証拠を含む明確な再現手順を記録します。
 
-### 6. Generate Escalation Brief
+### 6. 引き継ぎ資料を作成する
 
 ```
-## ESCALATION: [One-line summary]
+## エスカレーション：[1行の要約]
 
-**Severity:** [Critical / High / Medium]
-**Target team:** [Engineering / Product / Security / Leadership]
-**Reported by:** [Your name/team]
-**Date:** [Today's date]
+**重大度：** [緊急 / 高 / 中]
+**対応先：** [開発 / プロダクト / セキュリティ / 責任者]
+**報告者：** [氏名／チーム]
+**日付：** [本日の日付]
 
-### Impact
-- **Customers affected:** [Who and how many]
-- **Workflow impact:** [What they can't do]
-- **Revenue at risk:** [If applicable]
-- **Time in queue:** [How long this has been an issue]
+### 影響
+- **対象顧客：** [誰に、何件影響するか]
+- **業務への影響：** [できなくなっていること]
+- **売上へのリスク：** [該当する場合]
+- **未解決の期間：** [問題が続いている期間]
 
-### Issue Description
-[Clear, concise description of the problem — 3-5 sentences]
+### 問題の説明
+[問題を明確かつ簡潔に3〜5文で説明]
 
-### What's Been Tried
-1. [Troubleshooting step and result]
-2. [Troubleshooting step and result]
-3. [Troubleshooting step and result]
+### 実施済みの対応
+1. [調査手順と結果]
+2. [調査手順と結果]
+3. [調査手順と結果]
 
-### Reproduction Steps
-[If applicable — follow the format below]
-1. [Step]
-2. [Step]
-3. [Step]
-Expected: [X]
-Actual: [Y]
-Environment: [Details]
+### 再現手順
+[該当する場合は以下の形式を使う]
+1. [手順]
+2. [手順]
+3. [手順]
+期待する動作：[X]
+実際の動作：[Y]
+環境：[詳細]
 
-### Customer Communication
-- **Last update to customer:** [Date and what was communicated]
-- **Customer expectation:** [What they're expecting and by when]
-- **Escalation risk:** [Will they escalate further if not resolved by X?]
+### 顧客とのやり取り
+- **直近の連絡：** [日付と伝えた内容]
+- **顧客の期待：** [何を、いつまでに期待しているか]
+- **さらなるエスカレーションの可能性：** [期限までに解決しない場合の懸念]
 
-### What's Needed
-- [Specific ask — "investigate root cause", "prioritize fix",
-  "make product decision on X", "approve exception for Y"]
-- **Deadline:** [When this needs resolution or an update]
+### 依頼事項
+- [「根本原因の調査」「修正の優先順位付け」
+  「Xに関する製品方針の決定」「Yの例外承認」など、具体的な依頼]
+- **期限：** [解決または状況連絡が必要な時点]
 
-### Supporting Context
-- [Related tickets or links]
-- [Internal discussion threads]
-- [Documentation or logs]
+### 参考情報
+- [関連チケットやリンク]
+- [社内の議論のスレッド]
+- [文書やログ]
 ```
 
-### 7. Offer Next Steps
+### 7. 次の対応を提案する
 
-After generating the escalation:
-- "Want me to post this in a ~~chat channel for the target team?"
-- "Should I update the customer with an interim response?"
-- "Want me to set a follow-up reminder to check on this?"
-- "Should I draft a customer-facing update with the current status?"
+資料の作成後、次のように提案します。
+- 「対応先チームの~~chatチャンネルに投稿しますか？」
+- 「お客様に中間報告を送りますか？」
+- 「進捗確認のリマインダーを設定しますか？」
+- 「現在の状況を伝える顧客向けの文面を作成しますか？」
 
 ---
 
-## When to Escalate vs. Handle in Support
+## サポート内で対応する場合とエスカレーションする場合
 
-### Handle in Support When:
-- The issue has a documented solution or known workaround
-- It's a configuration or setup issue you can resolve
-- The customer needs guidance or training, not a fix
-- The issue is a known limitation with a documented alternative
-- Previous similar tickets were resolved at the support level
+### サポート内で対応する場合
+- 文書化された解決方法や既知の回避策がある。
+- 自分たちで解決できる設定・セットアップの問題である。
+- 修正ではなく、操作案内やトレーニングが必要である。
+- 既知の制約で、文書化された代替手段がある。
+- 過去の同様の問い合わせがサポート内で解決している。
 
-### Escalate When:
-- **Technical**: Bug confirmed and needs a code fix, infrastructure investigation needed, data corruption or loss
-- **Complexity**: Issue is beyond support's ability to diagnose, requires access support doesn't have, involves custom implementation
-- **Impact**: Multiple customers affected, production system down, data integrity at risk, security concern
-- **Business**: High-value customer at risk, SLA breach imminent or occurred, customer requesting executive involvement
-- **Time**: Issue has been open beyond SLA, customer has been waiting unreasonably long, normal support channels aren't progressing
-- **Pattern**: Same issue reported by 3+ customers, recurring issue that was supposedly fixed, increasing severity over time
+### エスカレーションする場合
+- **技術面**：不具合が確認されコード修正が必要、インフラ調査が必要、データの破損・喪失が発生している。
+- **複雑さ**：サポートの診断能力を超える、サポートにない権限が必要、個別実装に関係する。
+- **影響**：複数顧客に影響、本番停止、データ整合性のリスク、セキュリティ上の懸念がある。
+- **事業面**：重要顧客の継続利用にリスク、SLA違反が迫っている／発生済み、顧客が経営層の関与を求めている。
+- **期間**：SLAを超えて未解決、顧客の待ち時間が過度に長い、通常の対応経路では進展しない。
+- **傾向**：3社以上が同じ問題を報告、修正済みとされた問題が再発、深刻さが増している。
 
-## Escalation Tiers
+## エスカレーションの段階
 
-### L1 → L2 (Support Escalation)
-**From:** Frontline support
-**To:** Senior support / technical support specialists
-**When:** Issue requires deeper investigation, specialized product knowledge, or advanced troubleshooting
-**What to include:** Ticket summary, steps already tried, customer context
+### L1 → L2（サポート内の引き継ぎ）
+**依頼元：** 一次サポート
+**依頼先：** 上級サポート担当／技術サポートの専門担当
+**条件：** 詳細な調査、専門的な製品知識、高度な問題切り分けが必要
+**含める内容：** チケットの概要、実施済みの手順、顧客の背景
 
-### L2 → Engineering
-**From:** Senior support
-**To:** Engineering team (relevant product area)
-**When:** Confirmed bug, infrastructure issue, needs code change, requires system-level investigation
-**What to include:** Full reproduction steps, environment details, logs or error messages, business impact, customer timeline
+### L2 → 開発
+**依頼元：** 上級サポート担当
+**依頼先：** 該当する製品領域の開発チーム
+**条件：** 確認済みの不具合、インフラの問題、コード変更、システムレベルの調査が必要
+**含める内容：** 完全な再現手順、環境情報、ログやエラーメッセージ、事業への影響、顧客対応の時系列
 
-### L2 → Product
-**From:** Senior support
-**To:** Product management
-**When:** Feature gap causing customer pain, design decision needed, workflow doesn't match customer expectations, competing customer needs require prioritization
-**What to include:** Customer use case, business impact, frequency of request, competitive pressure (if known)
+### L2 → プロダクト
+**依頼元：** 上級サポート担当
+**依頼先：** プロダクト管理部門
+**条件：** 機能不足で顧客に支障、設計上の判断が必要、業務フローが顧客の期待と不一致、競合する要望の優先順位付けが必要
+**含める内容：** 顧客の利用場面、事業への影響、要望の頻度、競合上の圧力（分かる場合）
 
-### Any → Security
-**From:** Any support tier
-**To:** Security team
-**When:** Potential data exposure, unauthorized access, vulnerability report, compliance concern
-**What to include:** What was observed, who/what is potentially affected, immediate containment steps taken, urgency assessment
-**Note:** Security escalations bypass normal tier progression — escalate immediately regardless of your level
+### 任意の担当 → セキュリティ
+**依頼元：** どの段階のサポートでも可
+**依頼先：** セキュリティチーム
+**条件：** データ露出のおそれ、不正アクセス、脆弱性の報告、コンプライアンス上の懸念
+**含める内容：** 観測した事象、影響するおそれのある人や対象、実施済みの初動封じ込め、緊急度の評価
+**注意：** セキュリティに関する問題は通常の段階を飛ばし、担当の階層にかかわらず直ちに連絡します。
 
-### Any → Leadership
-**From:** Any tier (usually L2 or manager)
-**To:** Support leadership, executive team
-**When:** High-revenue customer threatening churn, SLA breach on critical account, cross-functional decision needed, exception to policy required, PR or legal risk
-**What to include:** Full business context, revenue at risk, what's been tried, specific decision or action needed, deadline
+### 任意の担当 → 責任者
+**依頼元：** どの段階でも可（通常はL2またはマネージャー）
+**依頼先：** サポート責任者、経営層
+**条件：** 売上規模の大きい顧客が解約を示唆、重要顧客でのSLA違反、部門横断の判断、規程の例外対応、広報・法務上のリスク
+**含める内容：** 事業上の背景全体、売上へのリスク、実施済みの対応、必要な判断や行動、期限
 
-## Business Impact Assessment
+## 事業への影響の評価
 
-When escalating, quantify impact where possible:
+可能な限り影響を数値で示します。
 
-### Impact Dimensions
+### 評価の観点
 
-| Dimension | Questions to Answer |
+| 観点 | 確認すること |
 |-----------|-------------------|
-| **Breadth** | How many customers/users are affected? Is it growing? |
-| **Depth** | How severely are they impacted? Blocked vs. inconvenienced? |
-| **Duration** | How long has this been going on? How long until it's critical? |
-| **Revenue** | What's the ARR at risk? Are there pending deals affected? |
-| **Reputation** | Could this become public? Is it a reference customer? |
-| **Contractual** | Are SLAs being breached? Are there contractual obligations? |
+| **範囲** | 影響を受ける顧客・利用者は何件か。増えているか。 |
+| **深刻さ** | 影響はどの程度か。業務停止か、不便か。 |
+| **期間** | いつから続いているか。いつ深刻な状態になるか。 |
+| **売上** | リスクにさらされるARRはいくらか。進行中の商談への影響はあるか。 |
+| **評判** | 公になる可能性はあるか。導入事例として紹介する顧客か。 |
+| **契約** | SLA違反が発生しているか。契約上の義務があるか。 |
 
-### Severity Shorthand
+### 重大度の目安
 
-- **Critical**: Production down, data at risk, security breach, or multiple high-value customers affected. Needs immediate attention.
-- **High**: Major functionality broken, key customer blocked, SLA at risk. Needs same-day attention.
-- **Medium**: Significant issue with workaround, important but not urgent business impact. Needs attention this week.
+- **緊急（Critical）**：本番停止、データへのリスク、セキュリティ侵害、複数の重要顧客への影響。即時対応が必要。
+- **高（High）**：主要機能が動かない、重要顧客の業務が停止、SLA違反のリスク。当日中の対応が必要。
+- **中（Medium）**：回避策はあるが重大な問題、重要だが緊急ではない事業上の影響。今週中の対応が必要。
 
-## Writing Reproduction Steps
+## 再現手順の書き方
 
-Good reproduction steps are the single most valuable thing in a bug escalation. Follow these practices:
+不具合の引き継ぎでは、適切な再現手順が最も役立ちます。
 
-1. **Start from a clean state**: Describe the starting point (account type, configuration, permissions)
-2. **Be specific**: "Click the Export button in the top-right of the Dashboard page" not "try to export"
-3. **Include exact values**: Use specific inputs, dates, IDs — not "enter some data"
-4. **Note the environment**: Browser, OS, account type, feature flags, plan level
-5. **Capture the frequency**: Always reproducible? Intermittent? Only under certain conditions?
-6. **Include evidence**: Screenshots, error messages (exact text), network logs, console output
-7. **Note what you've ruled out**: "Tested in Chrome and Firefox — same behavior" "Not account-specific — reproduced on test account"
+1. **初期状態を示す**：アカウントの種類、設定、権限など、開始時の条件を書きます。
+2. **具体的にする**：「エクスポートを試す」ではなく「Dashboardページ右上のExportボタンをクリック」と書きます。
+3. **正確な値を含める**：「データを入力」ではなく、具体的な入力、日付、IDを示します。
+4. **環境を書く**：ブラウザー、OS、アカウント種別、機能フラグ、契約プラン。
+5. **頻度を記録する**：常に再現するか、断続的か、特定条件だけか。
+6. **証拠を添える**：画面、正確なエラー文、ネットワークログ、コンソール出力。
+7. **除外できた原因を書く**：「ChromeとFirefoxで同じ動作」「検証用アカウントでも再現したためアカウント固有ではない」など。
 
-## Follow-up Cadence After Escalation
+## エスカレーション後の確認頻度
 
-Don't escalate and forget. Maintain ownership of the customer relationship.
+引き継いだままにせず、顧客対応の責任を持ち続けます。
 
-| Severity | Internal Follow-up | Customer Update |
+| 重大度 | 社内の進捗確認 | 顧客への連絡 |
 |----------|-------------------|-----------------|
-| **Critical** | Every 2 hours | Every 2-4 hours (or per SLA) |
-| **High** | Every 4 hours | Every 4-8 hours |
-| **Medium** | Daily | Every 1-2 business days |
+| **緊急** | 2時間ごと | 2〜4時間ごと（またはSLAに従う） |
+| **高** | 4時間ごと | 4〜8時間ごと |
+| **中** | 毎日 | 1〜2営業日ごと |
 
-### Follow-up Actions
-- Check with the receiving team for progress
-- Update the customer even if there's no new information ("We're still investigating — here's what we know so far")
-- Adjust severity if the situation changes (better or worse)
-- Document all updates in the ticket for audit trail
-- Close the loop when resolved: confirm with customer, update internal tracking, capture learnings
+### フォローアップ
+- 対応先チームに進捗を確認します。
+- 新情報がなくても顧客に連絡します（「引き続き調査中です。現時点で判明している内容をご案内します」）。
+- 状況の改善・悪化に応じて重大度を調整します。
+- 監査証跡のため、すべての更新をチケットに記録します。
+- 解決時には顧客に確認し、社内の追跡情報を更新して、学びを残します。
 
-## De-escalation
+## エスカレーションの解除
 
-Not every escalation stays escalated. De-escalate when:
-- Root cause is found and it's a support-resolvable issue
-- A workaround is found that unblocks the customer
-- The issue resolves itself (but still document root cause)
-- New information changes the severity assessment
+次の場合は、通常対応へ戻すことを検討します。
+- 根本原因が判明し、サポートで解決できる。
+- 回避策が見つかり、顧客の業務を再開できる。
+- 問題が自然に解消した（それでも根本原因は記録する）。
+- 新しい情報によって重大度の評価が変わった。
 
-When de-escalating:
-- Notify the team you escalated to
-- Update the ticket with the resolution
-- Inform the customer of the resolution
-- Document what was learned for future reference
+解除する際は：
+- 引き継ぎ先のチームに連絡します。
+- チケットに解決内容を記録します。
+- 顧客に解決を伝えます。
+- 今後の参考になる学びを記録します。
 
-## Escalation Best Practices
+## 実務上のポイント
 
-1. Always quantify impact — vague escalations get deprioritized
-2. Include reproduction steps for bugs — this is the #1 thing engineering needs
-3. Be clear about what you need — "investigate" vs. "fix" vs. "decide" are different asks
-4. Set and communicate a deadline — urgency without a deadline is ambiguous
-5. Maintain ownership of the customer relationship even after escalating the technical issue
-6. Follow up proactively — don't wait for the receiving team to come to you
-7. Document everything — the escalation trail is valuable for pattern detection and process improvement
+1. 影響を必ず定量化します。曖昧な依頼は後回しにされがちです。
+2. 不具合には再現手順を添えます。開発部門が最も必要とする情報です。
+3. 「調査」「修正」「判断」のどれを依頼するかを明確にします。
+4. 期限を設定して共有します。期限のない「至急」では必要な対応時期が曖昧です。
+5. 技術的な問題を引き継いだ後も、顧客対応の責任を持ち続けます。
+6. 対応先からの連絡を待たず、主体的に進捗を確認します。
+7. すべて記録します。対応の履歴は、傾向の検出や手順改善に役立ちます。

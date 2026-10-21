@@ -1,418 +1,413 @@
 ---
 name: draft-response
-description: Draft a professional customer-facing response tailored to the situation and relationship. Use when answering a product question, responding to an escalation or outage, delivering bad news like a delay or won't-fix, declining a feature request, or replying to a billing issue.
+description: 状況と顧客との関係に合わせて、適切な顧客向け返信を下書きします。製品の質問への回答、エスカレーションや障害への対応、遅延や修正見送りなどの案内、機能要望の辞退、請求の問題への返信に使います。
 argument-hint: "<situation description>"
 ---
 
 # /draft-response
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続済みツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Draft a professional, customer-facing response tailored to the situation, customer relationship, and communication context.
+状況、顧客との関係、やり取りの背景に合わせて、丁寧で分かりやすい顧客向け返信を下書きします。
 
-## Usage
+## 使い方
 
 ```
 /draft-response <context about the customer question, issue, or request>
 ```
 
-Examples:
-- `/draft-response Acme Corp is asking when the new dashboard feature will ship`
-- `/draft-response Customer escalation — their integration has been down for 2 days`
-- `/draft-response Responding to a feature request we won't be building`
-- `/draft-response Customer hit a billing error and wants a resolution ASAP`
+例：
+- `/draft-response Acme Corpから、新しいダッシュボード機能の提供時期を聞かれています`
+- `/draft-response エスカレーション中のお客様。連携機能が2日間停止しています`
+- `/draft-response 開発を予定していない機能への要望に返信したい`
+- `/draft-response 請求エラーがあり、お客様が至急の解決を求めています`
 
-## Workflow
+## 作業手順
 
-### 1. Understand the Context
+### 1. 状況を把握する
 
-Parse the user's input to determine:
+利用者の入力から次を確認します。
 
-- **Customer**: Who is the communication for? Look up account context if available.
-- **Situation type**: Question, issue, escalation, announcement, negotiation, bad news, good news, follow-up
-- **Urgency**: Is this time-sensitive? How long has the customer been waiting?
-- **Channel**: Email, support ticket, chat, or other (adjust formality accordingly)
-- **Relationship stage**: New customer, established, frustrated/escalated
-- **Stakeholder level**: End user, manager, executive, technical, business
+- **顧客**：誰に向けた連絡か。取得できる場合は顧客情報を確認します。
+- **状況の種類**：質問、問題、エスカレーション、案内、交渉、悪い知らせ、良い知らせ、フォローアップ。
+- **緊急度**：期限があるか。顧客はどのくらい待っているか。
+- **連絡手段**：メール、サポートチケット、チャットなど。手段に合わせて丁寧さを調整します。
+- **関係の段階**：新規顧客、継続的な関係、不満がある／エスカレーション中。
+- **相手の立場**：実務利用者、管理職、経営層、技術担当、事業担当。
 
-### 2. Research Context
+### 2. 背景を調べる
 
-Gather relevant background from available sources:
+利用できる情報源から、関連情報を集めます。
 
-**~~email:**
-- Previous correspondence with this customer on this topic
-- Any commitments or timelines previously shared
-- Tone and style of the existing thread
+**~~email：**
+- このテーマについて顧客と交わした過去のメール
+- 過去に伝えた約束や日程
+- 既存のやり取りの口調と文体
 
-**~~chat:**
-- Internal discussions about this customer or topic
-- Any guidance from product, engineering, or leadership
-- Similar situations and how they were handled
+**~~chat：**
+- 顧客やテーマに関する社内議論
+- プロダクト、開発、責任者からの指針
+- 類似事例と、その対応方法
 
-**~~CRM (if connected):**
-- Account details and plan level
-- Contact information and key stakeholders
-- Previous escalations or sensitive issues
+**~~CRM（接続済みの場合）：**
+- 企業情報と契約プラン
+- 連絡先と主な関係者
+- 過去のエスカレーションや慎重な扱いが必要な問題
 
-**~~support platform (if connected):**
-- Related tickets and their resolution
-- Known issues or workarounds
-- SLA status and response time commitments
+**~~support platform（接続済みの場合）：**
+- 関連チケットと解決内容
+- 既知の問題や回避策
+- SLAの状況と、返信時間に関する約束
 
-**~~knowledge base:**
-- Official documentation or help articles to reference
-- Product roadmap information (if shareable)
-- Policy or process documentation
+**~~knowledge base：**
+- 参照する公式文書やヘルプ記事
+- 製品ロードマップの情報（共有可能な場合）
+- 方針や業務手順の文書
 
-### 3. Generate the Draft
+### 3. 下書きを作成する
 
-Produce a response tailored to the situation:
+状況に合う返信を作成します。
 
 ```
-## Draft Response
+## 返信案
 
-**To:** [Customer contact name]
-**Re:** [Subject/topic]
-**Channel:** [Email / Ticket / Chat]
-**Tone:** [Empathetic / Professional / Technical / Celebratory / Candid]
+**宛先：** [顧客の担当者名]
+**件名：** [件名／テーマ]
+**連絡手段：** [メール / チケット / チャット]
+**文体：** [共感を示す / 丁寧 / 技術的 / 喜びを伝える / 率直]
 
 ---
 
-[Draft response text]
+[返信の本文]
 
 ---
 
-### Notes for You (internal — do not send)
-- **Why this approach:** [Rationale for tone and content choices]
-- **Things to verify:** [Any facts or commitments to confirm before sending]
-- **Risk factors:** [Anything sensitive about this response]
-- **Follow-up needed:** [Actions to take after sending]
-- **Escalation note:** [If this should be reviewed by someone else first]
+### 利用者向けの補足（社内用・送信しない）
+- **この構成の理由：** [文体や内容を選んだ理由]
+- **確認事項：** [送信前に確認する事実や約束]
+- **リスク：** [慎重に扱うべき内容]
+- **フォローアップ：** [送信後の対応]
+- **エスカレーション：** [事前に他の担当者の確認を受けるべき場合]
 ```
 
-### 4. Run Quality Checks
+### 4. 品質を確認する
 
-Before presenting the draft, verify:
+提示する前に、次を確認します。
 
-- [ ] Tone matches the situation and relationship
-- [ ] No commitments beyond what's authorized
-- [ ] No product roadmap details that shouldn't be shared externally
-- [ ] Accurate references to previous conversations
-- [ ] Clear next steps and ownership
-- [ ] Appropriate for the stakeholder level (not too technical for executives, not too vague for engineers)
-- [ ] Length is appropriate for the channel (shorter for chat, fuller for email)
+- [ ] 状況と関係に合う文体である。
+- [ ] 権限を超える約束をしていない。
+- [ ] 社外共有できないロードマップ情報を含んでいない。
+- [ ] 過去のやり取りへの言及が正確である。
+- [ ] 次の対応と責任を持つ担当が明確である。
+- [ ] 相手の立場に適している（経営層に技術的すぎず、開発者に曖昧すぎない）。
+- [ ] 連絡手段に合う長さである（チャットは短く、メールは必要な説明を含める）。
 
-### 5. Offer Iterations
+### 5. 修正を提案する
 
-After presenting the draft:
-- "Want me to adjust the tone? (more formal, more casual, more empathetic, more direct)"
-- "Should I add or remove any specific points?"
-- "Want me to make this shorter/longer?"
-- "Should I draft a version for a different stakeholder?"
-- "Want me to draft the internal escalation note as well?"
-- "Should I prepare a follow-up message to send after [X days] if no response?"
+提示後、次のように提案します。
+- 「文体を調整しますか？ より丁寧、柔らかい表現、共感を重視、簡潔で率直、などにできます。」
+- 「追加・削除したい内容はありますか？」
+- 「短く、または詳しくしますか？」
+- 「別の立場の方に向けた文面も作成しますか？」
+- 「社内向けのエスカレーションメモも作成しますか？」
+- 「返信がない場合に[X日後]に送るフォローアップ文面も用意しますか？」
 
 ---
 
-## Customer Communication Best Practices
+## 顧客対応の実務上のポイント
 
-### Core Principles
+### 基本原則
 
-1. **Lead with empathy**: Acknowledge the customer's situation before jumping to solutions
-2. **Be direct**: Get to the point — customers are busy. Bottom-line-up-front.
-3. **Be honest**: Never overpromise, never mislead, never hide bad news in jargon
-4. **Be specific**: Use concrete details, timelines, and names — avoid vague language
-5. **Own it**: Take responsibility when appropriate. "We" not "the system" or "the process"
-6. **Close the loop**: Every response should have a clear next step or call to action
-7. **Match their energy**: If they're frustrated, be empathetic first. If they're excited, be enthusiastic.
+1. **まず状況を受け止める**：解決策に入る前に、顧客が置かれた状況を理解していることを示します。
+2. **要点を先に伝える**：顧客の時間を尊重し、結論から書きます。
+3. **誠実に伝える**：過剰な約束、誤解を招く説明、専門用語で悪い知らせを曖昧にすることは避けます。
+4. **具体的にする**：曖昧な言葉ではなく、詳細、日程、担当者名を示します。
+5. **責任を持つ**：適切な場合は自分たちの責任を認めます。「システムが」「手続きが」ではなく「当社が」と表現します。
+6. **次の対応を明確にする**：すべての返信に、明確な次の行動や依頼を含めます。
+7. **相手の状況に合わせる**：不満がある場合はまず共感し、喜んでいる場合は前向きな気持ちを共有します。
 
-### Response Structure
+### 返信の構成
 
-For most customer communications, follow this structure:
+一般的な顧客対応では、次の構成を使います。
 
 ```
-1. Acknowledgment / Context (1-2 sentences)
-   - Acknowledge what they said, asked, or are experiencing
-   - Show you understand their situation
+1. 受け止め・背景（1〜2文）
+   - 発言、質問、起きていることを受け止める
+   - 状況を理解していることを示す
 
-2. Core Message (1-3 paragraphs)
-   - Deliver the main information, answer, or update
-   - Be specific and concrete
-   - Include relevant details they need
+2. 主な内容（1〜3段落）
+   - 重要な情報、回答、状況を伝える
+   - 具体的に書く
+   - 顧客に必要な詳細を含める
 
-3. Next Steps (1-3 bullets)
-   - What YOU will do and by when
-   - What THEY need to do (if anything)
-   - When they'll hear from you next
+3. 次の対応（1〜3項目）
+   - 自分たちが何を、いつまでにするか
+   - 顧客にお願いすること（あれば）
+   - 次に連絡する時期
 
-4. Closing (1 sentence)
-   - Warm but professional sign-off
-   - Reinforce you're available if needed
+4. 結び（1文）
+   - 丁寧で親しみのある締めくくり
+   - 必要なら引き続き相談できると伝える
 ```
 
-### Length Guidelines
+### 長さの目安
 
-- **Chat/IM**: 1-4 sentences. Get to the point immediately.
-- **Support ticket response**: 1-3 short paragraphs. Structured and scannable.
-- **Email**: 3-5 paragraphs max. Respect their inbox.
-- **Escalation response**: As long as needed to be thorough, but well-structured with headers.
-- **Executive communication**: Shorter is better. 2-3 paragraphs max. Data-driven.
+- **チャット・IM**：1〜4文。すぐに要点を伝えます。
+- **サポートチケット**：短い段落を1〜3つ。構成を明確にします。
+- **メール**：最大3〜5段落。読む負担に配慮します。
+- **エスカレーションへの返信**：必要な説明を十分に含めつつ、見出しで整理します。
+- **経営層向け**：簡潔さを優先し、最大2〜3段落。データに基づいて書きます。
 
-## Tone and Style Guidelines
+## 文体と表現の指針
 
-### Tone Spectrum
+### 状況に応じた文体
 
-| Situation | Tone | Characteristics |
+| 状況 | 文体 | 特徴 |
 |-----------|------|----------------|
-| Good news / wins | Celebratory | Enthusiastic, warm, congratulatory, forward-looking |
-| Routine update | Professional | Clear, concise, informative, friendly |
-| Technical response | Precise | Accurate, detailed, structured, patient |
-| Delayed delivery | Accountable | Honest, apologetic, action-oriented, specific |
-| Bad news | Candid | Direct, empathetic, solution-oriented, respectful |
-| Issue / outage | Urgent | Immediate, transparent, actionable, reassuring |
-| Escalation | Executive | Composed, ownership-taking, plan-presenting, confident |
-| Billing / account | Precise | Clear, factual, empathetic, resolution-focused |
+| 良い知らせ・成果 | 喜びを伝える | 前向き、温かい、祝意、今後への期待 |
+| 通常の報告 | 丁寧 | 明確、簡潔、必要な情報、親しみ |
+| 技術的な回答 | 正確 | 正確、詳しい、整理されている、丁寧に説明 |
+| 提供の遅延 | 責任ある説明 | 誠実、適切な謝意・謝罪、行動を示す、具体的 |
+| 悪い知らせ | 率直 | 直接的、共感、解決を目指す、相手を尊重 |
+| 問題・障害 | 迅速な対応 | 即時性、透明性、具体的行動、安心できる説明 |
+| エスカレーション | 責任者にふさわしい説明 | 冷静、責任を持つ、計画を示す、確かな姿勢 |
+| 請求・アカウント | 正確 | 明確、事実に基づく、共感、解決重視 |
 
-### Tone Adjustments by Relationship Stage
+### 関係の段階に応じた調整
 
-**New Customer (0-3 months):**
-- More formal and professional
-- Extra context and explanation (don't assume knowledge)
-- Proactively offer help and resources
-- Build trust through reliability and responsiveness
+**新規顧客（0〜3か月）：**
+- より丁寧で礼儀正しくします。
+- 知っている前提にせず、背景や説明を補います。
+- 支援や参考資料を積極的に案内します。
+- 確実な対応と返信によって信頼を築きます。
 
-**Established Customer (3+ months):**
-- Warm and collaborative
-- Can reference shared history and previous conversations
-- More direct and efficient communication
-- Show awareness of their goals and priorities
+**継続的な関係のある顧客（3か月以上）：**
+- 親しみと協力姿勢を示します。
+- 共通の経緯や過去の会話を参照できます。
+- 要点を明確にし、効率的に伝えます。
+- 顧客の目標と優先事項を理解していることを示します。
 
-**Frustrated or Escalated Customer:**
-- Extra empathy and acknowledgment
-- Urgency in response times
-- Concrete action plans with specific commitments
-- Shorter feedback loops
+**不満がある、またはエスカレーション中の顧客：**
+- より丁寧に状況を受け止め、共感を示します。
+- 速やかに返信します。
+- 具体的な約束を含む行動計画を示します。
+- 短い間隔で連絡します。
 
-### Writing Style Rules
+### 文章のルール
 
-**DO:**
-- Use active voice ("We'll investigate" not "This will be investigated")
-- Use "I" for personal commitments and "we" for team commitments
-- Name specific people when assigning actions ("Sarah from our engineering team will...")
-- Use the customer's terminology, not your internal jargon
-- Include specific dates and times, not relative terms ("by Friday January 24" not "in a few days")
-- Break up long responses with headers or bullet points
+**推奨すること：**
+- 行動する主体を明確にします（「調査されます」ではなく「当社で調査します」）。
+- 個人の約束は「私」、チームの約束は「当社」「担当チーム」と区別します。
+- 行動を割り当てるときは、具体的な担当者名を示します（「開発チームのSarahが…」）。
+- 社内用語ではなく、顧客の用語を使います。
+- 「数日以内」ではなく「1月24日（金）までに」など、具体的な日時を示します。
+- 長い返信は、見出しや箇条書きで整理します。
 
-**DON'T:**
-- Use corporate jargon or buzzwords ("synergy", "leverage", "paradigm shift")
-- Deflect blame to other teams, systems, or processes
-- Use passive voice to avoid ownership ("Mistakes were made")
-- Include unnecessary caveats or hedging that undermines confidence
-- CC people unnecessarily — only include those who need to be in the conversation
-- Use exclamation marks excessively (one per email max, if any)
+**避けること：**
+- 「シナジー」「レバレッジ」「パラダイムシフト」などの曖昧なビジネス用語。
+- 他部門、システム、手続きへの責任転嫁。
+- 「間違いが生じました」のように主体を隠して責任を曖昧にする表現。
+- 不要な留保や遠回しな表現で信頼を損なうこと。
+- 不要なCC。会話に必要な人だけを含めます。
+- 感嘆符の多用。使うとしてもメール1通に最大1つとします。
 
-## Situation-Specific Approaches
+## 状況別の進め方
 
-**Answering a product question:**
-- Lead with the direct answer
-- Provide relevant documentation links
-- Offer to connect them with the right resource if needed
-- If you don't know the answer: say so honestly, commit to finding out, give a timeline
+**製品の質問への回答：**
+- 最初に答えを示します。
+- 関連文書へのリンクを添えます。
+- 必要なら適切な窓口や資料につなぐことを提案します。
+- 分からない場合は正直に伝え、調査することと回答時期を示します。
 
-**Responding to an issue or bug:**
-- Acknowledge the impact on their work
-- State what you know about the issue and its status
-- Provide workaround if available
-- Set expectations for resolution timeline
-- Commit to updates at regular intervals
+**問題・不具合への返信：**
+- 顧客の業務への影響を受け止めます。
+- 判明していることと対応状況を伝えます。
+- 回避策があれば案内します。
+- 解決までの見通しを示します。
+- 定期的な状況連絡を約束します。
 
-**Handling an escalation:**
-- Acknowledge the severity and their frustration
-- Take ownership (no deflecting or excuse-making)
-- Provide a clear action plan with timeline
-- Identify the person accountable for resolution
-- Offer a meeting or call if appropriate for the severity
+**エスカレーションへの対応：**
+- 深刻さと不満を受け止めます。
+- 責任転嫁や弁解をせず、対応に責任を持ちます。
+- 日程を含む明確な行動計画を示します。
+- 解決の責任者を示します。
+- 深刻さに応じて、打ち合わせや通話を提案します。
 
-**Delivering bad news (feature sunset, delay, can't-fix):**
-- Be direct — don't bury the news
-- Explain the reasoning honestly
-- Acknowledge the impact on them specifically
-- Offer alternatives or mitigation
-- Provide a clear path forward
+**悪い知らせ（機能終了、遅延、修正不可）を伝える：**
+- 要点を後回しにせず、直接伝えます。
+- 理由を誠実に説明します。
+- その顧客に生じる具体的な影響を受け止めます。
+- 代替手段や影響を緩和する方法を示します。
+- 今後の進め方を明確にします。
 
-**Sharing good news (feature launch, milestone, recognition):**
-- Lead with the positive outcome
-- Connect it to their specific goals or use case
-- Suggest next steps to capitalize on the good news
-- Express genuine enthusiasm
+**良い知らせ（機能公開、節目の達成、表彰）を伝える：**
+- 良い結果を最初に伝えます。
+- 顧客の具体的な目標や利用場面に結び付けます。
+- 成果を活用する次の行動を提案します。
+- 喜びを自然に伝えます。
 
-**Declining a request (feature request, discount, exception):**
-- Acknowledge the request and its reasoning
-- Be honest about the decision
-- Explain the why without being dismissive
-- Offer alternatives when possible
-- Leave the door open for future conversation
+**依頼を断る（機能要望、値引き、例外対応）：**
+- 依頼とその理由を理解していることを示します。
+- 判断結果を正直に伝えます。
+- 相手の要望を軽視せず、理由を説明します。
+- 可能なら代替案を提示します。
+- 今後も相談できる余地を残します。
 
-## Response Templates for Common Scenarios
+## よくある場面の返信テンプレート
 
-### Acknowledging a Bug Report
-
-```
-Hi [Name],
-
-Thank you for reporting this — I can see how [specific impact] would be
-frustrating for your team.
-
-I've confirmed the issue and escalated it to our engineering team as a
-[priority level]. Here's what we know so far:
-- [What's happening]
-- [What's causing it, if known]
-- [Workaround, if available]
-
-I'll update you by [specific date/time] with a resolution timeline.
-In the meantime, [workaround details if applicable].
-
-Let me know if you have any questions or if this is impacting you in
-other ways I should know about.
-
-Best,
-[Your name]
-```
-
-### Acknowledging a Billing or Account Issue
+### 不具合報告の受領
 
 ```
-Hi [Name],
+[お名前]様
 
-Thank you for reaching out about this — I understand billing issues
-need prompt attention, and I want to make sure this gets resolved
-quickly.
+ご報告ありがとうございます。[具体的な影響]により、
+皆様の業務に支障が生じていることと存じます。
 
-I've looked into your account and here's what I'm seeing:
-- [What happened — clear factual explanation]
-- [Impact on their account — charges, access, etc.]
+問題を確認し、[優先度]として開発チームに対応を依頼しました。
+現時点で判明している内容は以下のとおりです。
+- [起きていること]
+- [判明している場合は原因]
+- [利用できる場合は回避策]
 
-Here's what I'm doing to fix this:
-- [Action 1 — with timeline]
-- [Action 2 — if applicable]
+[具体的な日時]までに、解決の見通しをご連絡します。
+[該当する場合は、当面の回避策の詳細]
 
-[If resolution is immediate: "This has been corrected and you should
-see the change reflected within [timeframe]."]
-[If needs investigation: "I'm escalating this to our billing team
-and will have an update for you by [specific date]."]
+ご不明な点や、ほかにも影響が生じている場合はお知らせください。
 
-I'm sorry for the inconvenience. Let me know if you have any
-questions about your account.
-
-Best,
-[Your name]
+どうぞよろしくお願いいたします。
+[担当者名]
 ```
 
-### Responding to a Feature Request You Won't Build
+### 請求・アカウントの問題の受領
 
 ```
-Hi [Name],
+[お名前]様
 
-Thank you for sharing this request — I can see why [capability] would
-be valuable for [their use case].
+お問い合わせありがとうございます。請求に関する問題について、
+速やかな確認が必要と認識しております。早期の解決に向けて対応いたします。
 
-I discussed this with our product team, and this isn't something we're
-planning to build in the near term. The primary reason is [honest,
-respectful explanation — e.g., it serves a narrow use case, it conflicts
-with our architecture direction, etc.].
+お客様のアカウントを確認したところ、次の内容が分かりました。
+- [起きたことを事実に基づいて明確に説明]
+- [請求やアクセスなど、アカウントへの影響]
 
-That said, I want to make sure you can accomplish your goal. Here are
-some alternatives:
-- [Alternative approach 1]
-- [Alternative approach 2]
-- [Integration or workaround if applicable]
+解決に向けて、以下の対応を進めています。
+- [対応1と日程]
+- [該当する場合は対応2]
 
-I've also documented your request in our feedback system, and if our
-direction changes, I'll let you know.
+[解決済みの場合：「修正済みです。[期間]以内に変更が反映される見込みです。」]
+[調査が必要な場合：「請求担当チームに調査を依頼しています。
+[具体的な日付]までに状況をご連絡します。」]
 
-Would any of these alternatives work for your team? Happy to dig
-deeper into any of them.
+ご不便をおかけし、申し訳ございません。
+アカウントについてご不明な点があれば、お知らせください。
 
-Best,
-[Your name]
+どうぞよろしくお願いいたします。
+[担当者名]
 ```
 
-### Outage or Incident Communication
+### 開発予定のない機能要望への回答
 
 ```
-Hi [Name],
+[お名前]様
 
-I wanted to reach out directly to let you know about an issue affecting
-[service/feature] that I know your team relies on.
+ご要望をお寄せいただき、ありがとうございます。
+[機能]が[お客様の利用場面]に役立つことを理解しております。
 
-**What happened:** [Clear, non-technical explanation]
-**Impact:** [How it affects them specifically]
-**Status:** [Current status — investigating / identified / fixing / resolved]
-**ETA for resolution:** [Specific time if known, or "we'll update every X hours"]
+プロダクトチームで検討しましたが、現時点では近い将来の開発を
+予定しておりません。主な理由は[限定的な用途である、
+アーキテクチャの方針と合わないなど、誠実で配慮のある説明]です。
 
-[If applicable: "In the meantime, you can [workaround]."]
+お客様の目的を実現する方法として、次の代替案をご提案します。
+- [代替案1]
+- [代替案2]
+- [該当する場合は連携や回避策]
 
-I'm personally tracking this and will update you as soon as we have a
-resolution. You can also check [status page URL] for real-time updates.
+ご要望はフィードバック管理システムにも記録しました。
+今後方針に変更があれば、ご連絡いたします。
 
-I'm sorry for the disruption to your team's work. We take this seriously
-and [what you're doing to prevent recurrence if known].
+これらの方法で対応できそうでしょうか。
+必要であれば、詳しくご案内いたします。
 
-[Your name]
+どうぞよろしくお願いいたします。
+[担当者名]
 ```
 
-### Following Up After Silence
+### 障害・インシデントの連絡
 
 ```
-Hi [Name],
+[お名前]様
 
-I wanted to check in — I sent over [what you sent] on [date] and
-wanted to make sure it didn't get lost in the shuffle.
+皆様にご利用いただいている[サービス／機能]に影響する問題が
+発生しているため、個別にご連絡いたしました。
 
-[Brief reminder of what you need from them or what you're offering]
+**発生したこと：** [専門用語を避けた明確な説明]
+**影響：** [この顧客への具体的な影響]
+**状況：** [調査中 / 原因特定済み / 修正中 / 解決済み]
+**復旧見込み：** [分かる場合は具体的な時刻。不明なら「X時間ごとにご報告します」]
 
-If now isn't a good time, no worries — just let me know when would be
-better, and I'm happy to reconnect then.
+[該当する場合：「当面は[回避策]をご利用いただけます。」]
 
-Best,
-[Your name]
+私が進捗を確認し、解決し次第ご連絡いたします。
+最新の状況は[稼働状況ページのURL]でもご確認いただけます。
+
+業務に支障をおかけし、申し訳ございません。
+本件を重要な問題として受け止め、[分かる場合は再発防止に向けた対応]。
+
+[担当者名]
 ```
 
-## Follow-up and Escalation Guidance
+### 返信がない場合のフォローアップ
 
-### Follow-up Cadence
+```
+[お名前]様
 
-| Situation | Follow-up Timing |
+[日付]にお送りした[送付した内容]について、念のため確認の
+ご連絡をいたしました。
+
+[お願いしたいこと、または提案している内容を簡潔に再掲]
+
+今はご都合が合わないようでしたら、対応しやすい時期を
+お知らせください。その頃に改めてご連絡いたします。
+
+どうぞよろしくお願いいたします。
+[担当者名]
+```
+
+## フォローアップとエスカレーション
+
+### フォローアップの目安
+
+| 状況 | 時期 |
 |-----------|-----------------|
-| Unanswered question | 2-3 business days |
-| Open support issue | Daily until resolved for critical, 2-3 days for standard |
-| Post-meeting action items | Within 24 hours (send notes), then check at deadline |
-| General check-in | As needed for ongoing issues |
-| After delivering bad news | 1 week to check on impact and sentiment |
+| 回答待ちの質問 | 2〜3営業日後 |
+| 未解決の問い合わせ | 重大な問題は解決まで毎日、通常の問題は2〜3日ごと |
+| 会議後の対応事項 | 24時間以内に議事録を送り、期限時に確認 |
+| 一般的な状況確認 | 継続中の問題に応じて実施 |
+| 悪い知らせを伝えた後 | 1週間後に影響と受け止めを確認 |
 
-### When to Escalate
+### エスカレーションする条件
 
-**Escalate to your manager when:**
-- Customer threatens to cancel or significantly downsell
-- Customer requests exception to policy you can't authorize
-- An issue has been unresolved for longer than SLA allows
-- Customer requests direct contact with leadership
-- You've made an error that needs senior involvement to resolve
+**上司に相談する場合：**
+- 顧客が解約や大幅な契約縮小を示唆している。
+- 自分の権限では認められない規程の例外を求められている。
+- SLAを超えて問題が未解決のままである。
+- 顧客が責任者との直接の連絡を求めている。
+- 自分の誤りの解決に、上位者の関与が必要である。
 
-**Escalate to product/engineering when:**
-- Bug is critical and blocking the customer's business
-- Feature gap is causing a competitive loss
-- Customer has unique technical requirements beyond standard support
-- Integration issues require engineering investigation
+**プロダクト・開発部門に相談する場合：**
+- 重大な不具合で、顧客の業務が止まっている。
+- 機能不足が競合への失注につながっている。
+- 通常のサポートを超える個別の技術要件がある。
+- 連携の問題に開発部門の調査が必要である。
 
-**Escalation format:**
+**引き継ぎの書式：**
 ```
-ESCALATION: [Customer Name] — [One-line summary]
+エスカレーション：[顧客名] — [1行の要約]
 
-Urgency: [Critical / High / Medium]
-Customer impact: [What's broken for them]
-History: [Brief background — 2-3 sentences]
-What I've tried: [Actions taken so far]
-What I need: [Specific help or decision needed]
-Deadline: [When this needs to be resolved by]
+緊急度：[緊急 / 高 / 中]
+顧客への影響：[できなくなっていること]
+経緯：[背景を2〜3文で説明]
+実施済みの対応：[これまでに行ったこと]
+依頼事項：[必要な支援や判断]
+期限：[いつまでに解決が必要か]
 ```

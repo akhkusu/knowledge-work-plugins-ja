@@ -1,148 +1,154 @@
-# Sales Plugin
+# 営業プラグイン
 
-A sales plugin primarily designed for [Cowork](https://claude.com/product/cowork), Anthropic's agentic desktop application, though it also works in Claude Code. It helps with the whole sales day: prepping calls, summarizing and following up, researching accounts, working deals, reviewing pipeline and writing the forecast. It works with the tools your team already uses (your CRM, email, calendar, chat and call recorder) or with files you upload when nothing is connected.
+Anthropicのエージェント型デスクトップアプリ[Cowork](https://claude.com/product/cowork)を主な対象とした営業プラグインです。Claude Codeでも動作します。商談準備、通話の要約とフォロー、企業調査、案件推進、パイプラインの確認、売上見通しの作成まで、営業の一日を支援します。チームが既に利用しているCRM、メール、カレンダー、チャット、通話記録ツールと連携でき、未接続の場合もアップロードしたファイルで作業できます。
 
-## Installation
+## インストール
 
 ```bash
 claude plugin marketplace add anthropics/knowledge-work-plugins
 claude plugin install sales@knowledge-work-plugins
 ```
 
-## What's new in 2.0
+上記は原版のインストール例です。この日本語版を使う場合は、リポジトリのルートディレクトリで`claude --plugin-dir ./sales`を実行して、ローカルのプラグインを読み込めます。
 
-- **From 9 to 36 skills.** New skills cover deal reviews, close plans, stakeholder maps, renewals, customer health, lead routing, CRM updates, meeting booking, inbox sweeps and team pipeline views.
-- **Works across CRMs and email providers.** Skills read your CRM's own stages and fields instead of assuming one vendor's setup, and work the same on Gmail or Outlook, Slack or Teams. No settings file is needed; a skill asks once for anything it cannot find.
-- **Uses uploaded files when nothing is connected.** Upload a pipeline export, a transcript or a list of accounts, and the skill works from that.
-- **Acts when you ask.** Skills can update CRM records, create email drafts or send email, post to chat and book meetings, within each connector's permissions. Changes a skill suggests on its own are shown to you first, with the evidence behind them.
-- **Treats outside content as information.** Emails, call transcripts, chat messages and documents are read as information, never as instructions. If an email or transcript asks for an action, the skill shows you the action before anything happens.
-- **Existing skill names still work.** `account-research`, `call-summary`, `forecast`, `call-prep`, `daily-briefing`, `draft-outreach`, `pipeline-review`, `competitive-intelligence` and `create-an-asset` keep their names, rebuilt on the new skills. Two behave differently: `create-an-asset` now builds decks, one-pagers and leave-behinds from your account data rather than landing pages or interactive demos, and `forecast` writes a commit, best-case and pipeline narrative instead of best, likely and worst scenarios.
+## 2.0の新機能
 
-## Skills
+- **スキルが9種類から36種類に拡充。** 案件レビュー、成約計画、関係者マップ、契約更新、顧客の健全性、リードの振り分け、CRM更新、会議予約、受信トレイの整理、チームのパイプライン確認に対応します。
+- **複数のCRMやメールサービスに対応。** 特定ベンダーの設定を前提とせず、利用中のCRMのステージや項目を読み取ります。GmailでもOutlookでも、SlackでもTeamsでも同じように使えます。設定ファイルは不要で、見つからない情報だけを一度確認します。
+- **未接続でもアップロードしたファイルを利用。** パイプラインのエクスポート、文字起こし、取引先一覧をアップロードすれば、その内容で作業します。
+- **依頼した操作を実行。** 各コネクターの権限内で、CRMレコードの更新、メールの下書き・送信、チャット投稿、会議予約を行えます。スキル側から提案する変更は、根拠とともに事前に表示します。
+- **外部コンテンツは情報として扱う。** メール、通話の文字起こし、チャット、文書は情報として読み取り、指示として扱いません。メールや文字起こしに操作の依頼が含まれていても、実行前に内容を表示します。
+- **従来のスキル名を維持。** `account-research`、`call-summary`、`forecast`、`call-prep`、`daily-briefing`、`draft-outreach`、`pipeline-review`、`competitive-intelligence`、`create-an-asset`は、名前を変えずに新しい構成で作り直しました。うち2つは動作が変わります。`create-an-asset`はランディングページや対話型デモではなく、取引先情報を使ったスライド、1枚資料、商談後に渡す資料を作成します。`forecast`は楽観・標準・悲観シナリオではなく、コミット、ベストケース、パイプライン別の見通しを文章にまとめます。
 
-Skills run when your request matches, or directly by name (for example `/sales:call-summary`).
+## スキル
 
-### Your day
+依頼内容に合うスキルが実行されます。名前を指定して直接呼び出すこともできます（例：`/sales:call-summary`）。
 
-| Skill | Description |
+### 日々の営業活動
+
+| スキル | 内容 |
 |---|---|
-| `setup` | First-run setup: shows what's connected and what each tool unlocks, learns how you write, and renders a starter dashboard |
-| `daily-briefing` | Morning rundown: today's meetings with account context, deals closing soon, customer emails waiting, top actions |
-| `call-prep` | Pre-call brief: attendees, account history, prior call context, open opportunity status, discovery questions |
-| `call-summary` | Turn a transcript or call notes into a follow-up email draft, a team summary and proposed CRM updates |
-| `inbox-sweep` | Sort unread customer emails by priority and draft replies |
-| `schedule-meeting` | Find a time, draft the invite, book it on your calendar and log it to the CRM |
-| `log-activity` | Log a call, meeting or email to the right account, opportunity and contact in the CRM |
-| `end-of-day` | Close out the day: calls processed, CRM current, commitments captured, tomorrow's top three |
-| `weekly-wrap` | End-of-week summary of what closed, moved and slipped, and what's on deck Monday |
+| `setup` | 初期設定。接続済みツールと用途の確認、文体の学習、最初のダッシュボード表示 |
+| `daily-briefing` | 朝の確認。今日の会議と取引先の背景、成約間近の案件、返信待ちの顧客メール、優先行動 |
+| `call-prep` | 商談の事前資料。参加者、取引先の履歴、過去の通話内容、進行中の案件、ヒアリング質問 |
+| `call-summary` | 文字起こしや通話メモから、フォローメール案、チーム向け要約、CRM更新案を作成 |
+| `inbox-sweep` | 未読の顧客メールを優先順位順に整理し、返信案を作成 |
+| `schedule-meeting` | 日程候補の確認、招待文の下書き、カレンダー予約、CRMへの記録 |
+| `log-activity` | 通話、会議、メールをCRMの正しい取引先・案件・連絡先に記録 |
+| `end-of-day` | 一日の締め。通話の処理状況、CRMの更新、約束事項、明日の優先事項3件 |
+| `weekly-wrap` | 週末のまとめ。成約、進展、遅延、翌週月曜日の予定 |
 
-### Accounts and prospecting
+### 取引先と見込み顧客の開拓
 
-| Skill | Description |
+| スキル | 内容 |
 |---|---|
-| `account-research` | Research a company or contact: overview, recent news, likely priorities and fit against your ICP |
-| `account-context` | One brief on an account from CRM data, email, docs, transcripts and team chat |
-| `stakeholder-map` | Map the people in a deal: roles, influence, sentiment, who's missing and your best way in |
-| `draft-outreach` | Draft a personalized email or multi-touch sequence, and add the contact to a sequence when asked |
-| `lead-triage` | Score an inbound lead or rank a lead backlog against your ICP and recommend next actions |
-| `route-lead` | Decide who owns an unrouted lead or opportunity and draft the handoff notes |
-| `account-tiering` | Score and tier a list of accounts or your whole book by fit and engagement |
-| `account-plan` | Build or refresh a strategic account plan and sync key fields to the CRM |
-| `expansion-whitespace` | Find expansion plays in an account or book, with evidence and the opportunities to create |
+| `account-research` | 企業や担当者の調査。概要、最近のニュース、想定される優先課題、ICPとの適合度 |
+| `account-context` | CRM、メール、文書、文字起こし、社内チャットから取引先の情報を1つの資料に整理 |
+| `stakeholder-map` | 案件の関係者を整理。役割、影響力、姿勢、不足している相手、接点の作り方 |
+| `draft-outreach` | 相手に合わせた営業メールや複数回の連絡文を作成し、依頼があればシーケンスに追加 |
+| `lead-triage` | 問い合わせ経由のリードや未処理リードをICPに基づいて評価し、次の対応を提案 |
+| `route-lead` | 未割り当てのリードや案件の担当者を決め、引き継ぎメモを作成 |
+| `account-tiering` | 取引先一覧や担当顧客全体を、適合度と接点の状況に基づいて評価・分類 |
+| `account-plan` | 戦略的なアカウントプランを作成・更新し、主要項目をCRMに反映 |
+| `expansion-whitespace` | 取引先や担当顧客全体の追加提案の余地を探し、根拠と作成候補の案件を提示 |
 
-### Deals
+### 案件の推進
 
-| Skill | Description |
+| スキル | 内容 |
 |---|---|
-| `deal-review` | Deep-dive on one opportunity: health score, risks, qualification gaps and next actions |
-| `deal-advance-gap` | What is missing to move a deal to the next stage and to close, with owners and dates |
-| `deal-signals` | Alerts across your book: deals gone quiet, slipping close dates, champion changes, competitor mentions |
-| `deal-slip-scenario` | Model the effect on your number if a deal slips, shrinks or is lost |
-| `close-plan` | Business case and mutual action plan: why buy, why now, and the dated path to signature |
-| `handle-objection` | Work through an objection or competitive threat with responses and proof points from your own history |
-| `competitive-intelligence` | The play against a named competitor in a deal, plus win/loss patterns and battlecards across the book |
-| `create-an-asset` | Build a customer deck, one-pager or leave-behind from your account data, with no made-up numbers |
-| `update-opportunity` | Update stage, close date, next steps, amount or forecast category, with a before and after |
+| `deal-review` | 1つの案件を詳しく確認。健全性、リスク、案件評価の不足、次の行動 |
+| `deal-advance-gap` | 次のステージへの移行や成約に足りないものを、担当者・日付とともに整理 |
+| `deal-signals` | 担当案件の注意点。連絡途絶、受注予定日の遅延、推進者の交代、競合への言及 |
+| `deal-slip-scenario` | 案件の遅延、金額縮小、失注による売上目標への影響を試算 |
+| `close-plan` | 購入理由、今取り組む理由、契約までの日付付き共同アクションプランを作成 |
+| `handle-objection` | 過去の自社事例を使い、反論や競合への懸念に対する回答と裏付けを整理 |
+| `competitive-intelligence` | 特定の競合への対処方針、担当顧客全体の勝因・敗因、競合比較資料 |
+| `create-an-asset` | 取引先情報から顧客向けスライド、1枚資料、商談後の配布資料を作成。数値は捏造しない |
+| `update-opportunity` | ステージ、受注予定日、次の対応、金額、売上予測区分を変更前後付きで更新 |
 
-### Pipeline and forecast
+### パイプラインと売上予測
 
-| Skill | Description |
+| スキル | 内容 |
 |---|---|
-| `pipeline-review` | Stage-by-stage pipeline health: coverage, aging, conversion and at-risk deals |
-| `crm-hygiene-check` | Read-only audit of opportunities for missing fields, stale dates and stage mismatches |
-| `forecast` | The commit, best-case and pipeline narrative for a forecast call or a 1:1 with your manager |
-| `team-pipeline` | Leader view of a team's pipeline by rep and stage, with at-risk deals and coaching moments |
-| `rep-context` | Leader prep for a 1:1 with a rep: pipeline, recent activity and where they may need help |
-| `win-loss-review` | Patterns in recently closed deals: where deals are lost, common objections, what wins |
+| `pipeline-review` | ステージ別のパイプライン確認。目標に対する充足度、滞留、転換率、リスク案件 |
+| `crm-hygiene-check` | 案件の入力漏れ、古い日付、ステージの不整合を読み取り専用で点検 |
+| `forecast` | 売上予測会議や上司との1on1に向け、コミット、ベストケース、パイプラインの見通しを整理 |
+| `team-pipeline` | 管理者向けに、担当者・ステージ別のパイプライン、リスク案件、支援の機会を整理 |
+| `rep-context` | 営業担当者との1on1準備。パイプライン、最近の活動、支援が必要そうな点 |
+| `win-loss-review` | 最近決着した案件から、失注箇所、共通する反論、勝因を整理 |
 
-### Customers
+### 既存顧客
 
-| Skill | Description |
+| スキル | 内容 |
 |---|---|
-| `customer-health` | Health check on a customer and QBR prep: relationship, engagement, risks and value delivered |
-| `customer-voice` | Direct, attributed customer quotes on a topic from call transcripts and email |
-| `renewal-radar` | Upcoming renewals with timing, risk and uplift potential |
+| `customer-health` | 顧客の健全性確認とQBR準備。関係性、接点、リスク、提供した価値 |
+| `customer-voice` | 特定のテーマについて、通話の文字起こしやメールから発言者付きで顧客の言葉を直接引用 |
+| `renewal-radar` | 今後の契約更新について、時期、リスク、増額の可能性を確認 |
 
-## Example workflows
+## 利用例
 
-### After a call
+### 商談後
 
 ```
 /sales:call-summary
 ```
 
-Paste your notes or transcript, or name the call if your call recorder is connected. You get a summary, a follow-up email draft, a team summary and proposed CRM updates. Nothing is written to the CRM or sent until you say so.
+メモや文字起こしを貼り付けます。通話記録ツールが接続済みなら、通話名を指定することもできます。要約、フォローメール案、チーム向け要約、CRM更新案が得られます。依頼するまではCRMへの書き込みや送信を行いません。
 
-### Forecast call
-
-```
-Write my forecast for this quarter
-```
-
-The `forecast` skill reads your open opportunities (or an uploaded pipeline export) and writes the commit, best-case and pipeline story, what changed and where the risk is.
-
-### Researching a prospect
+### 売上予測会議
 
 ```
-Research Acme Corp before my call tomorrow
+今四半期の売上見通しを書いて
 ```
 
-The `account-research` skill gives you a company overview, recent news, likely priorities and fit against your ICP, and checks whether the company is already in your CRM.
+`forecast`スキルが進行中の案件（またはアップロードしたパイプラインのエクスポート）を読み、コミット、ベストケース、パイプラインの見通し、変化、リスクを文章にまとめます。
 
-## Works with files, better with your tools
+### 見込み顧客の調査
 
-Every skill works without any connectors:
+```
+明日の商談前にAcme Corpを調べて
+```
 
-| What you can do | With nothing connected | With connected tools |
+`account-research`スキルが企業概要、最近のニュース、想定される優先課題、ICPとの適合度を整理し、CRMに既に登録されている企業か確認します。
+
+## ファイルだけでも利用可能。ツール連携でさらに便利に
+
+すべてのスキルは、コネクターがなくても利用できます。
+
+| 作業 | 未接続の場合 | 接続すると使える情報・機能 |
 |---|---|---|
-| Summarize a call and follow up | Paste notes or a transcript | Call recorder, email, CRM, chat |
-| Review pipeline and forecast | Upload a pipeline export | CRM |
-| Research accounts | Web search and your context | Data enrichment, CRM |
-| Prep for calls | Describe the meeting | Calendar, CRM, email, call recorder |
-| Draft outreach | Web search and your context | Email, CRM, sales engagement |
-| Update the CRM | Get a checklist to apply by hand | CRM |
-| Book meetings | Get a draft invite to send yourself | Calendar, CRM |
+| 通話の要約とフォロー | メモや文字起こしを貼り付ける | 通話記録、メール、CRM、チャット |
+| パイプラインと売上予測の確認 | パイプラインのエクスポートをアップロードする | CRM |
+| 取引先の調査 | Web検索とユーザーの説明を使う | 情報拡充サービス、CRM |
+| 商談準備 | 会議の内容を説明する | カレンダー、CRM、メール、通話記録 |
+| 営業メールの下書き | Web検索とユーザーの説明を使う | メール、CRM、営業支援ツール |
+| CRMの更新 | 手動で適用するチェックリストを受け取る | CRM |
+| 会議の予約 | 自分で送る招待文の下書きを受け取る | カレンダー、CRM |
 
-With nothing connected, a skill says plainly what it used and what it could not see.
+未接続の場合は、使った情報と参照できなかった情報を明示します。
 
-## Connectors
+## コネクター
 
-> To check which tools are included and what else works, see [CONNECTORS.md](CONNECTORS.md).
+> 同梱されているツールと他の選択肢は、[CONNECTORS.md](CONNECTORS.md)を参照してください。
 
-| Category | Examples | What it enables |
+| 分類 | 例 | 利用できること |
 |---|---|---|
-| **CRM** | HubSpot, Close, Salesforce | Opportunities, accounts, contacts, record updates |
-| **Email and calendar** | Gmail, Google Calendar, Calendly, Microsoft 365 | Customer threads, drafts, meetings, booking |
-| **Call recorder** | Gong, Fireflies, Zoom, Otter.ai | Transcripts and call history |
-| **Data enrichment** | Clay, ZoomInfo, Apollo, Lusha, Crunchbase | Company and contact data |
-| **Chat** | Slack, Microsoft Teams | Team context and summaries posted to channels |
+| **CRM** | HubSpot、Close、Salesforce | 案件、取引先、連絡先、レコード更新 |
+| **メール・カレンダー** | Gmail、Google Calendar、Calendly、Microsoft 365 | 顧客とのスレッド、下書き、会議、予約 |
+| **通話記録** | Gong、Fireflies、Zoom、Otter.ai | 文字起こしと通話履歴 |
+| **情報拡充** | Clay、ZoomInfo、Apollo、Lusha、Crunchbase | 企業・担当者データ |
+| **チャット** | Slack、Microsoft Teams | 社内の背景情報、チャネルへの要約投稿 |
 
-**Salesforce and Microsoft 365 (Outlook, Teams, SharePoint) are included. Your organization's admin enables each one in Claude before people can sign in; for Salesforce, that includes setting up your org's Salesforce app.**
+**SalesforceとMicrosoft 365（Outlook、Teams、SharePoint）は同梱されています。利用者がサインインする前に、組織の管理者がClaudeで各コネクターを有効にする必要があります。Salesforceでは、自社組織のSalesforceアプリの設定も必要です。**
 
-See [CONNECTORS.md](CONNECTORS.md) for every included server and other options.
+同梱サーバーの全一覧とその他の選択肢は、[CONNECTORS.md](CONNECTORS.md)を参照してください。
 
-## For admins
+## 管理者向け
 
-Connector permissions are where your team controls what runs. Each connector can allow, ask or block each of its tools, and the skills never go beyond those settings. If a write tool is blocked, the skill keeps working and hands the person a checklist to apply by hand.
+実行できる操作は、コネクターの権限設定で管理します。各コネクターではツールごとに許可・確認・禁止を設定でき、スキルはその範囲を超えません。書き込みツールが禁止されていても作業を続け、本人が手動で適用できるチェックリストを提供します。
 
-For scheduled runs (a morning briefing, a weekly deal signals digest), set send, post and write tools to **ask**, so nothing goes out or changes without a person approving it.
+朝のブリーフィングや週次の案件動向まとめなどを定期実行する場合は、送信・投稿・書き込みツールを**確認（ask）**に設定し、人の承認なしに外部送信や変更が行われないようにしてください。
+
+## 日本語での利用
+
+説明、下書き、成果物は既定で日本語にします。ユーザーから別の言語の指定があれば、その指定に従います。顧客名、CRMの項目値、識別子は原文を維持し、日時、通貨、会計年度は自社の設定を確認してください。無断でタイムゾーンの変更、通貨換算、会計年度の置き換えを行わないでください。

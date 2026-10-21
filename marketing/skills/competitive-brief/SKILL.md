@@ -1,331 +1,366 @@
 ---
 name: competitive-brief
-description: Research competitors and generate a positioning and messaging comparison with content gaps, opportunities, and threats. Use when building sales battlecards, when finding positioning gaps and messaging angles competitors haven't claimed, or when a competitor makes a move and you need to assess the impact.
-argument-hint: "<competitor or market segment>"
+description: 競合を調査し、ポジショニングとメッセージの比較、コンテンツの不足、機会、脅威を整理します。営業向け競合対策資料の作成、競合が押さえていない訴求や位置付けの発見、競合の動きによる影響評価に使います。
+argument-hint: "<競合または市場セグメント>"
 ---
 
-# Competitive Brief
+# 競合分析の概要資料
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続されているツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Research competitors and generate a structured competitive analysis comparing positioning, messaging, content strategy, and market presence.
+競合を調査し、ポジショニング、メッセージ、コンテンツ戦略、市場での存在感を比較した、構造化された資料を作成します。
 
-## Trigger
+## 開始条件
 
-User runs `/competitive-brief` or asks for a competitive analysis, competitor research, or market comparison.
+ユーザーが`/competitive-brief`を実行するか、競合分析、競合調査、市場比較を依頼したとき。
 
-## Inputs
+## 入力情報
 
-Gather the following from the user:
+次の情報を集めます。
 
-1. **Competitor name(s)** — one or more competitors to analyze (required)
+1. **競合名**：分析する競合1社以上（必須）
 
-2. **Your company/product context** (optional but recommended):
-   - What you sell and to whom
-   - Your positioning or value proposition
-   - Key differentiators you want to highlight
+2. **自社・製品の背景**（任意だが推奨）：
+   - 誰に何を販売しているか
+   - ポジショニングや価値提案
+   - 強調したい主な差別化要素
 
-3. **Focus areas** (optional — if not specified, cover all):
-   - Messaging and positioning
-   - Product and feature comparison
-   - Content and thought leadership strategy
-   - Recent announcements and news
-   - Pricing and packaging (if publicly available)
-   - Market presence and audience
+3. **重点領域**（任意。未指定ならすべて）：
+   - メッセージとポジショニング
+   - 製品・機能の比較
+   - コンテンツと専門的な知見の発信戦略
+   - 最近の発表やニュース
+   - 価格・プラン構成（公開されている場合）
+   - 市場での存在感と対象者
 
-## Research Process
+## 調査手順
 
-For each competitor, research using web search:
+各競合についてWeb検索で調べます。
 
-1. **Company website** — homepage messaging, product pages, about page, pricing page
-2. **Recent news** — press releases, funding announcements, product launches, partnerships (last 6 months)
-3. **Content strategy** — blog topics, resource types, social media presence, webinars, podcasts
-4. **Review sites and comparisons** — third-party comparisons, analyst mentions, customer review themes
-5. **Job postings** — hiring signals that indicate strategic direction (optional)
+1. **企業サイト**：トップページの訴求、製品、会社概要、料金
+2. **最近のニュース**：過去6か月の発表、資金調達、製品公開、提携
+3. **コンテンツ戦略**：ブログのテーマ、資料の種類、SNS、ウェビナー、ポッドキャスト
+4. **レビュー・比較サイト**：第三者の比較、アナリストの言及、顧客レビューの共通点
+5. **求人**：戦略の方向性を示す採用動向（任意）
 
-### Research Sources
+### 情報源
 
-Gather intelligence from these categories of sources:
+次の種類から情報を集めます。
 
-#### Primary Sources (Direct from Competitor)
-- **Website**: homepage, product pages, pricing, about page, careers
-- **Blog and resource center**: content themes, publishing frequency, depth
-- **Social media profiles**: messaging, engagement, content strategy
-- **Product demos and free trials**: UX, features, onboarding experience
-- **Webinars and events**: topics, speakers, audience engagement
-- **Press releases and newsroom**: announcements, partnerships, milestones
-- **Job postings**: hiring signals that reveal strategic priorities (e.g., hiring for a new product line or market)
+#### 一次情報（競合自身の発信）
 
-#### Secondary Sources (Third-Party)
-- **Review sites**: G2, Capterra, TrustRadius, Product Hunt — customer sentiment themes
-- **Analyst reports**: Gartner, Forrester, IDC — market positioning and category placement
-- **News coverage**: TechCrunch, industry publications — funding, partnerships, narrative
-- **Social listening**: mentions, sentiment, share of voice across social platforms
-- **SEO tools**: keyword rankings, organic traffic estimates, content gaps
-- **Financial filings**: revenue, growth rate, investment areas (for public companies)
-- **Community forums**: community forums (e.g. Reddit, Discourse), industry chat groups (e.g. Slack communities) — user sentiment
+- **Webサイト**：トップ、製品、料金、会社概要、採用
+- **ブログ・資料ページ**：テーマ、更新頻度、深さ
+- **SNS**：メッセージ、反応、コンテンツ戦略
+- **製品デモ・無料試用**：UX、機能、オンボーディング
+- **ウェビナー・イベント**：題材、登壇者、参加者の反応
+- **プレスリリース・ニュースルーム**：発表、提携、節目
+- **求人**：新製品や新市場の採用など、重点戦略を示す動き
 
-### Research Cadence
-- **Deep competitive analysis**: quarterly (full research across all sources)
-- **Competitive monitoring**: monthly (scan for new announcements, content, messaging changes)
-- **Real-time alerts**: ongoing (set up alerts for competitor brand mentions, press, job postings)
+#### 二次情報（第三者）
 
-## Competitive Brief Structure
+- **レビューサイト**：G2、Capterra、TrustRadius、Product Huntなどの顧客評価の傾向
+- **アナリストレポート**：Gartner、Forrester、IDCなどの市場位置付けとカテゴリー
+- **報道**：TechCrunchや業界媒体の資金調達、提携、報じられ方
+- **ソーシャルリスニング**：SNSでの言及、感情、シェア・オブ・ボイス
+- **SEOツール**：検索順位、自然流入の推定、コンテンツの不足
+- **財務開示**：上場企業の売上、成長率、投資領域
+- **コミュニティ**：Reddit、Discourseなどの掲示板、Slackなどの業界グループにおけるユーザーの評価
 
-### 1. Executive Summary
-- 2-3 sentence overview of the competitive landscape
-- Key takeaway: your biggest opportunity and biggest threat
+### 調査頻度
 
-### 2. Competitor Profiles
+- **詳細分析**：四半期ごと。すべての情報源を対象に調査
+- **定点観測**：毎月。新発表、コンテンツ、メッセージの変化を確認
+- **随時通知**：継続。ブランド言及、報道、求人の通知を設定
 
-For each competitor:
+## 資料の構成
 
-#### Company Overview
-- What they do (one-sentence positioning)
-- Target audience
-- Company size/stage indicators (funding, employee count if available)
-- Key recent developments
+### 1. 経営層向け要約
 
-#### Messaging Analysis
-- Primary tagline or headline
-- Core value proposition
-- Key messaging themes (3-5)
-- Tone and voice characterization
-- How they describe the problem they solve
+- 競争環境の概要を2〜3文
+- 最重要の示唆：最大の機会と脅威
 
-#### Product/Solution Positioning
-- How they categorize their product
-- Key features they emphasize
-- Claimed differentiators
-- Pricing approach (if publicly available)
+### 2. 競合ごとのプロフィール
 
-#### Content Strategy
-- Blog frequency and topics
-- Content types produced (ebooks, webinars, case studies, tools)
-- Social media presence and engagement approach
-- Thought leadership themes
-- SEO strategy observations (what terms they appear to target)
+各競合について、次を示します。
 
-#### Strengths
-- What they do well
-- Where their messaging resonates
-- Competitive advantages
+#### 企業概要
 
-#### Weaknesses
-- Gaps in their messaging or positioning
-- Areas where they are vulnerable
-- Customer complaints or criticism themes (from reviews)
+- 何をしている会社か（位置付けを1文で）
+- 対象者
+- 規模や成長段階の指標（公開されていれば資金調達、従業員数）
+- 最近の主要な動き
 
-### 3. Messaging Comparison Matrix
+#### メッセージ分析
 
-| Dimension | Your Company | Competitor A | Competitor B |
+- 主なタグライン・見出し
+- 中心的な価値提案
+- 主要テーマ3〜5点
+- トーンと語り口の特徴
+- 解決する課題をどう説明しているか
+
+#### 製品・解決策の位置付け
+
+- 製品カテゴリーの表現
+- 強調する主要機能
+- 主張している差別化要素
+- 価格の考え方（公開されている場合）
+
+#### コンテンツ戦略
+
+- ブログの頻度とテーマ
+- 制作する種類（電子書籍、ウェビナー、事例、ツール）
+- SNSでの存在感と交流の仕方
+- 専門的な知見の発信テーマ
+- SEO戦略の観察（狙っていると見られる検索語）
+
+#### 強み
+
+- 得意なこと
+- メッセージが響いている領域
+- 競争優位
+
+#### 弱み
+
+- メッセージや位置付けの不足
+- 弱点となる領域
+- レビューに見られる不満や批判の共通点
+
+### 3. メッセージ比較表
+
+| 観点 | 自社 | 競合A | 競合B |
 |-----------|-------------|--------------|--------------|
-| Primary tagline | ... | ... | ... |
-| Target buyer | ... | ... | ... |
-| Key differentiator | ... | ... | ... |
-| Tone/voice | ... | ... | ... |
-| Core value prop | ... | ... | ... |
+| 主なタグライン | ... | ... | ... |
+| 想定する購買者 | ... | ... | ... |
+| 主要な差別化要素 | ... | ... | ... |
+| トーン・語り口 | ... | ... | ... |
+| 中心的な価値提案 | ... | ... | ... |
 
-(Include user's company only if they provided their positioning context)
+自社の位置付けに関する情報が提供された場合のみ、自社欄を含めます。
 
-### 4. Content Gap Analysis
-- Topics your competitors cover that you do not (or vice versa)
-- Content formats they use that you could adopt
-- Keywords or themes they own vs. opportunities they have missed
+### 4. コンテンツの不足分析
 
-### 5. Opportunities
-- Positioning gaps you can exploit
-- Messaging angles your competitors have not claimed
-- Audience segments they are underserving
-- Content or channel opportunities
+- 競合が扱い、自社が扱っていないテーマ（またはその逆）
+- 競合が使っており、自社も採用できる形式
+- 競合が押さえている検索語・テーマと、見落としている機会
 
-### 6. Threats
-- Areas where competitors are strong and you are vulnerable
-- Trends that favor their positioning
-- Recent moves that could shift the market
+### 5. 機会
 
-### 7. Recommended Actions
-- 3-5 specific, actionable recommendations based on the analysis
-- Quick wins (things you can act on this week)
-- Strategic moves (longer-term positioning or content investments)
+- 活用できるポジショニングの空白
+- 競合が押さえていない訴求
+- 十分に対応できていない顧客層
+- コンテンツやチャネルの機会
 
-## Analysis Frameworks
+### 6. 脅威
 
-### Messaging Comparison Frameworks
+- 競合が強く、自社が弱い領域
+- 競合の位置付けに有利な傾向
+- 市場を変え得る最近の動き
 
-#### Value Proposition Comparison
+### 7. 推奨対応
 
-For each competitor, document:
-- **Promise**: what they promise the customer will achieve
-- **Evidence**: how they prove the promise (data, testimonials, demos)
-- **Mechanism**: how their product delivers on the promise (the "how it works")
-- **Uniqueness**: what they claim only they can do
+- 分析に基づく、具体的で実行可能な提案3〜5点
+- すぐに成果を狙う対応（今週できること）
+- 戦略的対応（長期の位置付けやコンテンツ投資）
 
-#### Narrative Analysis
+## 分析の枠組み
 
-Identify each competitor's story arc:
-- **Villain**: what problem or enemy they position against (status quo, legacy tools, complexity)
-- **Hero**: who is the hero in their story (the customer? the product? the team?)
-- **Transformation**: what before/after do they promise?
-- **Stakes**: what happens if you do not act?
+### メッセージ比較
 
-This reveals positioning strategy and emotional appeals.
+#### 価値提案の比較
 
-#### Messaging Strengths and Vulnerabilities
+各競合について記録します。
 
-For each competitor's messaging, assess:
-- **Clarity**: can a first-time visitor understand what they do in 5 seconds?
-- **Differentiation**: is their positioning distinct or generic?
-- **Proof**: do they back up claims with evidence?
-- **Consistency**: is messaging consistent across channels?
-- **Resonance**: does their messaging address real customer pain points?
+- **約束**：顧客が何を達成できると約束しているか
+- **根拠**：データ、推薦、デモなど、どう証明するか
+- **仕組み**：どう約束を実現するか
+- **独自性**：自社だけにできると主張していること
 
-### Content Gap Analysis Methodology
+#### ストーリー分析
 
-#### Content Audit Comparison
+各社の語る物語を特定します。
 
-Map content across competitors by:
+- **敵役**：対抗する問題や対象（現状、旧式ツール、複雑さ）
+- **主人公**：顧客、製品、チームなど、誰が中心か
+- **変化**：どのような導入前後の変化を約束するか
+- **放置の影響**：行動しないと何が起こるか
 
-| Topic/Theme | Your Content | Competitor A | Competitor B | Gap? |
+位置付けの戦略と感情への訴求が分かります。
+
+#### メッセージの強みと弱点
+
+各社のメッセージを評価します。
+
+- **明確さ**：初めて来た人が5秒で事業を理解できるか
+- **差別化**：位置付けが独自か、一般的か
+- **裏付け**：主張に根拠があるか
+- **一貫性**：チャネル間で統一されているか
+- **共感**：実際の顧客課題に応えているか
+
+### コンテンツの不足分析の方法
+
+#### コンテンツ監査の比較
+
+競合横断で整理します。
+
+| 題材・テーマ | 自社 | 競合A | 競合B | 不足はあるか |
 |-------------|-------------|--------------|--------------|------|
-| [Topic 1] | Blog post, ebook | Blog series, webinar | Nothing | Opportunity for B |
-| [Topic 2] | Nothing | Whitepaper | Blog post, video | Gap for you |
-| [Topic 3] | Case study | Nothing | Case study | Parity |
+| [テーマ1] | ブログ、電子書籍 | ブログ連載、ウェビナー | なし | Bに機会 |
+| [テーマ2] | なし | ホワイトペーパー | ブログ、動画 | 自社に不足 |
+| [テーマ3] | 事例 | なし | 事例 | 同程度 |
 
-#### Content Type Coverage
+#### 形式の網羅状況
 
-| Content Format | You | Comp A | Comp B | Comp C |
+| 形式 | 自社 | 競合A | 競合B | 競合C |
 |----------------|-----|--------|--------|--------|
-| Blog posts | Y | Y | Y | Y |
-| Case studies | Y | Y | N | Y |
-| Ebooks/Whitepapers | N | Y | Y | N |
-| Webinars | Y | Y | Y | N |
-| Podcast | N | N | Y | N |
-| Video content | N | Y | Y | Y |
-| Interactive tools | N | N | N | Y |
-| Templates/Resources | Y | N | Y | N |
+| ブログ | 有 | 有 | 有 | 有 |
+| 導入事例 | 有 | 有 | 無 | 有 |
+| 電子書籍・ホワイトペーパー | 無 | 有 | 有 | 無 |
+| ウェビナー | 有 | 有 | 有 | 無 |
+| ポッドキャスト | 無 | 無 | 有 | 無 |
+| 動画 | 無 | 有 | 有 | 有 |
+| 対話型ツール | 無 | 無 | 無 | 有 |
+| テンプレート・資料 | 有 | 無 | 有 | 無 |
 
-#### Identifying Content Opportunities
-1. **Topics they cover that you do not**: potential gaps in your content strategy
-2. **Topics you cover that they do not**: potential differentiators to amplify
-3. **Formats they use that you do not**: format gaps that could reach new audiences
-4. **Audience segments they address that you do not**: underserved audiences
-5. **Search terms they rank for that you do not**: SEO content gaps
+#### 機会の見つけ方
 
-#### Content Quality Assessment
-- Depth: surface-level or comprehensive?
-- Freshness: regularly updated or stale?
-- Engagement: do posts get comments, shares, links?
-- Production value: text-only or multimedia?
-- Thought leadership: original insights or rehashed content?
+1. **競合だけが扱うテーマ**：自社戦略の不足の可能性
+2. **自社だけが扱うテーマ**：強めるべき差別化の可能性
+3. **競合だけが使う形式**：新しい対象者に届く形式の不足
+4. **競合だけが対応する顧客層**：自社が十分に対応していない層
+5. **競合だけが上位表示される検索語**：SEOコンテンツの不足
 
-### Positioning Strategy
+#### 品質の評価
 
-#### Positioning Statement Framework
+- 深さ：表面的か、包括的か
+- 鮮度：定期更新か、古いままか
+- 反応：コメント、共有、リンクを得ているか
+- 制作品質：文章のみか、複数メディアを使うか
+- 専門的な知見：独自の洞察か、既存情報の焼き直しか
 
-For your company and each competitor, define (or reverse-engineer) their positioning statement:
+### ポジショニング戦略
 
-> For [target audience], [product/company] is the [category] that [key benefit/differentiator] because [reason to believe].
+#### 位置付けを表す文の型
 
-Example:
-> For mid-market SaaS marketing teams, Acme is the campaign management platform that unifies planning and execution in one workspace because it is built on a single data model that eliminates tool fragmentation.
+自社と各競合について、次を定義または推定します。
 
-#### Positioning Map
+> [対象者]にとって、[製品・企業]は[主要な便益・差別化]を実現する[カテゴリー]である。なぜなら[信じられる理由]だからである。
 
-Plot competitors on a 2x2 matrix using the two most important dimensions for your market:
+例：
 
-Common axis pairs:
-- **Price vs. Capability** (low cost / basic vs. premium / full-featured)
-- **Ease of Use vs. Power** (simple / limited vs. complex / flexible)
-- **SMB Focus vs. Enterprise Focus** (self-serve / individual vs. sales-led / team)
-- **Point Solution vs. Platform** (does one thing well vs. does many things)
-- **Innovative vs. Established** (new approach vs. proven track record)
+> 中堅SaaS企業のマーケティングチームにとって、Acmeは計画と実行を1つの作業空間に統合するキャンペーン管理基盤である。単一データモデルを基に、ツール間の分断をなくす設計だからである。
 
-Identify which quadrant is underserved or where your differentiation is strongest.
+#### ポジショニングマップ
 
-#### Category Strategy
-- **Create a new category**: if you do something genuinely different, define and own the category (high risk, high reward)
-- **Reframe the existing category**: change how buyers evaluate the category to favor your strengths
-- **Win the existing category**: compete directly on recognized criteria and out-execute
-- **Niche within the category**: own a specific segment, use case, or audience
+市場で重要な2軸を選び、2×2のマトリクスに各社を配置します。
 
-#### Positioning Pitfalls to Avoid
-- Positioning against a competitor rather than for a customer need
-- Claiming too many differentiators (pick 1-2 that matter most)
-- Using category jargon the customer does not use
-- Positioning on features rather than outcomes
-- Changing positioning too frequently (confuses the market)
+よく使う軸：
 
-### Battlecard Creation
+- **価格と機能**：低価格・基本機能から、高価格・多機能まで
+- **使いやすさと高度さ**：シンプル・限定的から、複雑・柔軟まで
+- **中小企業向けと大企業向け**：セルフサービス・個人向けから、営業主導・チーム向けまで
+- **特化型と基盤型**：1つに特化するか、多くを扱うか
+- **革新的と確立済み**：新しい手法か、実績重視か
 
-A competitive battlecard is a one-page reference for sales and marketing teams. Include:
+対応が不足する領域、自社の差別化が最も強い領域を特定します。
 
-#### Header
-- Competitor name and logo
-- Last updated date
-- Competitive win rate (if tracked)
+#### カテゴリー戦略
 
-#### Quick Overview
-- What they do (one sentence)
-- Their target customer
-- Pricing model summary
-- Key recent developments
+- **新カテゴリーを作る**：本質的に異なることをしているなら、定義し主導する（高リスク・高リターン）
+- **既存カテゴリーを捉え直す**：自社の強みが生きるよう、購買者の評価軸を変える
+- **既存カテゴリーで勝つ**：認知された基準で直接競争し、実行力で上回る
+- **特定分野に絞る**：特定の顧客層、用途、対象者で主導する
 
-#### Their Pitch
-- How they describe themselves
-- Their primary tagline
-- Their top 3 claimed differentiators
+#### 避けるべき問題
 
-#### Strengths (Be Honest)
-- Where they genuinely compete well
-- What customers like about them (from reviews)
-- Features or capabilities where they lead
+- 顧客ニーズではなく、競合への対抗で位置付ける
+- 差別化を多く主張しすぎる（重要な1〜2点に絞る）
+- 顧客が使わない業界用語を使う
+- 成果より機能で位置付ける
+- 頻繁に変えて市場を混乱させる
 
-#### Weaknesses
-- Consistent customer complaints (from reviews)
-- Technical limitations
-- Gaps in their offering
-- Areas where customers report dissatisfaction
+### 競合対策資料の作成
 
-#### Our Differentiators
-- 3-5 specific ways your product or approach is different
-- For each: the differentiator, why it matters to the customer, and proof
+営業・マーケティング向けの1ページの参照資料に、次を含めます。
 
-#### Objection Handling
-| If the prospect says... | Respond with... |
+#### ヘッダー
+
+- 競合名とロゴ
+- 最終更新日
+- 対競合の受注率（追跡している場合）
+
+#### 概要
+
+- 何をしているか（1文）
+- 対象顧客
+- 料金モデルの概要
+- 最近の主要な動き
+
+#### 競合の訴求
+
+- 自社をどう説明しているか
+- 主なタグライン
+- 主張する差別化要素の上位3点
+
+#### 強み（率直に）
+
+- 実際に競争力がある領域
+- レビューに見られる顧客の評価点
+- 優位な機能や能力
+
+#### 弱み
+
+- レビューで繰り返される不満
+- 技術的な制約
+- 提供内容の不足
+- 顧客が不満を示す領域
+
+#### 自社の差別化
+
+- 製品や手法が異なる具体的な点を3〜5個
+- 各点について、違い、顧客に重要な理由、根拠
+
+#### 懸念への回答
+
+| 見込み顧客の発言 | 回答例 |
 |------------------------|----------------|
-| "[Competitor] does X too" | "Here is how our approach differs..." |
-| "[Competitor] is cheaper" | "Here is what that price difference gets you..." |
-| "I've heard good things about [Competitor]" | "They are strong at X. Where we differ is..." |
+| 「[競合]もXができます」 | 「当社の方法には、次の違いがあります」 |
+| 「[競合]の方が安いです」 | 「価格差で得られる価値をご説明します」 |
+| 「[競合]の評判がよいと聞きました」 | 「Xに強みがある会社です。当社との違いは…」 |
 
-#### Landmines to Set
-Questions to ask prospects early that highlight your advantages:
-- "How do you currently handle [area where competitor is weak]?"
-- "How important is [capability you have that they lack]?"
-- "Have you considered [risk that your product mitigates]?"
+#### 優位性を明らかにする質問
 
-#### Landmines to Defuse
-Questions competitors might encourage prospects to ask you, with prepared responses.
+早い段階で見込み顧客に尋ねます。
 
-#### Win/Loss Themes
-- Common reasons deals are won against this competitor
-- Common reasons deals are lost to this competitor
-- What types of prospects favor them vs. you
+- 「現在、[競合が弱い領域]にはどう対応していますか？」
+- 「[自社にあり競合にない機能]は、どの程度重要ですか？」
+- 「[自社製品が軽減するリスク]は検討されましたか？」
 
-#### Battlecard Maintenance
-- Review and update quarterly at minimum
-- Update immediately after major competitor announcements
-- Incorporate win/loss feedback from sales team
-- Track which objection-handling responses are most effective
+#### 競合からの質問への備え
 
-## Output
+競合が顧客に尋ねるよう促し得る質問と、準備した回答をまとめます。
 
-Present the full competitive brief with clear formatting. Note the date of the research so the user knows the freshness of the data.
+#### 受注・失注の傾向
 
-After the brief, ask:
+- その競合に勝つ主な理由
+- 負ける主な理由
+- 競合と自社をそれぞれ選ぶ顧客の特徴
 
-"Would you like me to:
-- Create a battlecard for your sales team based on this analysis?
-- Draft messaging that exploits the positioning gaps identified?
-- Dive deeper into any specific competitor?
-- Set up a competitive monitoring plan?"
+#### 資料の更新
+
+- 最低でも四半期ごとに確認・更新
+- 競合の大きな発表後は直ちに更新
+- 営業の受注・失注の振り返りを反映
+- どの回答が最も有効か追跡
+
+## 出力
+
+読みやすい書式で分析全体を提示し、情報の鮮度が分かるよう調査日を明記します。
+
+その後、次を確認します。
+
+「次のような対応が必要ですか？
+- 分析を基に営業向け競合対策資料を作る
+- 見つかった位置付けの空白を生かすメッセージを下書きする
+- 特定の競合を掘り下げる
+- 競合の定点観測計画を作る」

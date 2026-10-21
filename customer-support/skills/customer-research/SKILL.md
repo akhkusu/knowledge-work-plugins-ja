@@ -1,252 +1,254 @@
 ---
 name: customer-research
-description: Multi-source research on a customer question or topic with source attribution. Use when a customer asks something you need to look up, investigating whether a bug has been reported before, checking what was previously told to a specific account, or gathering background before drafting a response.
+description: 顧客の質問やテーマについて複数の情報源を調査し、出典を示してまとめます。顧客の質問に答えるための調査、不具合の過去報告の確認、特定の顧客に以前伝えた内容の確認、返信作成前の背景調査に使います。
 argument-hint: "<question or topic>"
 ---
 
 # /customer-research
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続済みツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Multi-source research on a customer question, product topic, or account-related inquiry. Synthesizes findings from all available sources with clear attribution and confidence scoring.
+顧客の質問、製品に関するテーマ、特定の顧客に関する問い合わせを複数の情報源で調べます。利用可能な情報源を統合し、出典と回答の確度を明示します。
 
-## Usage
+## 使い方
 
 ```
 /customer-research <question or topic>
 ```
 
-## Workflow
+## 作業手順
 
-### 1. Parse the Research Request
+### 1. 調査依頼を読み解く
 
-Identify what type of research is needed:
-- **Customer question**: Something a customer has asked that needs an answer (e.g., "Does our product support SSO with Okta?")
-- **Issue investigation**: Background on a reported problem (e.g., "Has this bug been reported before? What's the known workaround?")
-- **Account context**: History with a specific customer (e.g., "What did we tell Acme Corp last time they asked about this?")
-- **Topic research**: General topic relevant to support work (e.g., "Best practices for webhook retry logic")
+必要な調査の種類を特定します。
+- **顧客の質問**：回答が必要な質問（例：「当社の製品はOktaのSSOに対応していますか？」）。
+- **問題の調査**：報告された問題の背景（例：「この不具合は以前報告されていますか？ 既知の回避策はありますか？」）。
+- **顧客の背景**：特定の顧客との履歴（例：「Acme Corpが前回同じ質問をした際、何と答えましたか？」）。
+- **テーマの調査**：サポート業務に関係する一般的なテーマ（例：「Webhookの再試行処理の推奨事項」）。
 
-Before searching, clarify what you're actually trying to find:
-- Is this a factual question with a definitive answer?
-- Is this a contextual question requiring multiple perspectives?
-- Is this an exploratory question where the scope is still being defined?
-- Who is the audience for the answer (internal team, customer, leadership)?
+検索の前に、何を見つけたいのかを明確にします。
+- 明確な答えのある、事実確認の質問か。
+- 複数の視点を要する、背景に関する質問か。
+- 調査範囲をこれから定める探索的な質問か。
+- 回答を読むのは誰か（社内チーム、顧客、責任者）。
 
-### 2. Search Available Sources
+### 2. 利用できる情報源を検索する
 
-Search systematically through the source tiers below, adapting to what is connected. Don't stop at the first result — cross-reference across sources.
+接続状況に応じて、次の優先順位で体系的に検索します。最初の結果だけで終えず、複数の情報源を照合します。
 
-**Tier 1 — Official Internal Sources (highest confidence):**
-- ~~knowledge base (if connected): product docs, runbooks, FAQs, policy documents
-- ~~cloud storage: internal documents, specs, guides, past research
-- Product roadmap (internal-facing): feature timelines, priorities
+**Tier 1 — 社内の公式情報（最も高い確度）：**
+- ~~knowledge base（接続済みの場合）：製品文書、運用手順書、FAQ、規程
+- ~~cloud storage：社内文書、仕様書、ガイド、過去の調査
+- 社内向け製品ロードマップ：機能の予定、優先順位
 
-**Tier 2 — Organizational Context:**
-- ~~CRM notes: account notes, activity history, previous answers, opportunity details
-- ~~support platform (if connected): previous resolutions, known issues, workarounds
-- Meeting notes: previous discussions, decisions, commitments
+**Tier 2 — 組織内の背景情報：**
+- ~~CRMのメモ：顧客メモ、活動履歴、過去の回答、商談情報
+- ~~support platform（接続済みの場合）：過去の解決事例、既知の問題、回避策
+- 議事録：過去の議論、決定、約束事項
 
-**Tier 3 — Team Communications:**
-- ~~chat: search for the topic in relevant channels; check if teammates have discussed or answered this before
-- ~~email: search for previous correspondence on this topic
-- Calendar notes: meeting agendas and post-meeting notes
+**Tier 3 — チームのやり取り：**
+- ~~chat：関連チャンネルで検索し、同僚が過去に議論・回答していないか確認
+- ~~email：このテーマに関する過去のメール
+- カレンダーのメモ：会議の議題、会議後の記録
 
-**Tier 4 — External Sources:**
-- Web search: official documentation, blog posts, community forums
-- Public knowledge bases, help centers, release notes
-- Third-party documentation: integration partners, complementary tools
+**Tier 4 — 外部情報：**
+- Web検索：公式文書、ブログ、コミュニティフォーラム
+- 公開ナレッジベース、ヘルプセンター、リリースノート
+- 第三者の文書：連携先、補完的なツール
 
-**Tier 5 — Inferred or Analogical (use when direct sources don't yield answers):**
-- Similar situations: how similar questions were handled before
-- Analogous customers: what worked for comparable accounts
-- General best practices: industry standards and norms
+**Tier 5 — 推測・類推（直接の情報で答えが見つからない場合）：**
+- 類似の状況：過去に同様の質問へどう対応したか
+- 類似の顧客：同じような顧客で有効だったこと
+- 一般的な推奨事項：業界標準や慣行
 
-### 3. Synthesize Findings
+### 3. 調査結果をまとめる
 
-Compile results into a structured research brief:
+次の構成で整理します。
 
 ```
-## Research: [Question/Topic]
+## 調査：[質問／テーマ]
 
-### Answer
-[Clear, direct answer to the question — lead with the bottom line]
+### 回答
+[明確で直接的な回答。結論から書く]
 
-**Confidence:** [High / Medium / Low]
-[Explain what drives the confidence level]
+**確度：** [高 / 中 / 低]
+[その確度とした根拠]
 
-### Key Findings
+### 主な調査結果
 
-**From [Source 1]:**
-- [Finding with specific detail]
-- [Finding with specific detail]
+**[情報源1]より：**
+- [具体的な内容]
+- [具体的な内容]
 
-**From [Source 2]:**
-- [Finding with specific detail]
+**[情報源2]より：**
+- [具体的な内容]
 
-### Context & Nuance
-[Any caveats, edge cases, or additional context that matters]
+### 背景と留意点
+[注意点、例外、重要な補足情報]
 
-### Sources
-1. [Source name/link] — [what it contributed]
-2. [Source name/link] — [what it contributed]
-3. [Source name/link] — [what it contributed]
+### 出典
+1. [情報源の名称／リンク] — [どの情報の根拠か]
+2. [情報源の名称／リンク] — [どの情報の根拠か]
+3. [情報源の名称／リンク] — [どの情報の根拠か]
 
-### Gaps & Unknowns
-- [What couldn't be confirmed]
-- [What might need verification from a subject matter expert]
+### 不足・未確認の情報
+- [確認できなかったこと]
+- [専門家による確認が必要なこと]
 
-### Recommended Next Steps
-- [Action if the answer needs to go to a customer]
-- [Action if further research is needed]
-- [Who to consult for verification if needed]
+### 推奨する次の対応
+- [顧客への回答が必要な場合の対応]
+- [追加調査が必要な場合の対応]
+- [確認が必要な場合の相談先]
 ```
 
-### 4. Handle Insufficient Sources
+### 4. 情報源が不十分な場合
 
-If no connected sources yield results:
+接続先から有用な情報が得られない場合は：
 
-- Perform web research on the topic
-- Ask the user for internal context:
-  - "I couldn't find this in connected sources. Do you have internal docs or knowledge base articles about this?"
-  - "Has your team discussed this topic before? Any ~~chat channels I should check?"
-  - "Is there a subject matter expert who would know the answer?"
-- Be transparent about limitations:
-  - "This answer is based on web research only — please verify against your internal documentation before sharing with the customer."
-  - "I found a possible answer but couldn't confirm it from an authoritative internal source."
+- Webで調査します。
+- 利用者に社内情報を尋ねます。
+  - 「接続済みの情報源では見つかりませんでした。社内文書やナレッジ記事はありますか？」
+  - 「このテーマをチームで議論したことはありますか？ 確認すべき~~chatチャンネルはありますか？」
+  - 「回答を確認できる専門担当者はいますか？」
+- 調査の限界を明示します。
+  - 「この回答はWeb調査のみに基づきます。顧客に共有する前に社内文書と照合してください。」
+  - 「答えの候補は見つかりましたが、信頼できる社内の公式情報では確認できませんでした。」
 
-### 5. Customer-Facing Considerations
+### 5. 顧客向け回答での留意点
 
-If the research is to answer a customer question:
+顧客の質問に答えるための調査の場合は：
 
-- Flag if the answer involves product roadmap, pricing, legal, or security topics that may need review
-- Note if the answer differs from what may have been communicated previously
-- Suggest appropriate caveats for the customer-facing response
-- Offer to draft the customer response: "Want me to draft a response to the customer based on these findings?"
+- ロードマップ、料金、法務、セキュリティなど、確認が必要になり得る話題を明示します。
+- 過去に伝えた内容と異なる場合は、その点を記載します。
+- 顧客向け回答に添えるべき留意点を提案します。
+- 「この調査をもとに、お客様への返信案を作成しますか？」と提案します。
 
-### 6. Knowledge Capture
+### 6. 知識を蓄積する
 
-After research is complete, suggest capturing the knowledge:
+調査後、結果を残すことを提案します。
 
-- "Should I save these findings to your knowledge base for future reference?"
-- "Want me to create a FAQ entry based on this research?"
-- "This might be worth documenting — should I draft a runbook entry?"
+- 「今後参照できるよう、ナレッジベースに保存しますか？」
+- 「この調査をもとにFAQを作成しますか？」
+- 「記録しておくと役立ちそうです。運用手順書への追記案を作成しますか？」
 
-This helps build institutional knowledge and reduces duplicate research effort across the team.
+組織の知識を蓄積し、チーム内の重複調査を減らします。
 
 ---
 
-## Source Prioritization and Confidence
+## 情報源の優先順位と確度
 
-### Confidence by Source Tier
+### 情報源ごとの確度の目安
 
-| Tier | Source Type | Confidence | Notes |
+| 優先順位 | 情報源の種類 | 確度 | 留意点 |
 |------|-------------|------------|-------|
-| 1 | Official internal docs, KB, policies | **High** | Trust unless clearly outdated — check dates |
-| 2 | CRM, support tickets, meeting notes | **Medium-High** | May be subjective or incomplete |
-| 3 | Chat, email, calendar notes | **Medium** | Informal, may be out of context or speculative |
-| 4 | Web, forums, third-party docs | **Low-Medium** | May not reflect your specific situation |
-| 5 | Inference, analogies, best practices | **Low** | Clearly flag as inference, not fact |
+| 1 | 社内公式文書、ナレッジベース、規程 | **高** | 明らかに古くなければ信頼する。日付を確認する |
+| 2 | CRM、問い合わせチケット、議事録 | **中〜高** | 主観的または不完全な場合がある |
+| 3 | チャット、メール、カレンダーのメモ | **中** | 非公式で、文脈不足や推測を含む場合がある |
+| 4 | Web、フォーラム、第三者の文書 | **低〜中** | 自社の具体的な状況に合わない場合がある |
+| 5 | 推測、類推、一般的な推奨事項 | **低** | 事実ではなく推測であることを明示する |
 
-### Confidence Levels
+### 確度の区分
 
-Always assign and communicate a confidence level:
+必ず確度を評価し、伝えます。
 
-**High Confidence:**
-- Answer confirmed by official documentation or authoritative source
-- Multiple sources corroborate the same answer
-- Information is current (verified within a reasonable timeframe)
-- "I'm confident this is accurate based on [source]."
+**確度が高い：**
+- 公式文書または権威ある情報源で確認できる。
+- 複数の情報源が同じ答えを裏付けている。
+- 情報が新しい（妥当な期間内に確認されている）。
+- 「[情報源]に基づき、この内容は確度が高いと判断しています。」
 
-**Medium Confidence:**
-- Answer found in informal sources (chat, email) but not official docs
-- Single source without corroboration
-- Information may be slightly outdated but likely still valid
-- "Based on [source], this appears to be the case, but I'd recommend confirming with [team/person]."
+**確度が中程度：**
+- チャットやメールなどの非公式情報にあるが、公式文書では確認できない。
+- 情報源が1つで、裏付けがない。
+- 少し古い可能性はあるが、現在も有効と思われる。
+- 「[情報源]によると、このようです。ただし、[チーム／担当者]への確認をお勧めします。」
 
-**Low Confidence:**
-- Answer is inferred from related information
-- Sources are outdated or potentially unreliable
-- Contradictory information found across sources
-- "I wasn't able to find a definitive answer. Based on [context], my best assessment is [answer], but this should be verified before sharing with the customer."
+**確度が低い：**
+- 関連情報から推測した回答である。
+- 情報源が古い、または信頼性に疑問がある。
+- 情報源どうしに矛盾がある。
+- 「確定的な回答は見つかりませんでした。[背景]からは[回答]と考えられますが、顧客に共有する前に確認が必要です。」
 
-**Unable to Determine:**
-- No relevant information found in any source
-- Question requires specialized knowledge not available in sources
-- "I couldn't find information about this. I recommend reaching out to [suggested expert/team] for a definitive answer."
+**判断できない：**
+- どの情報源にも関連情報が見つからない。
+- 情報源にない専門知識が必要である。
+- 「関連情報が見つかりませんでした。確かな回答を得るには、[専門家／チーム]への相談をお勧めします。」
 
-### Handling Contradictions
+### 情報が矛盾する場合
 
-When sources disagree:
-1. Note the contradiction explicitly
-2. Identify which source is more authoritative or more recent
-3. Present both perspectives with context
-4. Recommend how to resolve the discrepancy
-5. If going to a customer: use the most conservative/cautious answer until resolved
+1. 矛盾を明示します。
+2. どちらがより公式で信頼できるか、または新しいかを特定します。
+3. 背景とともに両方の見解を示します。
+4. 相違を解消する方法を提案します。
+5. 顧客に伝える場合は、解消するまで最も慎重な回答を使います。
 
-## When to Escalate vs. Answer Directly
+## 直接回答する場合と確認・エスカレーションする場合
 
-### Answer Directly When:
-- Official documentation clearly addresses the question
-- Multiple reliable sources corroborate the answer
-- The question is factual and non-sensitive
-- The answer doesn't involve commitments, timelines, or pricing
-- You've answered similar questions before with confirmed accuracy
+### 直接回答する場合
+- 公式文書が明確に答えている。
+- 複数の信頼できる情報源が回答を裏付けている。
+- 機微ではない事実確認の質問である。
+- 約束、日程、料金に関する回答ではない。
+- 同様の質問に回答した経験があり、正確さが確認できている。
 
-### Escalate or Verify When:
-- The answer involves product roadmap commitments or timelines
-- Pricing, legal terms, or contract-specific questions
-- Security, compliance, or data handling questions
-- The answer could set a precedent or create expectations
-- You found contradictory information in sources
-- The question involves a specific customer's custom configuration
-- The answer requires specialized expertise you don't have
-- The customer is at risk and the wrong answer could exacerbate the situation
+### 確認・エスカレーションする場合
+- 製品ロードマップの約束や日程が関係する。
+- 料金、法的条件、個別契約に関する質問である。
+- セキュリティ、コンプライアンス、データの取り扱いに関する質問である。
+- 回答が前例を作る、または期待を生む可能性がある。
+- 情報源に矛盾が見つかった。
+- 特定の顧客の個別設定に関する質問である。
+- 自分にない専門知識が必要である。
+- 顧客との関係が不安定で、誤答が状況を悪化させるおそれがある。
 
-### Escalation Path:
-1. **Subject matter expert**: For technical or domain-specific questions
-2. **Product team**: For roadmap, feature, or capability questions
-3. **Legal/compliance**: For terms, privacy, security, or regulatory questions
-4. **Billing/finance**: For pricing, invoice, or payment-related questions
-5. **Engineering**: For custom configurations, bugs, or technical root causes
-6. **Leadership**: For strategic decisions, exceptions, or high-stakes situations
+### 確認先
 
-## Research Documentation for Team Knowledge Base
+1. **専門担当者**：技術・専門領域の質問。
+2. **プロダクト部門**：ロードマップ、機能、対応可否。
+3. **法務・コンプライアンス部門**：契約条件、プライバシー、セキュリティ、規制。
+4. **請求・経理部門**：料金、請求書、支払い。
+5. **開発部門**：個別設定、不具合、技術的な根本原因。
+6. **責任者**：戦略的判断、例外対応、重要な判断を伴う状況。
 
-After completing research, capture the knowledge for future use.
+## チームのナレッジベースへの記録
 
-### When to Document:
-- Question has come up before or likely will again
-- Research took significant effort to compile
-- Answer required synthesizing multiple sources
-- Answer corrects a common misunderstanding
-- Answer involves nuance that's easy to get wrong
+調査後は、今後使えるよう知識を残します。
 
-### Documentation Format:
+### 記録すべき場合
+- 過去にも出た質問、または再び出そうな質問である。
+- 調査に相応の手間がかかった。
+- 複数の情報源を統合する必要があった。
+- よくある誤解を正す回答である。
+- 間違えやすい留意点を含む回答である。
+
+### 記録の書式
+
 ```
-## [Question/Topic]
+## [質問／テーマ]
 
-**Last Verified:** [date]
-**Confidence:** [level]
+**最終確認日：** [日付]
+**確度：** [区分]
 
-### Answer
-[Clear, direct answer]
+### 回答
+[明確で直接的な回答]
 
-### Details
-[Supporting detail, context, and nuance]
+### 詳細
+[裏付け、背景、留意点]
 
-### Sources
-[Where this information came from]
+### 出典
+[情報の入手先]
 
-### Related Questions
-[Other questions this might help answer]
+### 関連する質問
+[この情報が役立つ他の質問]
 
-### Review Notes
-[When to re-verify, what might change this answer]
+### 見直しの注意点
+[再確認する時期、回答が変わる要因]
 ```
 
-### Knowledge Base Hygiene:
-- Date-stamp all entries
-- Flag entries that reference specific product versions or features
-- Review and update entries quarterly
-- Archive entries that are no longer relevant
-- Tag entries for searchability (by topic, product area, customer segment)
+### ナレッジの保守
+
+- すべての項目に日付を付けます。
+- 特定の製品バージョンや機能に関係する項目を明示します。
+- 四半期ごとに見直して更新します。
+- 現在は該当しない項目はアーカイブします。
+- 検索用に、テーマ、製品領域、顧客層などのタグを付けます。

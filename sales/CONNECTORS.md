@@ -1,36 +1,36 @@
-# Connectors
+# コネクター
 
-## How tool references work
+## ツールの参照方法
 
-Plugins are **tool-agnostic**. They describe workflows in terms of categories (CRM, chat, email, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
+プラグインは**特定のツールに依存しません**。特定製品ではなく、CRM、チャット、メールなどの分類を使って業務フローを記述します。`.mcp.json`には特定のMCPサーバーが事前設定されていますが、同じ分類のMCPサーバーなら利用できます。
 
-Many plugins use `~~category` placeholders in their files. The skills in this plugin name the category in plain words instead ("the CRM", "email", "the calendar", "call transcripts"). Either way, a skill refers to the category, so any connector in that category works. The placeholder column below maps each category to the shared naming used across plugins.
+多くのプラグインでは、ファイル内で`~~category`の形式のプレースホルダーを使います。このプラグインのスキルでは、代わりに「CRM」「メール」「カレンダー」「通話の文字起こし」のように分類名を通常の文章で記載します。いずれの場合も分類を参照しているため、同じ分類のコネクターが使えます。下表のプレースホルダー列は、各分類と、プラグイン間で共通の表記との対応を示します。
 
-Every skill also works with nothing connected: upload an export or paste notes, and the skill works from that.
+すべてのスキルは、未接続でも動作します。エクスポートしたファイルやメモをアップロード・貼り付けすれば、その情報で作業できます。
 
-## Connectors for this plugin
+## このプラグインのコネクター
 
-| Category | Placeholder | Included servers | Other options |
+| 分類 | プレースホルダー | 同梱サーバー | その他の選択肢 |
 |----------|-------------|-----------------|---------------|
-| CRM | `~~CRM` | HubSpot, Salesforce\*, Close, Monday | Pipedrive, Attio, Zoho CRM, Copper |
-| Email | `~~email` | Gmail, Microsoft 365 (Outlook)\* |  |
-| Calendar | `~~calendar` | Google Calendar, Calendly, Microsoft 365 (Outlook)\* |  |
-| Chat | `~~chat` | Slack, Microsoft 365 (Teams)\* |  |
-| Docs and knowledge base | `~~knowledge base` | Google Drive, Notion, Atlassian (Confluence), Microsoft 365 (SharePoint)\* | Box, Dropbox, Guru |
-| Conversation intelligence | `~~conversation intelligence` | Gong, Fireflies, Zoom, Otter.ai | Granola, Fathom, Chorus |
-| Data enrichment | `~~data enrichment` | Clay, ZoomInfo, Apollo, Lusha, Crunchbase | Clearbit |
-| Sales engagement | `~~sales engagement` | Outreach, Apollo | Salesloft |
-| Competitive intelligence | `~~competitive intelligence` | Similarweb | Crayon, Klue |
-| Project tracker | `~~project tracker` | Atlassian (Jira) | Linear, Asana |
+| CRM | `~~CRM` | HubSpot、Salesforce\*、Close、Monday | Pipedrive、Attio、Zoho CRM、Copper |
+| メール | `~~email` | Gmail、Microsoft 365（Outlook）\* |  |
+| カレンダー | `~~calendar` | Google Calendar、Calendly、Microsoft 365（Outlook）\* |  |
+| チャット | `~~chat` | Slack、Microsoft 365（Teams）\* |  |
+| 文書・ナレッジベース | `~~knowledge base` | Google Drive、Notion、Atlassian（Confluence）、Microsoft 365（SharePoint）\* | Box、Dropbox、Guru |
+| 会話分析 | `~~conversation intelligence` | Gong、Fireflies、Zoom、Otter.ai | Granola、Fathom、Chorus |
+| 情報拡充 | `~~data enrichment` | Clay、ZoomInfo、Apollo、Lusha、Crunchbase | Clearbit |
+| 営業支援 | `~~sales engagement` | Outreach、Apollo | Salesloft |
+| 競合情報 | `~~competitive intelligence` | Similarweb | Crayon、Klue |
+| プロジェクト管理 | `~~project tracker` | Atlassian（Jira） | Linear、Asana |
 
-## Salesforce and Microsoft 365
+## SalesforceとMicrosoft 365
 
-**Salesforce and Microsoft 365 (marked \* above) are included, and both need setup at the organization level: an admin enables the connector in Claude before people can sign in. For Salesforce, that includes setting up your org's Salesforce app.**
+**SalesforceとMicrosoft 365（上表の\*付き）は同梱されており、どちらも組織単位の設定が必要です。利用者がサインインする前に、管理者がClaudeでコネクターを有効にします。Salesforceでは、自社組織のSalesforceアプリの設定も必要です。**
 
-Once connected, the skills use them the same way as any other tool in their category.
+接続後は、同じ分類の他のツールと同様にスキルから利用できます。
 
-Google Calendar, Gmail and Google Drive are listed in `.mcp.json` without a URL. Connect them in Claude's connector settings.
+Google Calendar、Gmail、Google Driveは、`.mcp.json`にURLなしで記載されています。Claudeのコネクター設定から接続してください。
 
-## Permissions
+## 権限
 
-What a connector is allowed to do is set on the connector itself: allow, ask or block for each tool. The skills never go beyond those settings. See the README for recommended settings for scheduled runs.
+コネクターが実行できる操作は、そのコネクター自体で設定します。ツールごとに許可・確認・禁止を指定でき、スキルはその範囲を超えません。定期実行で推奨される設定はREADMEを参照してください。

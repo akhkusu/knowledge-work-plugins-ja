@@ -1,190 +1,200 @@
 ---
 name: seo-audit
-description: Run a comprehensive SEO audit — keyword research, on-page analysis, content gaps, technical checks, and competitor comparison. Use when assessing a site's SEO health, when finding keyword opportunities and content gaps competitors own, or when you need a prioritized action plan split into quick wins and strategic investments.
-argument-hint: "<url or topic> [audit type]"
+description: キーワード調査、ページ内分析、コンテンツの不足、技術面の確認、競合比較を含むSEO監査を実施します。サイトのSEO状態の評価、競合が押さえている検索語やテーマの発見、短期対応と戦略投資に分けた優先順位付き実行計画の作成に使います。
+argument-hint: "<URLまたはテーマ> [監査の種類]"
 ---
 
 # /seo-audit
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続されているツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Audit a website's SEO health, research keyword opportunities, identify content gaps, and benchmark against competitors. Produces a prioritized action plan a marketer can execute immediately.
+WebサイトのSEO状態を確認し、キーワードの機会、コンテンツの不足、競合との差を調べます。マーケティング担当者がすぐ実行できる、優先順位付きの計画を作成します。
 
-## Trigger
+## 開始条件
 
-User runs `/seo-audit` or asks for an SEO audit, keyword research, content gap analysis, technical SEO check, or competitor SEO comparison.
+ユーザーが`/seo-audit`を実行するか、SEO監査、キーワード調査、コンテンツの不足分析、技術的SEOの確認、競合のSEO比較を依頼したとき。
 
-## Inputs
+## 入力情報
 
-Gather the following from the user. If not provided, ask before proceeding:
+次の情報を集め、未提示なら作業前に確認します。
 
-1. **URL or domain** — the site to audit, or a topic/keyword if running in keyword research mode
+1. **URL・ドメイン**：監査するサイト。キーワード調査モードならテーマや検索語
 
-2. **Audit type** — one of:
-   - **Full site audit** — end-to-end SEO review covering all sections below
-   - **Keyword research** — identify keyword opportunities for a topic or domain
-   - **Content gap analysis** — find topics competitors rank for that you don't
-   - **Technical SEO check** — crawlability, speed, structured data, and infrastructure issues
-   - **Competitor SEO comparison** — head-to-head SEO benchmarking against specific competitors
+2. **種類**：次のいずれか
+   - **サイト全体の監査**：後述の全項目を対象にした総合的な確認
+   - **キーワード調査**：テーマやドメインの検索語の機会を特定
+   - **コンテンツの不足分析**：競合が上位表示され、自社が扱っていないテーマを特定
+   - **技術的SEOの確認**：クロール可能性、速度、構造化データ、基盤の問題
+   - **競合SEO比較**：指定した競合との直接比較
 
-   If not specified, default to **full site audit**.
+   未指定なら**サイト全体の監査**を既定とします。
 
-3. **Target keywords or topics** (optional) — specific keywords the user is already targeting or wants to rank for
+3. **狙う検索語・テーマ**（任意）：既に注力している、または上位表示を目指すもの
 
-4. **Competitors** (optional) — domains or companies to compare against. If not provided and the audit type requires competitor data, use web search to identify 2-3 likely competitors based on the user's domain and keyword space.
+4. **競合**（任意）：比較するドメイン・企業。必要な監査で未提示なら、ドメインと検索領域を基にWeb検索で2〜3社を特定します。
 
-## Process
+## 手順
 
-### 1. Keyword Research
+### 1. キーワード調査
 
-Research keywords related to the user's domain, topic, or target keywords.
+対象のドメイン、テーマ、検索語に関連するキーワードを調べます。
 
-**If ~~SEO tools are connected:**
-- Pull keyword data, search volume, keyword difficulty scores, and ranking positions automatically
-- Identify keywords the site currently ranks for and where it's gaining or losing ground
+**~~SEOツールが接続済みの場合：**
 
-**If ~~product analytics are connected:**
-- Cross-reference keyword targets with actual organic traffic data to validate which keywords are driving visits and conversions
+- 検索語データ、検索数、難易度、順位を自動取得
+- 現在上位表示される検索語と、順位が上がっている・下がっている領域を特定
 
-**If tools are not connected:**
-- Use web search to research the keyword landscape
-- Note: "For more precise volume and difficulty data, connect an SEO tool like Ahrefs or Semrush via MCP. The audit will auto-populate with ranking data."
+**~~product analyticsが接続済みの場合：**
 
-For each keyword opportunity, assess:
-- **Primary keywords** — high-intent terms directly tied to the user's product or service
-- **Secondary keywords** — supporting terms and variations
-- **Search volume signals** — relative demand (high, medium, low) based on available data
-- **Keyword difficulty** — how competitive the term is (easy, moderate, hard)
-- **Long-tail opportunities** — specific, lower-competition phrases with clear intent
-- **Question-based keywords** — "how to", "what is", "why does" queries that mirror People Also Ask results
-- **Intent classification** — informational, navigational, commercial, or transactional
+- 狙う検索語と自然流入の実績を照合し、訪問やコンバージョンにつながる検索語を確認
 
-### 2. On-Page SEO Audit
+**ツールが未接続の場合：**
 
-For each key page (homepage, top landing pages, recent blog posts), evaluate:
+- Web検索で状況を調査
+- 「より正確な検索数や難易度を得るには、AhrefsやSemrushなどのSEOツールをMCP経由で接続してください。接続後は順位データを自動で反映できます」と注記
 
-- **Title tags** — present, unique, within 50-60 characters, includes target keyword
-- **Meta descriptions** — present, compelling, within 150-160 characters, includes a call to action
-- **H1 tags** — exactly one per page, includes primary keyword
-- **H2/H3 structure** — logical hierarchy, uses secondary keywords where natural
-- **Keyword usage** — primary keyword appears in the first 100 words, used naturally throughout, not over-stuffed
-- **Internal linking** — pages link to related content, orphan pages identified, anchor text is descriptive
-- **Image alt text** — all images have descriptive alt attributes, keywords included where relevant
-- **URL structure** — clean, readable, includes keywords, no excessive parameters or depth
+各キーワードの機会について評価します。
 
-### 3. Content Gap Analysis
+- **主キーワード**：製品・サービスに直結し、意図が明確な検索語
+- **補助キーワード**：関連語や言い換え
+- **検索需要の兆候**：利用可能なデータに基づく相対的な需要（高・中・低）
+- **難易度**：競争の程度（低・中・高）
+- **ロングテール**：意図が明確で、競争が少ない具体的な語句
+- **質問型**：「方法」「とは」「なぜ」など、関連する質問欄に表れる検索
+- **意図の分類**：情報収集、特定サイトへの移動、商業的比較、取引
 
-Identify what's missing from the user's content strategy:
+### 2. ページ内SEO監査
 
-- **Competitor topic coverage** — topics and keywords competitors rank for that the user's site does not cover
-- **Content freshness** — pages that haven't been updated in 12+ months and may be losing rankings
-- **Thin content** — pages with insufficient depth to rank (under 300 words for informational queries, lacking substance)
-- **Missing content types** — formats competitors use that the user doesn't (guides, comparison pages, glossaries, tools, templates)
-- **Funnel gaps** — missing content at specific buyer journey stages (awareness, consideration, decision)
-- **Topic clusters** — opportunities to build pillar pages with supporting content
+主要ページ（トップ、重要なランディングページ、最近のブログ）で次を評価します。
 
-### 4. Technical SEO Checklist
+- **タイトルタグ**：存在し、重複せず、50〜60文字以内で、対象キーワードを含む
+- **メタディスクリプション**：存在し、魅力的で、150〜160文字以内で、行動喚起を含む
+- **H1**：ページごとに1つで、主キーワードを含む
+- **H2・H3**：論理的な階層で、自然な範囲で補助キーワードを使う
+- **キーワードの使用**：最初の100語に主キーワードがあり、全体で自然に使い、詰め込まない
+- **内部リンク**：関連ページにリンクし、孤立ページを特定し、リンク文言で内容が分かる
+- **画像の代替テキスト**：全画像に内容が分かるalt属性があり、関連する場合に検索語を含む
+- **URL構造**：読みやすく、検索語を含み、過度なパラメーターや階層がない
 
-Evaluate technical foundations that affect crawlability and rankings:
+### 3. コンテンツの不足分析
 
-- **Page speed** — identify slow-loading pages and likely causes (large images, render-blocking scripts, excessive redirects)
-- **Mobile-friendliness** — responsive design, tap targets, font sizes, viewport configuration
-- **Structured data** — opportunities for schema markup (FAQ, HowTo, Product, Article, Organization, Breadcrumb)
-- **Crawlability** — robots.txt configuration, XML sitemap presence and accuracy, canonical tags, noindex/nofollow usage
-- **Broken links** — internal and external 404s, redirect chains
-- **HTTPS** — secure connection, mixed content issues
-- **Core Web Vitals signals** — LCP, FID/INP, CLS indicators based on observable page behavior
-- **Indexation** — pages that should be indexed but may not be, duplicate content risks
+戦略に欠けるものを特定します。
 
-### 5. Competitor SEO Comparison
+- **競合のテーマ**：競合が上位表示され、自社が扱わないテーマや検索語
+- **鮮度**：12か月以上更新されず、順位低下のおそれがあるページ
+- **内容の薄さ**：上位表示に必要な深さがないページ（情報検索で300語未満、実質的な内容の不足）
+- **形式の不足**：競合が使い、自社が使わないガイド、比較、用語集、ツール、テンプレート
+- **購買段階の不足**：認知、比較検討、意思決定の特定段階に対応する内容がない
+- **トピッククラスター**：中心ページと関連コンテンツのまとまりを作る機会
 
-For each competitor, compare:
+### 4. 技術的SEOのチェックリスト
 
-- **Keyword overlap** — keywords both sites rank for, and where each site ranks higher
-- **Keyword gaps** — terms the competitor ranks for that the user does not
-- **Domain authority signals** — relative site strength based on backlink profiles, referring domains, and content depth
-- **Content depth** — average content length, topic coverage breadth, publishing frequency
-- **Backlink profile observations** — types of sites linking to competitors, link-worthy content they've produced
-- **SERP feature ownership** — which competitor appears in featured snippets, People Also Ask, image packs, or knowledge panels
-- **Technical advantages** — site speed differences, mobile experience, structured data usage
+クロールや順位に影響する基盤を評価します。
 
-## Output
+- **表示速度**：遅いページと原因候補（大きな画像、描画を妨げるスクリプト、多すぎるリダイレクト）
+- **モバイル対応**：レスポンシブ、タップ領域、文字サイズ、viewport設定
+- **構造化データ**：FAQ、HowTo、Product、Article、Organization、Breadcrumbのマークアップ機会
+- **クロール可能性**：robots.txt、XMLサイトマップの有無と正確さ、canonical、noindex・nofollow
+- **リンク切れ**：内部・外部の404、リダイレクトの連鎖
+- **HTTPS**：安全な接続、混在コンテンツ
+- **Core Web Vitalsの兆候**：観察可能な挙動に基づくLCP、FID/INP、CLS
+- **インデックス**：登録されるべき未登録ページ、重複コンテンツのリスク
 
-### Executive Summary
+### 5. 競合SEO比較
 
-Open with a 3-5 sentence summary of overall SEO health. Highlight:
-- The site's biggest strength
-- The top 3 priorities that will have the most impact
-- An overall assessment: strong foundation, needs work, or critical issues
+各競合について比較します。
 
-### Keyword Opportunity Table
+- **検索語の重なり**：両サイトで上位表示される語と、優劣
+- **検索語の不足**：競合のみが上位表示される語
+- **ドメインの強さの兆候**：被リンク、参照元ドメイン、内容の深さによる相対評価
+- **内容の深さ**：平均の長さ、テーマの網羅性、公開頻度
+- **被リンクの観察**：リンクするサイトの種類、リンクされやすい内容
+- **検索結果機能の占有**：強調スニペット、関連質問、画像群、ナレッジパネルに現れる競合
+- **技術的優位**：速度、モバイル体験、構造化データ
 
-| Keyword | Est. Difficulty | Opportunity Score | Current Ranking | Intent | Recommended Content Type |
+## 出力
+
+### 経営層向け要約
+
+SEO全体の状態を3〜5文で示し、次を強調します。
+
+- 最大の強み
+- 最も影響が大きい優先事項3点
+- 総合評価：基盤が強い、改善が必要、重大な問題あり
+
+### キーワード機会の一覧
+
+| 検索語 | 推定難易度 | 機会の評価 | 現在順位 | 意図 | 推奨する形式 |
 |---------|----------------|-------------------|-----------------|--------|--------------------------|
 
-Opportunity score: high, medium, or low — based on the combination of search demand, difficulty, and relevance to the user's business.
+機会は、需要、難易度、事業との関連性を組み合わせ、高・中・低で評価します。
 
-Include 15-25 keyword opportunities, sorted by opportunity score.
+15〜25件を評価順に並べます。
 
-### On-Page Issues Table
+### ページ内の問題一覧
 
-| Page | Issue | Severity | Recommended Fix |
+| ページ | 問題 | 重要度 | 推奨する修正 |
 |------|-------|----------|-----------------|
 
-Severity levels:
-- **Critical** — directly hurting rankings or preventing indexation
-- **High** — significant impact on SEO performance
-- **Medium** — best practice violation, moderate impact
-- **Low** — minor optimization opportunity
+重要度：
 
-### Content Gap Recommendations
+- **重大**：順位を直接下げる、またはインデックスを妨げる
+- **高**：SEOの成果に大きく影響する
+- **中**：推奨事項に反し、中程度の影響がある
+- **低**：小規模な最適化の機会
 
-For each content gap identified, provide:
-- **Topic or keyword** to target
-- **Why it matters** — search demand, competitor coverage, funnel stage
-- **Recommended format** — blog post, landing page, guide, comparison page, etc.
-- **Priority** — high, medium, or low
-- **Estimated effort** — quick win (1-2 hours), moderate (half day), substantial (multi-day)
+### 不足コンテンツの提案
 
-### Technical SEO Checklist
+各項目について、次を示します。
 
-| Check | Status | Details |
+- 狙う**テーマ・検索語**
+- **重要な理由**：需要、競合の対応、購買段階
+- **推奨形式**：ブログ、ランディングページ、ガイド、比較など
+- **優先度**：高・中・低
+- **工数の目安**：短時間（1〜2時間）、中程度（半日）、大きい（複数日）
+
+### 技術的SEOチェックリスト
+
+| 確認項目 | 状況 | 詳細 |
 |-------|--------|---------|
 
-Status: Pass, Fail, or Warning.
+状況は、合格・不合格・警告で示します。
 
-### Competitor Comparison Summary
+### 競合比較の要約
 
-| Dimension | Your Site | Competitor A | Competitor B | Winner |
+| 観点 | 自社 | 競合A | 競合B | 優位なサイト |
 |-----------|-----------|--------------|--------------|--------|
 
-Include rows for: keyword count, content depth, publishing frequency, backlink signals, technical score, SERP feature presence.
+検索語数、内容の深さ、公開頻度、被リンクの兆候、技術面の評価、検索結果機能への掲載を含めます。
 
-### Prioritized Action Plan
+### 優先順位付き実行計画
 
-Split recommendations into two categories:
+提案を2つに分けます。
 
-**Quick Wins (do this week):**
-- Actions that take under 2 hours and have immediate impact
-- Examples: fix title tags, add meta descriptions, fix broken links, add alt text
+**短期対応（今週行う）：**
 
-**Strategic Investments (plan for this quarter):**
-- Actions that require more effort but drive long-term growth
-- Examples: build a topic cluster, create a pillar page, launch a link-building campaign, overhaul site structure
+- 2時間未満で、即効性がある作業
+- 例：タイトル修正、メタディスクリプション追加、リンク切れ修正、代替テキスト追加
 
-For each action item, include:
-- What to do (specific and concrete)
-- Expected impact (high, medium, low)
-- Effort estimate
-- Dependencies (if any)
+**戦略投資（今四半期に計画）：**
 
-## Follow-Up
+- 工数は大きいが、長期成長につながる作業
+- 例：トピッククラスター、中心ページ、被リンク獲得施策、サイト構造の刷新
 
-After presenting the audit, ask:
+各作業に次を含めます。
 
-"Would you like me to:
-- Draft content briefs for the top keyword opportunities?
-- Create optimized title tags and meta descriptions for your key pages?
-- Build a content calendar based on the gap analysis?
-- Dive deeper into any specific section of the audit?
-- Run this same analysis for a different competitor or domain?"
+- 具体的に何をするか
+- 想定効果（高・中・低）
+- 工数の目安
+- 依存関係（ある場合）
+
+## フォローアップ
+
+監査結果の後に確認します。
+
+「次のような対応が必要ですか？
+- 有望な検索語に向けたコンテンツ企画を下書きする
+- 主要ページのタイトルとメタディスクリプションを最適化する
+- 不足分析を基にコンテンツカレンダーを作る
+- 特定の節を掘り下げる
+- 別の競合やドメインに同じ分析を行う」

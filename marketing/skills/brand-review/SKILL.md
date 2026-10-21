@@ -1,276 +1,295 @@
 ---
 name: brand-review
-description: Review content against your brand voice, style guide, and messaging pillars, flagging deviations by severity with specific before/after fixes. Use when checking a draft before it ships, when auditing copy for voice consistency and terminology, or when screening for unsubstantiated claims, missing disclaimers, and other legal flags.
-argument-hint: "<content to review>"
+description: ブランドの語り口、スタイルガイド、メッセージの柱に照らしてコンテンツを確認し、逸脱を重要度別に指摘して修正前後の具体例を示します。公開前の原稿確認、表現や用語の一貫性の点検、裏付けのない主張・免責事項の不足・法務上の懸念の確認に使います。
+argument-hint: "<レビューするコンテンツ>"
 ---
 
-# Brand Review
+# ブランド表現のレビュー
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続されているツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Review marketing content against brand voice, style guidelines, and messaging standards. Flag deviations and provide specific improvement suggestions.
+ブランドの語り口、表記ルール、メッセージの基準に照らしてマーケティングコンテンツを確認します。逸脱を指摘し、具体的な改善案を示します。
 
-## Trigger
+## 開始条件
 
-User runs `/brand-review` or asks to review, check, or audit content against brand guidelines.
+ユーザーが`/brand-review`を実行するか、ブランドガイドラインに照らした内容のレビュー・確認・監査を依頼したとき。
 
-## Inputs
+## 入力情報
 
-1. **Content to review** — accept content in any of these forms:
-   - Pasted directly into the conversation
-   - A file path or ~~knowledge base reference (e.g. Notion page, shared doc)
-   - A URL to a published page
-   - Multiple pieces for batch review
+1. **確認するコンテンツ**：次の形式を受け付けます。
+   - 会話への直接貼り付け
+   - ファイルパスまたは~~knowledge baseへの参照（Notionページ、共有文書など）
+   - 公開ページのURL
+   - 一括確認する複数の原稿
 
-2. **Brand guidelines source** (determined automatically):
-   - If a brand style guide is configured in local settings, use it automatically
-   - If not configured, ask: "Do you have a brand style guide or voice guidelines I should review against? You can paste them, share a file, or describe your brand voice. Otherwise, I'll do a general review for clarity, consistency, and professionalism."
+2. **ブランドガイドラインの所在**（自動判定）：
+   - ローカル設定にスタイルガイドがあれば自動的に使う
+   - 未設定なら確認する：「照合するブランドのスタイルガイドや表現ガイドラインはありますか？ 貼り付け、ファイル共有、語り口の説明のいずれでも構いません。なければ、明確さ、一貫性、業務文書としての適切さを一般的な観点から確認します。」
 
-## Review Process
+## レビューの手順
 
-### With Brand Guidelines Configured
+### ガイドラインがある場合
 
-Evaluate the content against each of these dimensions:
+次の各観点で評価します。
 
-#### Voice and Tone
-- Does the content match the defined brand voice attributes?
-- Is the tone appropriate for the content type and audience?
-- Are there shifts in voice that feel inconsistent?
-- Flag specific sentences or phrases that deviate with an explanation of why
+#### 語り口とトーン
 
-#### Terminology and Language
-- Are preferred brand terms used correctly?
-- Are any "avoid" terms or phrases present?
-- Is jargon level appropriate for the target audience?
-- Are product names, feature names, and branded terms used correctly (capitalization, formatting)?
+- 定義されたブランド表現の特性に合っているか
+- コンテンツの種類や対象読者に適したトーンか
+- 語り口が途中で不自然に変化していないか
+- 逸脱する文や表現を具体的に挙げ、その理由を説明する
 
-#### Messaging Pillars
-- Does the content align with defined messaging pillars or value propositions?
-- Are claims consistent with approved messaging?
-- Is the content reinforcing or contradicting brand positioning?
+#### 用語と言葉遣い
 
-#### Style Guide Compliance
-- Grammar and punctuation per style guide (e.g., Oxford comma, title case vs. sentence case)
-- Formatting conventions (headers, lists, emphasis)
-- Number formatting, date formatting
-- Acronym usage (defined on first use?)
+- 推奨するブランド用語を正しく使っているか
+- 避けるべき語句が含まれていないか
+- 専門用語の程度が対象読者に合っているか
+- 製品名、機能名、ブランド用語の表記は正しいか（大文字・小文字、書式）
 
-### Without Brand Guidelines (Generic Review)
+#### メッセージの柱
 
-Evaluate the content for:
+- 定義されたメッセージの柱や価値提案と一致しているか
+- 主張が承認済みのメッセージと整合しているか
+- ブランドの位置付けを強めているか、矛盾しているか
 
-#### Clarity
-- Is the main message clear within the first paragraph?
-- Are sentences concise and easy to understand?
-- Is the structure logical and easy to follow?
-- Are there ambiguous statements or unclear references?
+#### スタイルガイドへの準拠
 
-#### Consistency
-- Is the tone consistent throughout?
-- Are terms used consistently (no switching between synonyms for the same concept)?
-- Is formatting consistent (headers, lists, capitalization)?
+- ガイドに沿った文法や句読点（英語ならオックスフォード・コンマ、見出しの大文字表記など）
+- 書式の慣例（見出し、リスト、強調）
+- 数値・日付の表記
+- 略語の扱い（初出時に説明しているか）
 
-#### Professionalism
-- Is the content free of typos, grammatical errors, and awkward phrasing?
-- Is the tone appropriate for the intended audience?
-- Are claims supported or substantiated?
+### ガイドラインがない場合の一般的なレビュー
 
-### Legal and Compliance Flags (Always Checked)
+次の観点を評価します。
 
-Regardless of whether brand guidelines are configured, flag:
-- **Unsubstantiated claims** — superlatives ("best", "fastest", "only") without evidence or qualification
-- **Missing disclaimers** — financial claims, health claims, or guarantees that may need legal disclaimers
-- **Comparative claims** — comparisons to competitors that could be challenged
-- **Regulatory language** — content that may need compliance review (financial services, healthcare, etc.)
-- **Testimonial issues** — quotes or endorsements without attribution or disclosure
-- **Copyright concerns** — content that appears to be closely paraphrased from other sources
+#### 明確さ
 
-## Brand Voice Reference
+- 最初の段落で主要メッセージが分かるか
+- 文が簡潔で理解しやすいか
+- 構成が論理的で追いやすいか
+- 曖昧な主張や参照先が不明な表現がないか
 
-Use these frameworks to evaluate content against brand standards or to help the user document their brand voice.
+#### 一貫性
 
-### Brand Voice Documentation Framework
+- 全体のトーンが統一されているか
+- 同じ概念に複数の同義語を使うなど、用語の揺れがないか
+- 見出し、リスト、大文字表記などの書式が統一されているか
 
-A complete brand voice document should cover these areas:
+#### 業務文書としての適切さ
 
-1. **Brand Personality** — Define the brand as if it were a person. Example: "If our brand were a person, they would be a knowledgeable colleague who explains complex things simply, celebrates your wins genuinely, and never talks down to you."
-2. **Voice Attributes** — 3-5 attributes that define how the brand communicates, each defined with what it means in practice, what it does NOT mean (to prevent misinterpretation), and an example.
-3. **Audience Awareness** — Who the brand is speaking to (primary and secondary), what they care about, their level of expertise, and how they expect to be addressed.
-4. **Core Messaging Pillars** — 3-5 key themes the brand consistently communicates, the hierarchy of these messages, and how each pillar connects to audience needs.
-5. **Tone Spectrum** — How the voice adapts across contexts while remaining recognizably the same brand.
-6. **Style Rules** — Specific grammar, formatting, and language rules.
-7. **Terminology** — Preferred and avoided terms.
+- 誤字、文法の誤り、不自然な言い回しがないか
+- 想定読者に適したトーンか
+- 主張に裏付けがあるか
 
-### Voice Attribute Spectrums
+### 法務・コンプライアンス上の懸念（常に確認）
 
-When defining or evaluating brand voice, position attributes on a spectrum:
+ガイドラインの有無にかかわらず、次を指摘します。
 
-| Spectrum | One End | Other End |
+- **裏付けのない主張**：「最高」「最速」「唯一」など、根拠や条件がない最上級表現
+- **免責事項の不足**：法的な注記が必要になり得る金融・健康に関する主張や保証
+- **比較表現**：異議を受ける可能性がある競合比較
+- **規制に関する表現**：金融、医療など、コンプライアンス確認が必要な内容
+- **推薦コメントの問題**：出典や関係性の開示がない引用・推薦
+- **著作権の懸念**：他の情報源をわずかに言い換えただけに見える内容
+
+## ブランドの語り口の参考資料
+
+次の枠組みを、ブランド基準との照合や、ユーザーによる語り口の文書化に使います。
+
+### 語り口を文書化する枠組み
+
+十分な文書には、次を含めます。
+
+1. **ブランドの人格**：人にたとえて定義する。例：「複雑なことを平易に説明し、相手の成果を心から喜び、見下さない、知識豊かな同僚」。
+2. **表現の特性**：3〜5個の特性について、実際の意味、誤解を防ぐための『意味しないこと』、具体例を定義する。
+3. **対象読者の理解**：主・副の対象、関心事、専門知識の程度、期待される語りかけ方。
+4. **メッセージの柱**：一貫して伝える3〜5のテーマ、その優先順位、読者のニーズとのつながり。
+5. **トーンの幅**：同じブランドと分かる一貫性を保ちながら、場面に応じてどう変えるか。
+6. **表記ルール**：文法、書式、言葉遣いの具体的な規則。
+7. **用語**：推奨する語句と避ける語句。
+
+### 表現の特性の幅
+
+語り口を定義・評価するときは、各特性を次の軸に位置付けます。
+
+| 軸 | 一方の端 | もう一方の端 |
 |----------|---------|-----------|
-| Formality | Formal, institutional | Casual, conversational |
-| Authority | Expert, authoritative | Peer-level, collaborative |
-| Emotion | Warm, empathetic | Direct, matter-of-fact |
-| Complexity | Technical, precise | Simple, accessible |
-| Energy | Bold, energetic | Calm, measured |
-| Humor | Playful, witty | Serious, earnest |
-| Innovation | Cutting-edge, forward-looking | Established, proven |
+| 格式 | 正式、組織的 | 気軽、会話調 |
+| 権威性 | 専門家、権威がある | 対等、協働的 |
+| 感情 | 温かい、共感的 | 直接的、淡々としている |
+| 複雑さ | 技術的、厳密 | 平易、親しみやすい |
+| 活力 | 大胆、活気がある | 落ち着いた、慎重 |
+| ユーモア | 遊び心、機知 | 真剣、誠実 |
+| 革新性 | 先端的、未来志向 | 確立済み、実績重視 |
 
-For each chosen attribute, document it in this format:
+選んだ各特性を、次の形式で記録します。
 
-**[Attribute name]**
-- **We are**: [what this means in practice]
-- **We are not**: [common misinterpretation to avoid]
-- **This sounds like**: [example sentence demonstrating the attribute]
-- **This does NOT sound like**: [example sentence violating the attribute]
+**[特性名]**
+- **目指すもの**：[実際にどう表れるか]
+- **目指さないもの**：[避けたい誤解]
+- **合う表現**：[その特性を示す例文]
+- **合わない表現**：[その特性に反する例文]
 
-Example:
+例：
 
-**Approachable**
-- **We are**: friendly, clear, jargon-free, welcoming to beginners and experts alike
-- **We are not**: dumbed-down, overly casual, or lacking substance
-- **This sounds like**: "Here's how to get started — it takes about five minutes."
-- **This does NOT sound like**: "Yo! This is super easy, even a noob can do it lol."
+**親しみやすさ**
+- **目指すもの**：友好的、明確、専門用語に頼らず、初心者にも専門家にも開かれている
+- **目指さないもの**：内容を薄める、くだけすぎる、中身がない
+- **合う表現**：「始め方をご紹介します。所要時間は約5分です。」
+- **合わない表現**：「超カンタン！ 初心者でも余裕っしょ（笑）」
 
-### Tone Adaptation Across Channels and Contexts
+### チャネルや場面に応じたトーン調整
 
-The brand voice stays consistent, but tone adapts to context. Tone is the emotional inflection applied to the voice.
+語り口は一貫させつつ、トーンは状況に合わせます。トーンは、語り口に加える感情の調子です。
 
-#### Tone by Channel
+#### チャネル別
 
-| Channel | Tone Adaptation | Example |
+| チャネル | トーンの調整 | 例 |
 |---------|----------------|---------|
-| Blog | Informative, conversational, educational | "Let's walk through how this works and why it matters for your team." |
-| Social media (LinkedIn) | Professional, thought-provoking, concise | "Three things we learned from running 50 campaigns this quarter." |
-| Social media (Twitter/X) | Punchy, direct, sometimes witty | "Your landing page has 3 seconds. Make them count." |
-| Email marketing | Personal, helpful, action-oriented | "We put together something we think you'll find useful." |
-| Sales collateral | Confident, benefit-driven, specific | "Teams using our platform reduce reporting time by 40%." |
-| Support/Help docs | Clear, patient, step-by-step | "If you see this error, here's how to fix it." |
-| Press release | Formal, factual, newsworthy | "The company today announced the launch of..." |
-| Error messages | Empathetic, helpful, blame-free | "Something went wrong on our end. We're looking into it." |
+| ブログ | 情報提供、会話調、学びにつながる | 「仕組みと、チームにとって重要な理由を順に見ていきましょう。」 |
+| SNS（LinkedIn） | 業務向け、考えを促す、簡潔 | 「今四半期に50件のキャンペーンを実施して得た、3つの学び。」 |
+| SNS（Twitter/X） | 印象的、直接的、ときに機知 | 「ランディングページの勝負は3秒。その時間を生かしましょう。」 |
+| メールマーケティング | 個別に語りかける、役立つ、行動を促す | 「お役に立ちそうな資料をまとめました。」 |
+| 営業資料 | 自信がある、便益重視、具体的 | 「当社の基盤を利用するチームは、報告作業の時間を40%削減しています。」 |
+| サポート・ヘルプ | 明確、丁寧、手順に沿う | 「このエラーが出た場合は、次の方法で対処できます。」 |
+| プレスリリース | 正式、事実中心、報道価値 | 「当社は本日、〜の提供開始を発表しました。」 |
+| エラーメッセージ | 共感的、役立つ、相手を責めない | 「当社側で問題が発生しました。現在調査しています。」 |
 
-#### Tone by Situation
+#### 状況別
 
-| Situation | Tone Adaptation |
+| 状況 | トーンの調整 |
 |-----------|----------------|
-| Product launch | Excited, confident, forward-looking |
-| Incident or outage | Transparent, empathetic, accountable |
-| Customer success story | Celebratory, specific, crediting the customer |
-| Thought leadership | Authoritative, nuanced, evidence-based |
-| Onboarding | Welcoming, encouraging, clear |
-| Bad news (price increase, deprecation) | Honest, respectful, solution-oriented |
-| Competitive comparison | Confident but fair, fact-based, not disparaging |
+| 製品公開 | 期待感、自信、未来志向 |
+| 障害・停止 | 透明性、共感、責任を持つ姿勢 |
+| 顧客の成功事例 | 成果を喜ぶ、具体的、顧客の貢献を認める |
+| 専門的な知見の発信 | 専門性、細やかさ、根拠重視 |
+| オンボーディング | 歓迎、励まし、明確さ |
+| 好ましくない知らせ（値上げ、廃止） | 正直、敬意、解決志向 |
+| 競合比較 | 自信があり公正、事実中心、中傷しない |
 
-#### Tone Adaptation Rule
-The voice attributes remain fixed. Tone dials them up or down based on context. For example, if a brand is "bold and warm":
-- In a product launch, dial up boldness
-- In an incident response, dial up warmth
-- Neither attribute disappears; the balance shifts
+#### 調整の原則
 
-### Style Guide Enforcement
+表現の特性は固定し、状況に応じて強弱を付けます。たとえば「大胆で温かい」ブランドなら、
 
-#### Grammar and Mechanics
-Document and enforce these choices consistently:
+- 製品公開では大胆さを強める
+- 障害対応では温かさを強める
+- どちらの特性も消さず、バランスを変える
 
-| Rule | Options | Example |
+### スタイルガイドの適用
+
+#### 文法・表記
+
+次の選択を文書化し、一貫して適用します。英語表現の例は、英語原稿を扱う際の基準です。
+
+| ルール | 選択肢 | 例 |
 |------|---------|---------|
-| Oxford comma | Yes / No | "fast, reliable, and secure" vs. "fast, reliable and secure" |
-| Sentence case vs. title case (headings) | Sentence / Title | "How to get started" vs. "How to Get Started" |
-| Contractions | Use / Avoid | "we're" vs. "we are" |
-| Em dash spacing | No spaces / Spaces | "this—and more" vs. "this — and more" |
-| Numbers | Spell out 1-9, numerals 10+ / Always numerals | "five features" vs. "5 features" |
-| Percent | % / percent | "50%" vs. "50 percent" |
-| Date format | Month DD, YYYY / DD/MM/YYYY / etc. | "January 15, 2025" |
-| Time format | 12-hour / 24-hour | "3:00 PM" vs. "15:00" |
-| Lists | Periods / No periods on fragments | "Set up your account." vs. "Set up your account" |
+| オックスフォード・コンマ | 使う・使わない | "fast, reliable, and secure" / "fast, reliable and secure" |
+| 見出しの大文字表記 | 文頭のみ・主要語の語頭 | "How to get started" / "How to Get Started" |
+| 短縮形 | 使う・避ける | "we're" / "we are" |
+| emダッシュ前後の空白 | なし・あり | "this—and more" / "this — and more" |
+| 数値 | 1〜9は綴り、10以上は数字・常に数字 | "five features" / "5 features" |
+| パーセント | %・percent | "50%" / "50 percent" |
+| 日付 | Month DD, YYYY・DD/MM/YYYYなど | "January 15, 2025" |
+| 時刻 | 12時間制・24時間制 | "3:00 PM" / "15:00" |
+| リスト | 句点あり・文の断片は句点なし | "Set up your account." / "Set up your account" |
 
-#### Formatting Conventions
-- Heading hierarchy (when to use H1, H2, H3)
-- Bold and italic usage (bold for emphasis, italic for titles/terms)
-- Link text (descriptive vs. "click here" — always descriptive)
-- Image alt text requirements
-- Code formatting (for technical brands)
-- Callout or highlight box usage
+#### 書式の慣例
 
-#### Punctuation and Emphasis
-- Exclamation mark policy (limited use, never more than one)
-- Ellipsis usage (avoid in most professional contexts)
-- ALL CAPS policy (avoid; use bold for emphasis instead)
-- Emoji usage by channel (professional channels: minimal or none; social: where appropriate)
+- 見出し階層（H1、H2、H3の使い分け）
+- 太字・斜体（強調は太字、作品名や用語は斜体など）
+- リンク文言（常に内容が分かる表現にし、「こちらをクリック」は避ける）
+- 画像の代替テキストの要件
+- コードの書式（技術系ブランド）
+- 注記・強調ボックスの使い方
 
-### Terminology Management
+#### 句読点と強調
 
-#### Preferred Terms
+- 感嘆符の方針（使用を抑え、複数連続はしない）
+- 三点リーダー（業務文書では多くの場合避ける）
+- 英字の全大文字（避け、強調には太字を使う）
+- チャネル別の絵文字（業務向けでは最小限か不使用、SNSでは適切な範囲）
 
-Maintain a list of preferred terms and their incorrect alternatives:
+### 用語管理
 
-| Use This | Not This | Notes |
+#### 推奨用語
+
+推奨表現と誤った代替表現を一覧にします。次は英語表記の例です。
+
+| 推奨 | 非推奨 | 備考 |
 |----------|----------|-------|
-| sign up (verb) | signup (verb) | "signup" is the noun form |
-| log in (verb) | login (verb) | "login" is the noun/adjective form |
-| set up (verb) | setup (verb) | "setup" is the noun/adjective form |
-| email | e-mail | No hyphen |
-| website | web site | One word |
-| data is (singular) | data are | Unless the publication requires plural |
+| sign up（動詞） | signup（動詞） | signupは名詞 |
+| log in（動詞） | login（動詞） | loginは名詞・形容詞 |
+| set up（動詞） | setup（動詞） | setupは名詞・形容詞 |
+| email | e-mail | ハイフンなし |
+| website | web site | 1語 |
+| data is（単数扱い） | data are | 媒体が複数扱いを求める場合を除く |
 
-#### Product and Feature Names
-- Official capitalization for product names
-- When to use the full product name vs. shorthand
-- Whether to use "the" before product names
-- How to handle versioning in copy
-- Trademark and registration symbols (when required and when to omit)
+#### 製品名・機能名
 
-#### Inclusive Language
-- Use gender-neutral language (they/them for unknown individuals)
-- Avoid ableist language ("crazy", "blind spot", "lame")
-- Use person-first language where appropriate
-- Avoid culturally specific idioms that may not translate
-- Use "simple" or "straightforward" instead of "easy" (what is easy varies by person)
+- 製品名の正式な大文字・小文字表記
+- 正式名称と略称の使い分け
+- 製品名の前に英語のtheを付けるか
+- 原稿内でのバージョン表記
+- 商標・登録商標記号の要否
 
-#### Industry Jargon Management
-- Define which technical terms the audience understands without explanation
-- List jargon that should always be defined or replaced with plain language
-- Specify which acronyms need to be spelled out on first use
-- Audience-specific glossary for terms that mean different things to different readers
+#### 包括的な言葉遣い
 
-#### Competitor and Category Terms
-- How to refer to your product category (use your preferred framing)
-- How to refer to competitors (by name or generically)
-- Terms competitors have coined that you should avoid (to prevent reinforcing their positioning)
-- Your preferred differentiation language
+- 性別を決めつけない表現を使う（英語で不明な人物を指す場合はthey/them）
+- 障害を侮蔑する表現を避ける（英語の"crazy"、"blind spot"、"lame"など）
+- 適切な場合は、その人を先に置く表現を使う
+- 翻訳しにくい文化固有の慣用句を避ける
+- 「簡単」の代わりに「シンプル」「手順が明確」などを使う（容易さは人により異なる）
 
-## Output Format
+#### 業界用語の管理
 
-Present the review as:
+- 説明なしで対象者が理解できる専門用語を定義する
+- 必ず説明するか平易な表現に置き換える専門用語を列挙する
+- 初出時に正式名称を示す略語を指定する
+- 読者によって意味が変わる用語は、対象者別の用語集にする
 
-### Summary
-- Overall assessment: how well the content aligns with brand standards (or general quality)
-- 1-2 sentence summary of the biggest strengths
-- 1-2 sentence summary of the most important improvements
+#### 競合名・カテゴリーの表現
 
-### Detailed Findings
+- 自社の製品カテゴリーの呼び方（自社の位置付けに合う表現）
+- 競合の呼び方（固有名か一般的な表現か）
+- 競合の位置付けを強めないため、避けるべき競合発の用語
+- 自社で推奨する差別化の表現
 
-For each issue found, provide:
+## 出力形式
 
-| Issue | Location | Severity | Suggestion |
+次の構成でレビューを提示します。
+
+### 要約
+
+- 全体評価：ブランド基準への適合度、または一般的な品質
+- 主な強みを1〜2文
+- 最も重要な改善点を1〜2文
+
+### 詳細な指摘
+
+各問題について、次を示します。
+
+| 問題 | 箇所 | 重要度 | 提案 |
 |-------|----------|----------|------------|
 
-Where severity is:
-- **High** — contradicts brand voice, contains compliance risk, or significantly undermines messaging
-- **Medium** — inconsistent with guidelines but not damaging
-- **Low** — minor style or preference issue
+重要度は次の通りです。
 
-### Revised Sections
+- **高**：ブランドの語り口と矛盾、コンプライアンス上のリスク、メッセージを大きく損なう問題
+- **中**：ガイドラインと不一致だが、重大な悪影響はない
+- **低**：軽微な表記や好みの問題
 
-For the top 3-5 highest-severity issues, provide a before/after showing the original text and a suggested revision.
+### 修正案
 
-### Legal/Compliance Flags
+重要度が高い上位3〜5件について、元の文章と修正案を対比して示します。
 
-List any legal or compliance concerns separately with recommended actions.
+### 法務・コンプライアンスの懸念
 
-## After Review
+法務上・コンプライアンス上の懸念は、推奨対応とともに分けて列挙します。
 
-Ask: "Would you like me to:
-- Revise the full content with these suggestions applied?
-- Focus on fixing just the high-severity issues?
-- Review additional content against the same guidelines?
-- Help you document your brand voice for future reviews?"
+## レビュー後
+
+「次のような対応が必要ですか？
+- 提案を反映して全文を修正する
+- 重要度が高い問題だけ修正する
+- 同じ基準で別のコンテンツを確認する
+- 今後のレビューに向け、ブランドの語り口を文書化する」

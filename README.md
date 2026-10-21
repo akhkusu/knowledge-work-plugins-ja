@@ -1,80 +1,98 @@
 # Knowledge Work Plugins
 
-Plugins that turn Claude into a specialist for your role, team, and company. Built for [Claude Cowork](https://claude.com/product/cowork), also compatible with [Claude Code](https://claude.com/product/claude-code).
+Claudeを、あなたの職種・チーム・会社に詳しい業務パートナーにするプラグイン集です。[Claude Cowork](https://claude.com/product/cowork)向けに開発されており、[Claude Code](https://claude.com/product/claude-code)でも利用できます。
 
-## Why Plugins
+## この日本語版の対象
 
-Cowork lets you set the goal and Claude delivers finished, professional work. Plugins let you go further: tell Claude how you like work done, which tools and data to pull from, how to handle critical workflows, and what slash commands to expose — so your team gets better and more consistent outcomes.
+セールス、CS（カスタマーサポート）、マーケティングを優先して日本語化しています。各領域のREADME、スキル、コネクターの説明は、次のページから確認できます。
 
-Each plugin bundles the skills, connectors, slash commands, and sub-agents for a specific job function. Out of the box, they give Claude a strong starting point for helping anyone in that role. The real power comes when you customize them for your company — your tools, your terminology, your processes — so Claude works like it was built for your team.
+- [セールス](sales/README.md)：顧客調査、商談準備、営業メール、案件管理、売上予測
+- [CS（カスタマーサポート）](customer-support/README.md)：問い合わせ対応、回答案、エスカレーション、ナレッジ整備
+- [マーケティング](marketing/README.md)：コンテンツ作成、キャンペーン計画、ブランド確認、効果分析
 
-## Plugin Marketplace
+ファイル名、コマンド名、スキルの識別子、設定キーは英語のまま維持しています。上記以外の領域や、リンク先の外部資料には英語の内容が残っています。
 
-We're open-sourcing 11 plugins built and inspired by our own work:
+## プラグインでできること
 
-| Plugin | How it helps | Connectors |
+Coworkでは、目標を伝えるとClaudeが実務で使える成果物を作成します。プラグインを使うと、仕事の進め方、参照するツールやデータ、重要な業務手順、利用可能なスラッシュコマンドを指定できます。チーム全体で、より一貫した業務品質を実現するための仕組みです。
+
+各プラグインは、特定の職種で使うスキル、コネクター、スラッシュコマンド、サブエージェントをまとめたものです。そのままでも業務の出発点として使えますが、自社のツール、用語、手順に合わせて調整すると、さらに役立ちます。
+
+## プラグインの一覧
+
+私たち自身の業務経験をもとに開発した、次の11種類のプラグインをオープンソースで公開しています。
+
+| プラグイン | 主な用途 | 接続先の例 |
 |--------|-------------|------------|
-| **[productivity](./productivity)** | Manage tasks, calendars, daily workflows, and personal context so you spend less time repeating yourself. | Slack, Notion, Asana, Linear, Jira, Monday, ClickUp, Microsoft 365 |
-| **[sales](./sales)** | Research prospects, prep for calls, review your pipeline, draft outreach, and build competitive battlecards. | Slack, HubSpot, Close, Clay, ZoomInfo, Notion, Jira, Fireflies, Microsoft 365 |
-| **[customer-support](./customer-support)** | Triage tickets, draft responses, package escalations, research customer context, and turn resolved issues into knowledge base articles. | Slack, Intercom, HubSpot, Guru, Jira, Notion, Microsoft 365 |
-| **[product-management](./product-management)** | Write specs, plan roadmaps, synthesize user research, keep stakeholders updated, and track the competitive landscape. | Slack, Linear, Asana, Monday, ClickUp, Jira, Notion, Figma, Amplitude, Pendo, Intercom, Fireflies |
-| **[marketing](./marketing)** | Draft content, plan campaigns, enforce brand voice, brief on competitors, and report on performance across channels. | Slack, Canva, Figma, HubSpot, Amplitude, Notion, Ahrefs, SimilarWeb, Klaviyo |
-| **[legal](./legal)** | Review contracts, triage NDAs, navigate compliance, assess risk, prep for meetings, and draft templated responses. | Slack, Box, Egnyte, Jira, Microsoft 365 |
-| **[finance](./finance)** | Prep journal entries, reconcile accounts, generate financial statements, analyze variances, manage close, and support audits. | Snowflake, Databricks, BigQuery, Slack, Microsoft 365 |
-| **[data](./data)** | Query, visualize, and interpret datasets — write SQL, run statistical analysis, build dashboards, and validate your work before sharing. | Snowflake, Databricks, BigQuery, Definite, Hex, Amplitude, Jira |
-| **[enterprise-search](./enterprise-search)** | Find anything across email, chat, docs, and wikis — one query across all your company's tools. | Slack, Notion, Guru, Jira, Asana, Microsoft 365 |
-| **[bio-research](./bio-research)** | Connect to preclinical research tools and databases (literature search, genomics analysis, target prioritization) to accelerate early-stage life sciences R&D. | PubMed, BioRender, bioRxiv, ClinicalTrials.gov, ChEMBL, Synapse, Wiley, Owkin, Open Targets, Benchling |
-| **[cowork-plugin-management](./cowork-plugin-management)** | Create new plugins or customize existing ones for your organization's specific tools and workflows. | — |
+| **[productivity](./productivity)** | タスク、予定、日々の業務、自分の仕事に関する情報を管理し、毎回背景を説明する手間を減らします。 | Slack、Notion、Asana、Linear、Jira、Monday、ClickUp、Microsoft 365 |
+| **[sales](./sales)** | 見込み顧客の調査、商談準備、案件の進捗確認、営業メールの下書き、競合比較資料の作成を支援します。 | Slack、HubSpot、Close、Clay、ZoomInfo、Notion、Jira、Fireflies、Microsoft 365 |
+| **[customer-support](./customer-support)** | 問い合わせの振り分け、回答案の作成、エスカレーション資料の整理、顧客情報の調査、解決事例のナレッジ化を支援します。 | Slack、Intercom、HubSpot、Guru、Jira、Notion、Microsoft 365 |
+| **[product-management](./product-management)** | 仕様書やロードマップの作成、ユーザー調査の整理、関係者への進捗共有、競合動向の把握を支援します。 | Slack、Linear、Asana、Monday、ClickUp、Jira、Notion、Figma、Amplitude、Pendo、Intercom、Fireflies |
+| **[marketing](./marketing)** | コンテンツ作成、施策の計画、ブランド表現の統一、競合調査、チャネル別の効果報告を支援します。 | Slack、Canva、Figma、HubSpot、Amplitude、Notion、Ahrefs、SimilarWeb、Klaviyo |
+| **[legal](./legal)** | 契約書のレビュー、秘密保持契約の一次確認、コンプライアンス対応、リスク評価、会議準備、定型回答の作成を支援します。 | Slack、Box、Egnyte、Jira、Microsoft 365 |
+| **[finance](./finance)** | 仕訳の準備、勘定照合、財務諸表の作成、予実差異の分析、決算管理、監査対応を支援します。 | Snowflake、Databricks、BigQuery、Slack、Microsoft 365 |
+| **[data](./data)** | SQLの作成、統計分析、可視化、ダッシュボードの構築、共有前の検証を通じて、データから示唆を得る作業を支援します。 | Snowflake、Databricks、BigQuery、Definite、Hex、Amplitude、Jira |
+| **[enterprise-search](./enterprise-search)** | メール、チャット、ドキュメント、Wikiを横断して、必要な情報をまとめて検索します。 | Slack、Notion、Guru、Jira、Asana、Microsoft 365 |
+| **[bio-research](./bio-research)** | 文献検索、ゲノム解析、研究標的の優先順位付けなど、前臨床の生命科学研究を支援します。 | PubMed、BioRender、bioRxiv、ClinicalTrials.gov、ChEMBL、Synapse、Wiley、Owkin、Open Targets、Benchling |
+| **[cowork-plugin-management](./cowork-plugin-management)** | 新しいプラグインの作成や、自社のツールと業務フローに合わせた既存プラグインの調整を支援します。 | — |
 
-Install these directly from Cowork, browse the full collection here on GitHub, or build your own.
+Coworkから直接インストールすることも、このGitHubリポジトリで内容を確認することも、独自のプラグインを作ることもできます。
 
-## Getting Started
+## はじめに
 
-### Cowork
+### Coworkで使う
 
-Install plugins from [claude.com/plugins](https://claude.com/plugins/).
+[claude.com/plugins](https://claude.com/plugins/)からプラグインをインストールします。
 
-### Claude Code
+### Claude Codeで使う
 
 ```bash
-# Add the marketplace first
+# マーケットプレイスを追加
 claude plugin marketplace add anthropics/knowledge-work-plugins
 
-# Then install a specific plugin
+# 使いたいプラグインをインストール
 claude plugin install sales@knowledge-work-plugins
 ```
 
-Once installed, plugins activate automatically. Skills fire when relevant, and slash commands are available in your session (e.g., `/sales:call-prep`, `/data:write-query`).
+上記は原版マーケットプレイスのインストール例です。この日本語版のファイルを使う場合は、このチェックアウトにあるプラグインを読み込んでください。Claude Codeでは、たとえば次のようにローカルのプラグインディレクトリを指定できます。
 
-## How Plugins Work
-
-Every plugin follows the same structure:
-
+```bash
+claude --plugin-dir ./sales
 ```
+
+インストールすると、関連する場面でスキルが自動的に使われます。スラッシュコマンドも利用できます（例：`/sales:call-prep`、`/data:write-query`）。
+
+## プラグインの構成
+
+各プラグインは、基本的に次の構成になっています。
+
+```text
 plugin-name/
-├── .claude-plugin/plugin.json   # Manifest
-├── .mcp.json                    # Tool connections
-├── commands/                    # Slash commands you invoke explicitly
-└── skills/                      # Domain knowledge Claude draws on automatically
+├── .claude-plugin/plugin.json   # プラグインの定義
+├── .mcp.json                    # ツール接続の設定
+├── commands/                    # 明示的に実行するスラッシュコマンド
+└── skills/                      # Claudeが必要に応じて参照する専門知識
 ```
 
-- **Skills** encode the domain expertise, best practices, and step-by-step workflows Claude needs to give you useful help. Claude draws on them automatically when relevant.
-- **Commands** are explicit actions you trigger (e.g., `/finance:reconciliation`, `/product-management:write-spec`).
-- **Connectors** wire Claude to the external tools your role depends on — CRMs, project trackers, data warehouses, design tools, and more — via [MCP servers](https://modelcontextprotocol.io/).
+- **スキル**：分野ごとの専門知識、実務上の推奨事項、作業手順をまとめます。Claudeが関連する場面で参照します。
+- **コマンド**：明示的に呼び出す操作です。例：`/finance:reconciliation`、`/product-management:write-spec`。
+- **コネクター**：[MCPサーバー](https://modelcontextprotocol.io/)を通じて、CRM、プロジェクト管理ツール、データウェアハウス、デザインツールなどに接続します。
 
-Every component is file-based — markdown and JSON, no code, no infrastructure, no build steps.
+中心となる構成要素はMarkdownとJSONです。プラグイン本体に共通のビルド工程や専用インフラはありません。一部のスキルに付属する補助スクリプトは、用途に応じて別途実行環境が必要です。
 
-## Making Them Yours
+## 自社の業務に合わせる
 
-These plugins are generic starting points. They become much more useful when you customize them for how your company actually works:
+これらのプラグインは、幅広い組織で使える出発点です。次のように調整できます。
 
-- **Swap connectors** — Edit `.mcp.json` to point at your specific tool stack.
-- **Add company context** — Drop your terminology, org structure, and processes into skill files so Claude understands your world.
-- **Adjust workflows** — Modify skill instructions to match how your team actually does things, not how a textbook says to.
-- **Build new plugins** — Use the `cowork-plugin-management` plugin or follow the structure above to create plugins for roles and workflows we haven't covered yet.
+- **接続先を変更する**：`.mcp.json`を編集し、自社で使っているツールに接続します。
+- **社内情報を追加する**：用語、組織構成、業務手順をスキルファイルに記載します。
+- **業務フローを調整する**：現場の進め方に合わせて、スキルの指示を変更します。
+- **新しいプラグインを作成する**：`cowork-plugin-management`プラグインや、上記の構成を参考にします。
 
-As your team builds and shares plugins, Claude becomes a cross-functional expert. The context you define gets baked into every relevant interaction, so leaders and admins can spend less time enforcing processes and more time improving them.
+日本の業務で使う場合は、会計年度、日付・時刻、通貨、敬語、社内承認の手順などを自社の運用に合わせて指定してください。法務・会計・人事の記述に含まれる海外の制度名や規制は、日本の制度に自動的に置き換わるものではありません。対象の法域や適用する基準を確認して使ってください。
 
-## Contributing
+チームでプラグインを作成・共有すると、会社固有の知識や手順を日々の作業に反映しやすくなります。
 
-Plugins are just markdown files. Fork the repo, make your changes, and submit a PR.
+## コントリビューション
+
+リポジトリをフォークし、Markdownなどのファイルを編集して、プルリクエストを送ってください。ファイル名、スキルの識別子、コマンド名、設定キーは英語のまま維持できます。

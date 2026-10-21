@@ -1,7 +1,7 @@
 {
   "name": "sales",
   "version": "2.0.1",
-  "description": "Sales skills that work with the tools your team already uses - your CRM, email, calendar, chat and call recorder - or with uploaded files. Prep calls, summarize and follow up, research accounts, review deals and pipeline, and write the forecast. When you ask, it can update CRM records, create email drafts or send email, post to chat and book meetings through your connected tools.",
+  "description": "チームで日頃使っているCRM、メール、カレンダー、チャット、商談録画ツールや、アップロードしたファイルを活用する営業スキルです。商談の準備、要約とフォローアップ、顧客企業の調査、案件・営業パイプラインの確認、売上予測の作成を支援します。依頼に応じて、接続済みのツールからCRMの更新、メールの下書き作成や送信、チャットへの投稿、会議の予約も行えます。",
   "author": {
     "name": "Anthropic"
   }

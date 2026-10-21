@@ -1,20 +1,20 @@
-# Connectors
+# コネクター
 
-## How tool references work
+## ツール参照の仕組み
 
-Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~marketing automation` might mean HubSpot, Marketo, or any other marketing platform with an MCP server.
+プラグインでは、各カテゴリーでユーザーが接続したツールを表すプレースホルダーとして`~~category`を使います。たとえば`~~marketing automation`は、HubSpot、Marketo、またはMCPサーバーを備えた他のマーケティング基盤を意味します。
 
-Plugins are **tool-agnostic** — they describe workflows in terms of categories (design, SEO, email marketing, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
+プラグインは**特定のツールに依存しません**。製品名ではなく、デザイン、SEO、メールマーケティングなどのカテゴリーで業務手順を記述します。`.mcp.json`には特定のMCPサーバーが事前設定されていますが、同じカテゴリーの他のMCPサーバーも利用できます。
 
-## Connectors for this plugin
+## このプラグインのコネクター
 
-| Category | Placeholder | Included servers | Other options |
+| カテゴリー | プレースホルダー | 同梱のサーバー | その他の選択肢 |
 |----------|-------------|-----------------|---------------|
-| Chat | `~~chat` | Slack | Microsoft Teams |
-| Design | `~~design` | Canva, Figma | Adobe Creative Cloud |
-| Marketing automation | `~~marketing automation` | HubSpot | Marketo, Pardot, Mailchimp |
-| Product analytics | `~~product analytics` | Amplitude | Mixpanel, Google Analytics |
-| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru |
+| チャット | `~~chat` | Slack | Microsoft Teams |
+| デザイン | `~~design` | Canva, Figma | Adobe Creative Cloud |
+| マーケティング自動化 | `~~marketing automation` | HubSpot | Marketo, Pardot, Mailchimp |
+| プロダクト分析 | `~~product analytics` | Amplitude | Mixpanel, Google Analytics |
+| ナレッジベース | `~~knowledge base` | Notion | Confluence, Guru |
 | SEO | `~~SEO` | Ahrefs, Similarweb | Semrush, Moz |
-| Email marketing | `~~email marketing` | Klaviyo | Mailchimp, Brevo, Customer.io |
-| Marketing analytics | `~~marketing analytics` | Supermetrics | Google Analytics, Mailchimp, Semrush |
+| メールマーケティング | `~~email marketing` | Klaviyo | Mailchimp, Brevo, Customer.io |
+| マーケティング分析 | `~~marketing analytics` | Supermetrics | Google Analytics, Mailchimp, Semrush |

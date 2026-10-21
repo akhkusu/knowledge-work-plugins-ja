@@ -1,90 +1,100 @@
-# Marketing Plugin
+# マーケティング・プラグイン
 
-A marketing plugin primarily designed for [Cowork](https://claude.com/product/cowork), Anthropic's agentic desktop application — though it also works in Claude Code. Content creation, campaign planning, brand voice management, competitive analysis, and performance reporting.
+Anthropicのエージェント型デスクトップアプリ[Cowork](https://claude.com/product/cowork)向けのマーケティング用プラグインです。Claude Codeでも利用できます。コンテンツ制作、キャンペーン計画、ブランドの語り口の管理、競合分析、効果報告を支援します。
 
-## Installation
+## インストール
 
 ```bash
 claude plugin marketplace add anthropics/knowledge-work-plugins
 claude plugin install marketing@knowledge-work-plugins
 ```
 
-## Commands
+上記は原版マーケットプレイスのインストール例です。この日本語版は、リポジトリのルートで次のように読み込めます。
 
-| Command | Description |
+```bash
+claude --plugin-dir ./marketing
+```
+
+## 日本語での利用
+
+説明、下書き、成果物は原則として日本語で作成します。別の言語を指定された場合は、その指定に従います。日本語コンテンツの長さは文字数や媒体の制限で指定してください。元資料の語数を、そのまま文字数に換算しません。日時、通貨、会計年度などは、自社の設定と対象地域を確認して扱います。
+
+## コマンド
+
+| コマンド | 説明 |
 |---|---|
-| `/draft-content` | Draft blog posts, social media, email newsletters, landing pages, press releases, and case studies |
-| `/campaign-plan` | Generate a full campaign brief with objectives, channels, content calendar, and success metrics |
-| `/brand-review` | Review content against your brand voice, style guide, and messaging pillars |
-| `/competitive-brief` | Research competitors and generate a positioning and messaging comparison |
-| `/performance-report` | Build a marketing performance report with key metrics, trends, and optimization recommendations |
-| `/seo-audit` | Run a comprehensive SEO audit — keyword research, on-page analysis, content gaps, technical checks, and competitor comparison |
-| `/email-sequence` | Design and draft multi-email sequences for nurture flows, onboarding, drip campaigns, and more |
+| `/draft-content` | ブログ、SNS投稿、メールマガジン、ランディングページ、プレスリリース、導入事例の下書き |
+| `/campaign-plan` | 目的、チャネル、コンテンツカレンダー、成功指標を含むキャンペーン企画書の作成 |
+| `/brand-review` | ブランドの語り口、スタイルガイド、メッセージの柱に照らした内容の確認 |
+| `/competitive-brief` | 競合調査と、ポジショニング・メッセージの比較 |
+| `/performance-report` | 主要指標、傾向、改善提案を含むマーケティング効果レポートの作成 |
+| `/seo-audit` | キーワード調査、ページ内分析、コンテンツの不足、技術面、競合比較を含むSEO監査 |
+| `/email-sequence` | 見込み顧客の育成、オンボーディング、ステップ配信などの連続メールの設計と下書き |
 
-## Skills
+## スキル
 
-| Skill | Description |
+| スキル | 説明 |
 |---|---|
-| `content-creation` | Content type templates, writing best practices by channel, SEO fundamentals, headline formulas, and CTA guidance |
-| `campaign-planning` | Campaign frameworks, channel selection, content calendar creation, budget allocation, and success metrics |
-| `brand-voice` | Brand voice documentation, voice attributes, tone adaptation, style guide enforcement, and terminology management |
-| `competitive-analysis` | Competitive research methodology, messaging comparison, content gap analysis, positioning, and battlecard creation |
-| `performance-analytics` | Key metrics by channel, reporting templates, trend analysis, attribution modeling, and optimization frameworks |
+| `content-creation` | コンテンツ別テンプレート、チャネル別の書き方、SEOの基礎、見出しの型、CTAの指針 |
+| `campaign-planning` | キャンペーンの枠組み、チャネル選定、コンテンツカレンダー、予算配分、成功指標 |
+| `brand-voice` | ブランドの語り口の文書化、表現の特性、トーンの調整、スタイルガイドの適用、用語管理 |
+| `competitive-analysis` | 競合調査の方法、メッセージ比較、コンテンツの不足分析、ポジショニング、競合対策資料の作成 |
+| `performance-analytics` | チャネル別の主要指標、報告テンプレート、傾向分析、アトリビューション、改善の枠組み |
 
-## Example Workflows
+## 利用例
 
-### Drafting a Blog Post
+### ブログ記事の下書き
 
 ```
 > /draft-content
-Type: blog post
-Topic: How AI is transforming B2B marketing
-Audience: Marketing directors at mid-market SaaS companies
-Key messages: AI saves time on repetitive tasks, improves personalization, requires human oversight
-Tone: Authoritative but approachable
-Length: 1200 words
+種類: ブログ記事
+テーマ: AIはB2Bマーケティングをどう変えるか
+読者: 中堅SaaS企業のマーケティング責任者
+主なメッセージ: AIは反復作業を効率化し、個別最適化を改善するが、人による確認が必要
+トーン: 専門性があり、親しみやすい
+長さ: 1,200語
 ```
 
-Claude will generate a structured blog post draft with an engaging headline, introduction with a hook, organized sections, SEO-optimized subheadings, and a clear call to action.
+Claudeは、読者を引きつける見出し、導入、整理された本文、SEOを考慮した小見出し、明確な行動喚起を含む記事案を作成します。
 
-### Planning a Campaign
+### キャンペーンの計画
 
 ```
 > /campaign-plan
-Goal: Drive 500 signups for our new product launch
-Audience: Technical decision-makers at enterprise companies
-Timeline: 6 weeks
-Budget range: $20,000-$30,000
+目標: 新製品の公開に合わせて登録500件を獲得する
+対象: 大企業の技術部門の意思決定者
+期間: 6週間
+予算の目安: $20,000-$30,000
 ```
 
-Claude will produce a campaign brief covering objectives, audience segmentation, key messages, channel strategy, a week-by-week content calendar, and KPIs to track.
+Claudeは、目的、対象者の区分、主要メッセージ、チャネル戦略、週別のコンテンツカレンダー、追跡するKPIをまとめます。
 
-### Reviewing Content Against Brand Guidelines
+### ブランドガイドラインとの整合性確認
 
 ```
 > /brand-review
-[paste your draft content]
+[下書きを貼り付け]
 ```
 
-If your brand style guide is configured in local settings, Claude will check your content against voice, tone, terminology, and messaging pillars. If not configured, Claude will ask about your guidelines or provide a generic review for clarity, consistency, and professionalism.
+ローカル設定にブランドのスタイルガイドがある場合は、語り口、トーン、用語、メッセージの柱との整合性を確認します。未設定の場合は、ガイドラインを確認するか、明確さ、一貫性、業務文書としての適切さを一般的な観点から確認します。
 
-## Configuration
+## 設定
 
-Configure your brand voice, style guide, and target personas in a local settings file for personalized output. This allows commands like `/draft-content` and `/brand-review` to automatically apply your brand standards without prompting each time.
+ローカル設定ファイルに、ブランドの語り口、スタイルガイド、対象ペルソナを設定すると、出力を自社向けに調整できます。`/draft-content`や`/brand-review`で、毎回確認せずにブランド基準を適用できます。
 
-## MCP Integrations
+## MCP連携
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続されているツールを確認したい場合は、[CONNECTORS.md](CONNECTORS.md)を参照してください。
 
-This plugin works with the following MCP servers:
+次のMCPサーバーに対応しています。
 
-- **Slack** — Share drafts, reports, and briefs with your team
-- **Canva** — Create and edit design assets
-- **Figma** — Access design files and brand assets
-- **HubSpot** — Pull campaign data, manage contacts, and track marketing automation
-- **Amplitude** — Pull product analytics and user behavior data for performance reporting
-- **Notion** — Access briefs, style guides, and campaign documents
-- **Ahrefs** — SEO keyword research, backlink analysis, and site audits
-- **Similarweb** — Competitive traffic analysis and market benchmarking
-- **Klaviyo** — Draft and review email marketing sequences and campaigns
-- **Supermetrics** — Pull marketing data from multiple platforms for analytics and reporting
+- **Slack**：下書き、レポート、企画書をチームで共有
+- **Canva**：デザイン素材の作成・編集
+- **Figma**：デザインファイルやブランド素材の参照
+- **HubSpot**：キャンペーンデータの取得、連絡先管理、マーケティング自動化の追跡
+- **Amplitude**：効果報告に使うプロダクト分析・ユーザー行動データの取得
+- **Notion**：企画書、スタイルガイド、キャンペーン文書の参照
+- **Ahrefs**：SEOキーワード調査、被リンク分析、サイト監査
+- **Similarweb**：競合のトラフィック分析と市場比較
+- **Klaviyo**：メール施策やキャンペーンの下書き・レビュー
+- **Supermetrics**：複数のプラットフォームから分析・報告用のマーケティングデータを取得

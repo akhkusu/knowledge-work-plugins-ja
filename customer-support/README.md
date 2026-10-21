@@ -1,140 +1,150 @@
-# Customer Support Plugin
+# カスタマーサポートプラグイン
 
-A customer support plugin primarily designed for [Cowork](https://claude.com/product/cowork), Anthropic's agentic desktop application — though it also works in Claude Code. Provides ticket triage, escalation management, response drafting, customer research, and knowledge base authoring for support teams.
+Anthropicのエージェント型デスクトップアプリ[Cowork](https://claude.com/product/cowork)を主な対象とした、カスタマーサポート用プラグインです。Claude Codeでも利用できます。問い合わせの分類・優先順位付け、エスカレーション管理、返信の下書き、顧客に関する調査、ナレッジ記事の作成を支援します。
 
-## Installation
+## インストール
 
 ```
 claude plugin marketplace add anthropics/knowledge-work-plugins
 claude plugin install customer-support@knowledge-work-plugins
 ```
 
-## What It Does
+上記は原版マーケットプレイスのインストール例です。この日本語版を使うには、リポジトリのルートで次のように読み込みます。
 
-This plugin turns Claude into a customer support co-pilot. It helps you:
+```bash
+claude --plugin-dir ./customer-support
+```
 
-- **Triage incoming tickets** with structured categorization, priority assessment, and routing recommendations
-- **Research customer questions** by synthesizing information from multiple sources with confidence scoring
-- **Draft professional responses** tailored to the situation, urgency, and communication channel
-- **Package escalations** with full context, reproduction steps, and business impact for engineering or product
-- **Write KB articles** from resolved issues to reduce future ticket volume
+## 日本語での利用
 
-## Commands
+- 説明、返信案、成果物は原則として日本語で作成します。別の言語を指定された場合は、その指定に従います。
+- 顧客向けの文章には、丁寧で分かりやすい敬語を使います。
+- 謝罪、補償、対応期限の記載は、確認済みの事実と担当者の権限の範囲にとどめます。
+- 日時、通貨、SLAは自社の設定と契約内容を確認し、勝手に換算・変更しません。
 
-| Command | Description |
+## できること
+
+Claudeをカスタマーサポート業務のアシスタントとして活用できます。
+
+- **問い合わせの一次対応**：体系的な分類、優先度の評価、適切な担当への振り分けを提案します。
+- **顧客の質問に関する調査**：複数の情報源を照合し、確度を示して回答をまとめます。
+- **適切な返信の下書き**：状況、緊急度、連絡手段に合わせた、丁寧で分かりやすい文章を作成します。
+- **エスカレーション資料の作成**：開発・プロダクト部門に引き継げるよう、背景、再現手順、事業への影響を整理します。
+- **ナレッジ記事の作成**：解決済みの問い合わせを記事にして、同じ問い合わせの再発を減らします。
+
+## コマンド
+
+| コマンド | 説明 |
 |---|---|
-| `/triage` | Categorize, prioritize, and route a support ticket or customer issue |
-| `/research` | Multi-source research on a customer question or topic |
-| `/draft-response` | Draft a customer-facing response for any situation |
-| `/escalate` | Package an escalation for engineering, product, or leadership |
-| `/kb-article` | Draft a knowledge base article from a resolved issue |
+| `/triage` | 問い合わせや顧客の問題を分類し、優先度と振り分け先を提案します。 |
+| `/research` | 顧客の質問やテーマを複数の情報源で調査します。 |
+| `/draft-response` | さまざまな状況に合わせて顧客向け返信を下書きします。 |
+| `/escalate` | 開発・プロダクト部門や責任者向けの引き継ぎ資料を作成します。 |
+| `/kb-article` | 解決済みの問題からナレッジ記事を下書きします。 |
 
-## Skills
+## スキル
 
-| Skill | Description |
+| スキル | 説明 |
 |---|---|
-| `ticket-triage` | Category taxonomy, priority framework (P1-P4), routing rules, duplicate detection |
-| `customer-research` | Multi-source research methodology, source prioritization, answer synthesis |
-| `response-drafting` | Communication best practices, tone guidelines, templates for common scenarios |
-| `escalation` | Escalation tiers, structured escalation format, impact assessment, follow-up cadence |
-| `knowledge-management` | Article structure standards, writing for searchability, review cadence, maintenance |
+| `ticket-triage` | 問い合わせの分類、優先度の基準（P1〜P4）、振り分けルール、重複の検出 |
+| `customer-research` | 複数情報源での調査手順、情報源の優先順位、回答の統合 |
+| `response-drafting` | 顧客対応の実務上のポイント、文体の指針、よくある場面のテンプレート |
+| `escalation` | エスカレーションの段階、引き継ぎ書式、影響評価、フォローアップの頻度 |
+| `knowledge-management` | 記事構成の基準、検索しやすい書き方、レビュー頻度、保守 |
 
-## Data Sources
+## データソース
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続済みツールを確認したい場合は、[CONNECTORS.md](CONNECTORS.md)を参照してください。
 
-Connect your support platform, knowledge base, and communication tools for the best experience. Without them, provide customer context manually.
+サポート管理ツール、ナレッジベース、コミュニケーションツールを接続すると、より便利に使えます。未接続の場合は、顧客の背景情報を手動で提供してください。
 
-**Included MCP connections:**
-- Chat (Slack) for internal discussions and customer channel context
-- Support platform (Intercom) for ticket history and customer conversations
-- CRM (HubSpot) for account details and contact information
-- Knowledge base (Guru, Notion) for internal documentation and runbooks
-- Project tracker (Atlassian) for bug reports and feature requests
-- Email and cloud storage (Microsoft 365) for customer correspondence
+**同梱されているMCP接続：**
+- チャット（Slack）：社内の議論や顧客用チャンネルの背景確認
+- サポート管理（Intercom）：問い合わせ履歴と顧客との会話
+- CRM（HubSpot）：企業情報と担当者情報
+- ナレッジベース（Guru、Notion）：社内文書と運用手順書
+- プロジェクト管理（Atlassian）：不具合報告と機能要望
+- メール・クラウドストレージ（Microsoft 365）：顧客とのやり取り
 
-**Additional options:**
-- See [CONNECTORS.md](CONNECTORS.md) for alternative tools in each category
+**その他の選択肢：**
+- 分類ごとの代替ツールは[CONNECTORS.md](CONNECTORS.md)を参照してください。
 
-## Example Workflows
+## 利用例
 
-### Triaging an Incoming Ticket
-
-```
-You: /triage Customer says their dashboard has been showing a blank
-     page since this morning — they're on the Enterprise plan
-
-Claude: Analyzing the issue...
-
-## Triage: Dashboard blank page — Enterprise customer
-
-**Category:** Bug
-**Priority:** P2 — High (core feature broken, enterprise customer)
-**Product area:** Dashboard / Frontend
-
-### Routing Recommendation
-Route to: Tier 2 Support (investigate browser/account specifics,
-then escalate to Engineering if reproducible)
-
-### Suggested Initial Response
-[Draft acknowledging the issue, asking clarifying questions
-about browser and any recent changes, offering status page link]
-```
-
-### Researching a Customer Question
+### 新しい問い合わせの一次対応
 
 ```
-You: /research Does our platform support SSO with Okta?
+利用者：/triage Enterpriseプランのお客様から、今朝からダッシュボードが
+        真っ白になっているとの連絡がありました。
 
-Claude: Let me check across available sources...
+Claude：問題を分析します。
 
-[Searches docs, knowledge base, previous conversations,
- and web sources — synthesizes answer with confidence
- level and source attribution]
+## 一次対応：ダッシュボードが空白 — Enterpriseプランのお客様
+
+**分類：** 不具合
+**優先度：** P2 — 高（主要機能が動かず、Enterpriseのお客様に影響）
+**製品領域：** ダッシュボード／フロントエンド
+
+### 振り分け先の提案
+2次サポートへ：ブラウザーやアカウント固有の条件を調査し、
+再現する場合は開発部門にエスカレーションします。
+
+### 初回返信案
+[問題を受け止め、ブラウザーや最近の変更について確認し、
+稼働状況ページのリンクを案内する下書き]
 ```
 
-### Packaging an Escalation
+### 顧客からの質問を調べる
 
 ```
-You: /escalate API returning 500 errors intermittently — 3
-     Enterprise customers reported this week
+利用者：/research 当社のサービスはOktaのSSOに対応していますか？
 
-Claude: I'll gather context and build the escalation brief...
+Claude：利用できる情報源を確認します。
 
-[Pulls ticket history, identifies affected accounts,
- structures reproduction steps, assesses business impact,
- and generates a structured escalation for engineering]
+[製品文書、ナレッジベース、過去の会話、Webを検索し、
+ 確度と出典を明記した回答をまとめる]
 ```
 
-### Drafting a Response
+### エスカレーション資料をまとめる
 
 ```
-You: /draft-response Customer escalation — their integration
-     has been down for 2 days and they're frustrated
+利用者：/escalate APIで500エラーが断続的に発生しています。
+        今週、Enterpriseプランの3社から報告がありました。
 
-Claude: [Generates empathetic, professional response acknowledging
- the frustration, taking ownership, providing a clear action
- plan with timeline, and offering a call]
+Claude：背景情報を集め、引き継ぎ資料を作成します。
+
+[問い合わせ履歴を確認し、影響を受ける顧客を特定。
+ 再現手順と事業への影響を整理し、開発部門向けの資料を作成する]
 ```
 
-### Writing a KB Article
+### 返信を下書きする
 
 ```
-You: /kb-article How to configure webhook notifications —
-     just resolved this for the third customer this month
+利用者：/draft-response エスカレーション中のお客様です。
+        連携機能が2日間停止しており、強い不満をお持ちです。
 
-Claude: [Generates a structured how-to article with prerequisites,
- step-by-step instructions, verification steps, and common
- issues — optimized for search]
+Claude：[不満を受け止め、責任を持って対応する姿勢を示し、
+ 具体的な対応計画と予定を説明し、必要に応じて通話を提案する
+ 丁寧な返信を作成する]
 ```
 
-## Configuration
+### ナレッジ記事を作成する
 
-The plugin works out of the box with the included MCP connections. For the richest experience, connect additional data sources through your Claude settings:
+```
+利用者：/kb-article Webhook通知の設定方法。
+        今月、同じ内容で3社のお問い合わせを解決しました。
 
-1. **Support platform**: Add your ticketing system for ticket history and customer context
-2. **Knowledge base**: Add your wiki for internal documentation and existing KB articles
-3. **Project tracker**: Add your issue tracker for bug reports and feature requests
-4. **CRM**: Add your CRM for account details and contact information
+Claude：[前提条件、具体的な手順、動作確認、よくある問題を含み、
+ 検索しやすい構成の操作ガイドを作成する]
+```
 
-Without these connections, the plugin will ask you to provide context manually and offer frameworks and templates you can fill in with your own data.
+## 設定
+
+同梱のMCP接続を利用できます。より多くの情報を活用するには、Claudeの設定から追加のデータソースを接続してください。
+
+1. **サポート管理ツール**：問い合わせ履歴と顧客の背景を確認するため、チケット管理システムを追加します。
+2. **ナレッジベース**：社内文書と既存記事を参照するため、Wikiを追加します。
+3. **プロジェクト管理**：不具合報告と機能要望を確認するため、課題管理ツールを追加します。
+4. **CRM**：企業情報と連絡先を確認するため、CRMを追加します。
+
+未接続の場合は、必要な背景情報を手動で提供するよう案内し、自社のデータを記入して使える枠組みやテンプレートを提示します。

@@ -1,157 +1,175 @@
 ---
 name: content-creation
-description: Draft marketing content across channels — blog posts, social media, email newsletters, landing pages, press releases, and case studies. Use when writing any marketing content, when you need channel-specific formatting, SEO-optimized copy, headline options, or calls to action.
+description: ブログ、SNS、メールマガジン、ランディングページ、プレスリリース、導入事例など、複数チャネルのマーケティングコンテンツを下書きします。各種原稿の執筆、チャネル別の書式、SEOを考慮した文章、見出し案、行動喚起が必要なときに使います。
 user-invocable: false
 ---
 
-# Content Creation Skill
+# コンテンツ制作スキル
 
-Guidelines and frameworks for creating effective marketing content across channels.
+複数のチャネルで効果的なマーケティングコンテンツを作るための指針と枠組みです。
 
-## Content Type Templates
+## 種類別テンプレート
 
-### Blog Post Structure
-1. **Headline** — clear, benefit-driven, includes primary keyword (aim for 60 characters or less for SEO)
-2. **Introduction** (100-150 words) — hook the reader with a question, statistic, bold claim, or relatable scenario. State what the post will cover. Include primary keyword.
-3. **Body sections** (3-5 sections) — each with a descriptive subheading (H2). Use H3 for subsections. One core idea per section with supporting evidence, examples, or data.
-4. **Conclusion** (75-100 words) — summarize key takeaways, reinforce the main message, include a call to action.
-5. **Meta description** — under 160 characters, includes primary keyword, compels the click.
+### ブログ記事の構成
 
-### Social Media Post Structure
-- **Hook** — first line grabs attention (question, bold statement, number)
-- **Body** — 2-4 concise points or a short narrative
-- **CTA** — what should the reader do next (comment, click, share, tag)
-- **Hashtags** — 3-5 relevant hashtags (platform-dependent)
+1. **見出し**：明確で便益が伝わり、主キーワードを含む（SEOの目安は60文字以下）。
+2. **導入**（100〜150語）：問い、統計、印象的な主張、共感できる場面で関心を引く。扱う内容を示し、主キーワードを入れる。
+3. **本文**（3〜5節）：内容が分かるH2を付け、細分化にはH3を使う。1節1論点とし、根拠、例、データを添える。
+4. **結び**（75〜100語）：要点をまとめ、主メッセージを再確認し、行動喚起を含める。
+5. **メタディスクリプション**：160文字未満で主キーワードを含め、クリックしたくなる内容にする。
 
-### Email Newsletter Structure
-- **Subject line** — under 50 characters, creates curiosity or states clear value
-- **Preview text** — complements the subject line, does not repeat it
-- **Header/hero** — visual anchor and one-line value statement
-- **Body sections** — 2-3 content blocks, each scannable with a bold intro sentence
-- **Primary CTA** — one clear action per email
-- **Footer** — unsubscribe link, company info, social links
+### SNS投稿の構成
 
-### Landing Page Structure
-- **Headline** — primary benefit in under 10 words
-- **Subheadline** — elaborates on the headline with supporting context
-- **Hero section** — headline, subheadline, primary CTA, supporting image or video
-- **Value propositions** — 3-4 benefit-driven sections with icons or images
-- **Social proof** — testimonials, logos, stats, case study snippets
-- **Objection handling** — FAQ or trust signals
-- **Final CTA** — repeat the primary call to action
+- **つかみ**：最初の行で注意を引く（問い、印象的な主張、数値）
+- **本文**：簡潔な要点を2〜4点、または短いストーリー
+- **CTA**：次に何をしてほしいか（コメント、クリック、共有、タグ付け）
+- **ハッシュタグ**：関連するものを3〜5個（媒体に応じて調整）
 
-### Press Release Structure
-- **Headline** — factual, newsworthy, under 80 characters
-- **Subheadline** — optional, adds context
-- **Dateline** — city, state, date
-- **Lead paragraph** — who, what, when, where, why in 2-3 sentences
-- **Body paragraphs** — supporting details, quotes, context
-- **Boilerplate** — company description (standardized)
-- **Media contact** — name, email, phone
+### メールマガジンの構成
 
-### Case Study Structure
-- **Title** — "[Customer] achieves [result] with [product]"
-- **Snapshot** — customer name, industry, company size, product used, key result (sidebar or callout box)
-- **Challenge** — what problem the customer faced
-- **Solution** — what was implemented and how
-- **Results** — quantified outcomes with specific metrics
-- **Quote** — customer testimonial
-- **CTA** — learn more, get a demo, read more case studies
+- **件名**：50文字未満で、好奇心を引くか、明確な価値を伝える
+- **プレビューテキスト**：件名を繰り返さず、補足する
+- **ヘッダー・メインビジュアル**：視覚的な軸と、価値を示す1文
+- **本文**：2〜3ブロックに分け、太字の導入文で拾い読みしやすくする
+- **主要CTA**：1通につき明確な行動を1つ
+- **フッター**：配信停止リンク、会社情報、SNSリンク
 
-## Writing Best Practices by Channel
+### ランディングページの構成
 
-### Blog
-- Write at an 8th-grade reading level for broad audiences; adjust up for technical audiences
-- Use short paragraphs (2-4 sentences)
-- Include subheadings every 200-300 words
-- Use bullet points and numbered lists to break up text
-- Include at least one data point, example, or quote per section
-- Write in active voice
-- Front-load key information in each section
+- **見出し**：主要な便益を10語未満で表す
+- **補足見出し**：背景を補い、見出しを詳しく説明する
+- **ファーストビュー**：見出し、補足見出し、主要CTA、画像または動画
+- **価値提案**：便益を中心とする3〜4節に、アイコンや画像を添える
+- **社会的証明**：推薦コメント、ロゴ、統計、事例の抜粋
+- **懸念への対応**：FAQや信頼性を示す要素
+- **最後のCTA**：主要な行動喚起を再掲
 
-### Social Media
-- **LinkedIn**: professional but human, paragraph breaks for readability, personal stories and lessons perform well, 1,300 characters is the sweet spot before "see more"
-- **Twitter/X**: concise and punchy, strong opening words, threads for longer narratives, engage with replies
-- **Instagram**: visual-first captions, storytelling hooks, line breaks for readability, hashtags in first comment or at end
-- **Facebook**: conversational tone, questions drive comments, shorter posts (under 80 characters) get more engagement for links
+### プレスリリースの構成
 
-### Email
-- Write subject lines that create urgency, curiosity, or state clear value
-- Personalize where possible (name, company, behavior)
-- One primary CTA per email — make it visually distinct
-- Keep body copy scannable: bold key phrases, short paragraphs, bullet points
-- Test everything: subject lines, send times, CTA copy, layout
-- Mobile-first: most email is read on mobile
+- **見出し**：事実に基づき、報道価値があり、80文字未満
+- **補足見出し**：任意。背景を追加する
+- **日付・発表場所**：都市、州、日付
+- **リード文**：誰が、何を、いつ、どこで、なぜ、を2〜3文で示す
+- **本文**：詳細、引用、背景
+- **会社概要**：定型の会社説明
+- **報道機関向け連絡先**：氏名、メール、電話
 
-### Web (Landing Pages, Product Pages)
-- Lead with benefits, not features
-- Use "you" language — speak to the reader directly
-- Minimize jargon unless the audience expects it
-- Every section should answer "so what?" from the reader's perspective
-- Reduce friction: fewer form fields, clear next steps, trust signals near CTAs
+### 導入事例の構成
 
-## SEO Fundamentals for Content
+- **タイトル**：「[顧客]が[製品]で[成果]を達成」
+- **概要**：顧客名、業界、規模、利用製品、主な成果（欄外や強調ボックス）
+- **課題**：顧客が直面していた問題
+- **解決策**：何をどう導入したか
+- **成果**：具体的な指標で定量化した結果
+- **コメント**：顧客の推薦文
+- **CTA**：詳細の確認、デモ、他の事例の閲覧
 
-### Keyword Strategy
-- Identify one primary keyword and 2-3 secondary keywords per piece
-- Use the primary keyword in: headline, first paragraph, one subheading, meta description, URL slug
-- Use secondary keywords naturally in body copy and subheadings
-- Do not keyword-stuff — write for humans first
+## チャネル別の執筆指針
 
-### On-Page SEO Checklist
-- Title tag: under 60 characters, includes primary keyword
-- Meta description: under 160 characters, includes primary keyword, compels click
-- URL slug: short, descriptive, includes primary keyword
-- H1: one per page, matches or closely reflects the title tag
-- H2/H3: descriptive, include secondary keywords where natural
-- Image alt text: descriptive, includes keyword where relevant
-- Internal links: 2-3 links to related content on your site
-- External links: 1-2 links to authoritative sources
+### ブログ
 
-### Content-SEO Integration
-- Aim for comprehensive coverage of the topic (search engines reward depth)
-- Answer related questions (check "People Also Ask" for ideas)
-- Update and refresh high-performing content regularly
-- Structure content for featured snippets: definition paragraphs, numbered lists, tables
+- 幅広い読者には米国の中学2年生程度の読解水準を目安にし、技術者向けなら調整する
+- 2〜4文の短い段落にする
+- 200〜300語ごとに小見出しを入れる
+- 箇条書きや番号付きリストで文章を区切る
+- 各節に少なくとも1つ、データ、例、引用を含める
+- 能動態で書く
+- 各節の冒頭に重要情報を置く
 
-## Headline and Hook Formulas
+### SNS
 
-### Headline Formulas
-- **How to [achieve result] [without common obstacle]** — "How to Double Your Email Open Rates Without Sending More Emails"
-- **[Number] [adjective] ways to [achieve result]** — "7 Proven Ways to Reduce Customer Churn"
-- **Why [common belief] is wrong (and what to do instead)** — "Why More Content Is Not the Answer (And What to Do Instead)"
-- **The [adjective] guide to [topic]** — "The Complete Guide to B2B Content Marketing"
-- **[Do this], not [that]** — "Build a Community, Not Just an Audience"
-- **What [impressive result] taught us about [topic]** — "What 10,000 A/B Tests Taught Us About Email Subject Lines"
-- **[topic]: what [audience] needs to know in [year]** — "SEO: What Marketers Need to Know in 2025"
+- **LinkedIn**：業務向けでも人間味を持たせ、改行で読みやすくする。個人の経験や学びが有効。「続きを読む」の前に収まる1,300文字が目安
+- **Twitter/X**：簡潔で印象的にし、冒頭の言葉を強くする。長い内容はスレッドにし、返信にも対応する
+- **Instagram**：画像を軸にした説明文、物語を感じさせる冒頭、読みやすい改行。ハッシュタグは最初のコメントか末尾
+- **Facebook**：会話調にし、問いでコメントを促す。リンク投稿は80文字未満の短文が反応を得やすい
 
-### Hook Formulas (Opening Lines)
-- **Surprising statistic**: "73% of marketers say their biggest challenge is not budget — it is focus."
-- **Contrarian statement**: "The best marketing campaigns start with saying no to most channels."
-- **Question**: "When was the last time a marketing email actually changed what you bought?"
-- **Scenario**: "Imagine launching a campaign and knowing, before it goes live, which messages will land."
-- **Bold claim**: "Most landing pages lose half their visitors in the first three seconds."
-- **Story opening**: "Last quarter, our team was spending 20 hours a week on reporting. Here is what we did about it."
+### メール
 
-## Call-to-Action Best Practices
+- 緊急性、好奇心、明確な価値を示す件名にする
+- 可能なら名前、会社、行動に合わせて個別化する
+- 主要CTAは1通1つとし、視覚的に目立たせる
+- 太字、短い段落、箇条書きで拾い読みしやすくする
+- 件名、配信時刻、CTA文言、レイアウトをすべてテストする
+- モバイルを優先する。多くのメールはモバイルで読まれる
 
-### CTA Principles
-- Use action verbs: "Get", "Start", "Download", "Join", "Try", "See"
-- Be specific about what happens next: "Start your free trial" is better than "Submit"
-- Create urgency when genuine: "Join 500 teams already using this" or "Limited spots available"
-- Reduce risk: "No credit card required", "Cancel anytime", "Free for 14 days"
-- One primary CTA per page or email — too many choices reduce conversions
+### Web（ランディングページ・製品ページ）
 
-### CTA Examples by Context
-- **Blog post**: "Read our complete guide to [topic]" / "Subscribe for weekly insights"
-- **Landing page**: "Start free trial" / "Get a demo" / "See pricing"
-- **Email**: "Read the full story" / "Claim your spot" / "Reply and tell us"
-- **Social media**: "Drop a comment if you agree" / "Save this for later" / "Link in bio"
-- **Case study**: "See how [product] can work for your team" / "Talk to our team"
+- 機能より先に便益を伝える
+- 読者に直接語りかける
+- 読者が当然理解している場合を除き、専門用語を減らす
+- 各節で、読者にとってどんな意味があるかを説明する
+- フォーム項目を減らし、次の手順を明確にし、CTAの近くに信頼の根拠を置いて負担を減らす
 
-### CTA Placement
-- Above the fold on landing pages (do not make users scroll to act)
-- After establishing value in emails (not in the first sentence)
-- At the end of blog posts (after you have earned the reader's trust)
-- In-line within content when contextually relevant (e.g., a related guide mention)
-- Repeat the primary CTA at the bottom of long-form pages
+## コンテンツのSEO基礎
+
+### キーワード戦略
+
+- 1本につき主キーワード1つ、補助キーワード2〜3個を定める
+- 主キーワードは見出し、最初の段落、小見出し1つ、メタディスクリプション、URLスラッグに使う
+- 補助キーワードは本文や小見出しに自然に入れる
+- キーワードを詰め込まず、人が読むことを優先する
+
+### ページ内SEOチェックリスト
+
+- タイトルタグ：60文字未満、主キーワードを含む
+- メタディスクリプション：160文字未満、主キーワードを含み、クリックを促す
+- URLスラッグ：短く、内容が分かり、主キーワードを含む
+- H1：1ページ1つ。タイトルタグと一致、または近い内容
+- H2・H3：内容が分かり、自然な範囲で補助キーワードを含む
+- 画像の代替テキスト：画像を説明し、関連する場合はキーワードを含む
+- 内部リンク：自社の関連コンテンツへ2〜3本
+- 外部リンク：信頼できる情報源へ1〜2本
+
+### コンテンツとSEOの統合
+
+- テーマを十分に網羅する（検索エンジンは内容の深さを評価する）
+- 関連する問いにも答える（「他の人はこちらも質問」などを参考にする）
+- 成果の高い内容を定期的に更新する
+- 強調スニペットを意識し、定義の段落、番号付きリスト、表を使う
+
+## 見出しと冒頭の型
+
+### 見出しの型
+
+- **[よくある障害]なしで[成果]を得る方法**：「配信数を増やさずにメール開封率を2倍にする方法」
+- **[成果]のための[数]の[形容詞]方法**：「顧客の解約を減らす、実証済みの7つの方法」
+- **なぜ[通説]は間違いなのか、代わりに何をするか**：「コンテンツを増やすだけでは解決しない理由と、代わりにすべきこと」
+- **[テーマ]の[形容詞]ガイド**：「B2Bコンテンツマーケティング完全ガイド」
+- **[それ]ではなく[これ]をする**：「読者を集めるだけでなく、コミュニティをつくろう」
+- **[大きな成果]から学んだ[テーマ]**：「1万回のA/Bテストから学んだメール件名の工夫」
+- **[テーマ]：[年]に[対象者]が知るべきこと**：「SEO：2025年にマーケターが知るべきこと」
+
+### 冒頭の型
+
+- **意外な統計**：「マーケターの73%は、最大の課題は予算ではなく、注力先を絞ることだと答えています。」
+- **通説に反する主張**：「優れたキャンペーンは、ほとんどのチャネルを使わないと決めることから始まります。」
+- **問い**：「マーケティングメールで購入するものが変わったのは、最後にいつですか？」
+- **場面**：「公開前から、どのメッセージが響くか分かるキャンペーンを想像してください。」
+- **大胆な主張**：「多くのランディングページは、最初の3秒で訪問者の半数を失います。」
+- **物語の始まり**：「前四半期、私たちは報告作業に週20時間を使っていました。そこで取り組んだことを紹介します。」
+
+## 行動喚起の指針
+
+### CTAの原則
+
+- 「入手する」「始める」「ダウンロードする」「参加する」「試す」「見る」などの動詞を使う
+- 次に起こることを具体化する。「送信」より「無料トライアルを始める」
+- 本当の根拠がある場合に限り、行動を急ぐ理由を示す。「導入済みの500チームに加わる」「残席わずか」など
+- 「カード登録不要」「いつでも解約可能」「14日間無料」などで不安を減らす
+- ページ・メールごとの主要CTAは1つ。選択肢が多いとコンバージョンが下がる
+
+### 場面別の例
+
+- **ブログ**：「[テーマ]の完全ガイドを読む」「週ごとの知見を受け取る」
+- **ランディングページ**：「無料で試す」「デモを申し込む」「料金を見る」
+- **メール**：「全文を読む」「参加枠を確保する」「返信で教えてください」
+- **SNS**：「共感したらコメントを」「後で読むために保存」「プロフィールのリンクから」
+- **導入事例**：「[製品]が自社にどう役立つかを見る」「担当者に相談する」
+
+### CTAの配置
+
+- ランディングページでは、スクロールしなくても行動できる位置
+- メールでは、価値を伝えた後（最初の1文ではない）
+- ブログでは、読者の信頼を得た本文の後
+- 関連するガイドへの言及など、文脈に合う場合は本文中
+- 長いページでは、末尾に主要CTAを再掲

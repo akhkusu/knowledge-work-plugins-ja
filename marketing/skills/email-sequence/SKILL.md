@@ -1,220 +1,235 @@
 ---
 name: email-sequence
-description: Design and draft multi-email sequences with full copy, timing, branching logic, exit conditions, and performance benchmarks. Use when building onboarding, lead nurture, re-engagement, win-back, or product launch flows, when you need a complete drip campaign with A/B test suggestions, or when mapping a sequence end-to-end with a flow diagram.
-argument-hint: "[sequence type]"
+description: 全文、配信時期、分岐、終了条件、効果指標の目安を含む連続メールを設計・下書きします。オンボーディング、見込み顧客育成、再アプローチ、離脱顧客の呼び戻し、製品公開、A/Bテスト案付きステップ配信、全体のフロー図の作成に使います。
+argument-hint: "[配信シナリオの種類]"
 ---
 
-# Email Sequence
+# 連続メールの設計
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+顧客ライフサイクルや施策の用途に合わせて、全文、配信時期、分岐、効果指標の目安を含む一連のメールを設計・下書きします。
 
-Design and draft complete email sequences with full copy, timing, branching logic, and performance benchmarks for any lifecycle or campaign use case.
+> 見慣れないプレースホルダーがある場合や、接続されているツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-## Trigger
+## 開始条件
 
-User runs `/email-sequence` or asks to create, design, build, or draft an email sequence, drip campaign, nurture flow, or onboarding series.
+ユーザーが`/email-sequence`を実行するか、連続メール、ステップ配信、育成フロー、オンボーディング配信の作成・設計・構築・下書きを依頼したとき。
 
-## Inputs
+## 入力情報
 
-Gather the following from the user. If not provided, ask before proceeding:
+次の情報を集め、未提示なら作業前に確認します。
 
-1. **Sequence type** — one of:
-   - Onboarding
-   - Lead nurture
-   - Re-engagement
-   - Product launch
-   - Event follow-up
-   - Upgrade/upsell
-   - Win-back
-   - Educational drip
+1. **種類**：次のいずれか
+   - オンボーディング
+   - 見込み顧客の育成
+   - 再アプローチ
+   - 製品公開
+   - イベント後のフォロー
+   - 上位プランへの移行・アップセル
+   - 離脱顧客の呼び戻し
+   - 学習用のステップ配信
 
-2. **Goal** — what the sequence should achieve (e.g., activate new users, convert leads to customers, reduce churn, drive event attendance, upsell to a higher tier)
+2. **目標**：達成したいこと（新規ユーザーの利用定着、見込み顧客の購入、解約減少、イベント参加、上位プラン移行など）
 
-3. **Audience** — who receives this sequence, what stage they are at, and any relevant segmentation details (role, industry, behavior triggers, lifecycle stage)
+3. **対象者**：誰が受け取るか、現在の段階、役割・業界・行動トリガー・ライフサイクルなどの区分
 
-4. **Number of emails** (optional) — if not specified, recommend a count based on the sequence type using the templates in the Sequence Type Templates section below
+4. **通数**（任意）：指定がなければ、後述のテンプレートを基に種類に合った通数を提案
 
-5. **Timing/cadence preferences** (optional) — desired spacing between emails (e.g., "every 3 days", "weekly", "aggressive first week then taper off")
+5. **時期・頻度の希望**（任意）：「3日ごと」「毎週」「最初の週は多めで、その後減らす」など
 
-6. **Brand voice** — if configured in local settings, apply automatically and inform the user. If not configured, ask: "Do you have brand voice guidelines I should follow? If not, I'll use a clear, conversational professional tone."
+6. **ブランドの語り口**：ローカル設定があれば自動適用して伝える。なければ「従うべきブランド表現のガイドラインはありますか？ なければ、明確で会話調の、業務に適したトーンにします」と確認
 
-7. **Additional context** (optional):
-   - Specific offers, discounts, or incentives to include
-   - CTAs or landing pages to link to
-   - Content assets available (blog posts, case studies, videos, guides)
-   - Product features to highlight
-   - Competitor differentiators to reference
+7. **追加情報**（任意）：
+   - 盛り込む特典、割引、インセンティブ
+   - CTAやリンク先ページ
+   - 利用可能な記事、事例、動画、ガイド
+   - 強調する製品機能
+   - 触れるべき競合との差
 
-## Process
+## 手順
 
-### 1. Sequence Strategy
+### 1. 配信戦略
 
-Before drafting any emails, define the overall sequence architecture:
+下書きの前に、全体構造を定義します。
 
-- **Narrative arc** — what story does this sequence tell across all emails? What is the emotional and logical progression from first email to last?
-- **Journey mapping** — map each email to a stage of the buyer or user journey (awareness, consideration, decision, activation, expansion)
-- **Escalation logic** — how does the intensity, urgency, or value of each email build on the previous one?
-- **Success definition** — what specific action signals that the sequence has done its job and the recipient should exit?
+- **物語の流れ**：全通を通じて何を伝え、最初から最後まで感情と論理をどう進めるか
+- **体験との対応**：各メールを認知、比較検討、意思決定、利用定着、拡大のどこに対応させるか
+- **段階的な訴求**：前のメールを踏まえ、強さ、緊急性、価値をどう積み上げるか
+- **成功の定義**：どの行動で目的達成とみなし、配信対象から外すか
 
-### 2. Individual Email Design
+### 2. 各メールの設計
 
-For each email in the sequence, produce:
+各通について次を作成します。
 
-#### Subject Line
-- Provide 2-3 options per email
-- Vary approaches: curiosity, benefit-driven, urgency, personalization, question-based
-- Keep under 50 characters where possible; note preview behavior on mobile
+#### 件名
 
-#### Preview Text
-- 40-90 characters that complement (not repeat) the subject line
-- Should add context or intrigue that increases open likelihood
+- 1通につき2〜3案
+- 好奇心、便益、緊急性、個別化、問いなど、切り口を変える
+- 可能なら50文字未満とし、モバイルのプレビュー表示を注記する
 
-#### Email Purpose
-- One sentence explaining why this email exists and what it moves the recipient toward
+#### プレビューテキスト
 
-#### Body Copy
-- Full draft ready to use
-- Clear hierarchy: hook, body, CTA
-- Short paragraphs (2-3 sentences max)
-- Scannable formatting with bold key phrases where appropriate
-- Personalization tokens where relevant (e.g., first name, company name, product used)
+- 件名を繰り返さず補足する40〜90文字
+- 開封したくなる背景や関心を加える
 
-#### Primary CTA
-- Button text and destination
-- One primary CTA per email (secondary CTA only if appropriate for the sequence stage)
+#### メールの目的
 
-#### Timing
-- Days after the trigger event or after the previous email
-- Note if timing should adjust based on engagement (e.g., "send sooner if they opened but did not click")
+- なぜこのメールが必要で、受信者を何に近づけるのかを1文で説明
 
-#### Segment/Condition Notes
-- Who receives this email vs. who skips it
-- Any behavioral or attribute-based conditions (e.g., "only send to users who have not completed setup")
+#### 本文
 
-### 3. Sequence Logic
+- そのまま使える全文
+- つかみ、本文、CTAの明確な階層
+- 短い段落（最大2〜3文）
+- 必要に応じて重要語句を太字にし、拾い読みしやすくする
+- 必要な個別化トークン（名、会社名、利用製品など）
 
-Define the flow control for the sequence:
+#### 主要CTA
 
-- **Branching conditions** — alternate paths based on engagement. For example:
-  - "If opened email 2 but did not click CTA, send email 2b (softer re-ask) instead of email 3"
-  - "If clicked CTA in email 1, skip email 2 and go directly to email 3"
-- **Exit conditions** — when a recipient converts (completes the desired action), remove them from the sequence. Define what "conversion" means for this sequence.
-- **Re-entry rules** — can someone re-enter the sequence? Under what conditions? (e.g., "if a user churns again 90 days later, re-enter the win-back sequence")
-- **Suppression rules** — do not send if the recipient is already in another active sequence, has unsubscribed from marketing, or has contacted support in the last 48 hours
+- ボタン文言とリンク先
+- 主要CTAは1通1つ。副CTAは、その段階に適切な場合のみ
 
-### 4. Performance Benchmarks
+#### 配信時期
 
-Provide expected benchmarks based on the sequence type so the user can set targets:
+- トリガーの発生または前のメールからの日数
+- 反応によって変える場合は注記（例：「開封したがクリックしていない場合は早めに送る」）
 
-| Metric | Onboarding | Lead Nurture | Re-engagement | Win-back |
+#### セグメント・条件の注記
+
+- 送る対象と送らない対象
+- 行動や属性の条件（例：「初期設定を完了していないユーザーにのみ送る」）
+
+### 3. 配信ロジック
+
+フローの制御を定義します。
+
+- **分岐条件**：反応に応じた別の経路。例：
+  - 「2通目を開封したがCTAをクリックしていなければ、3通目の代わりに2b（控えめな再案内）を送る」
+  - 「1通目のCTAをクリックしたら、2通目を省略して3通目へ進む」
+- **終了条件**：目的の行動を完了したら対象から外す。この配信におけるコンバージョンを定義する
+- **再参加条件**：再び対象になれるか、どの条件か（例：「90日後に再度解約したら呼び戻し配信へ再参加」）
+- **送信抑止条件**：他の有効な配信中、マーケティング配信停止済み、過去48時間以内にサポートへ連絡済みなら送らない
+
+### 4. 効果指標の目安
+
+目標を設定できるよう、種類に応じた目安を示します。
+
+| 指標 | オンボーディング | 見込み顧客育成 | 再アプローチ | 呼び戻し |
 |--------|-----------|--------------|---------------|----------|
-| Open rate | 50-70% | 20-30% | 15-25% | 15-20% |
-| Click-through rate | 10-20% | 3-7% | 2-5% | 2-4% |
-| Conversion rate | 15-30% | 2-5% | 3-8% | 1-3% |
-| Unsubscribe rate | <0.5% | <0.5% | 1-2% | 1-3% |
+| 開封率 | 50〜70% | 20〜30% | 15〜25% | 15〜20% |
+| クリック率 | 10〜20% | 3〜7% | 2〜5% | 2〜4% |
+| コンバージョン率 | 15〜30% | 2〜5% | 3〜8% | 1〜3% |
+| 配信停止率 | <0.5% | <0.5% | 1〜2% | 1〜3% |
 
-Adjust benchmarks based on industry and audience if the user has provided that context.
+業界や対象者の情報があれば、それに応じて調整します。
 
-## Sequence Type Templates
+## 種類別テンプレート
 
-Use these as starting frameworks. Adapt length and content based on the user's goal and audience.
+出発点として使い、目標と対象者に合わせて長さや内容を調整します。
 
-**Onboarding (5-7 emails over 14-21 days):**
-Welcome and set expectations -- Quick win to demonstrate value -- Core feature deep dive -- Advanced feature or integration -- Social proof and community -- Check-in and feedback request -- Upgrade prompt or next steps
+**オンボーディング（14〜21日で5〜7通）：**
+歓迎と期待値の共有 → 小さな成功体験で価値を実感 → 主要機能の解説 → 応用機能や連携 → 導入実績とコミュニティ → 状況確認と意見募集 → アップグレード案内や次の手順
 
-**Lead Nurture (4-6 emails over 3-4 weeks):**
-Value-first educational content -- Pain point identification -- Solution positioning with proof -- Social proof and results -- Soft CTA (trial, demo, resource) -- Direct CTA (buy, book, sign up)
+**見込み顧客育成（3〜4週間で4〜6通）：**
+役立つ学習コンテンツ → 課題の明確化 → 根拠を伴う解決策の提示 → 導入実績と成果 → 控えめなCTA（試用、デモ、資料） → 直接的なCTA（購入、予約、登録）
 
-**Re-engagement (3-4 emails over 10-14 days):**
-"We miss you" with a compelling reason to return -- Value reminder highlighting what they are missing -- Incentive or exclusive offer -- Last chance with clear deadline
+**再アプローチ（10〜14日で3〜4通）：**
+再訪する魅力的な理由を添えた近況伺い → 得られていない価値の再案内 → 特典や限定オファー → 明確な期限付きの最終案内
 
-**Win-back (3-5 emails over 30 days):**
-Friendly check-in asking what went wrong -- What is new since they left -- Special offer or incentive to return -- Feedback request (even if they do not come back) -- Final goodbye with door open
+**呼び戻し（30日で3〜5通）：**
+何が問題だったかを尋ねる親しみのある確認 → 離脱後の新情報 → 再利用の特典 → 戻らない場合も意見を求める → 再訪の余地を残した最後の挨拶
 
-**Product Launch (4-6 emails over 2-3 weeks):**
-Teaser or pre-announcement -- Launch announcement with full details -- Feature spotlight or use case -- Social proof and early results -- Limited-time offer or bonus -- Last chance or reminder
+**製品公開（2〜3週間で4〜6通）：**
+予告 → 詳細を含む公開告知 → 機能や用途の紹介 → 導入実績と初期成果 → 期間限定の特典 → 最終案内やリマインド
 
-**Event Follow-up (3-4 emails over 7-10 days):**
-Thank you with key takeaways or recordings -- Resource roundup from the event -- Related offer or next step -- Feedback survey
+**イベント後（7〜10日で3〜4通）：**
+要点や録画を添えたお礼 → 関連資料のまとめ → 関連する提案や次の手順 → アンケート
 
-**Upgrade/Upsell (3-5 emails over 2-3 weeks):**
-Usage milestone or success celebration -- Feature gap or limitation they are hitting -- Upgrade benefits with proof -- Limited-time incentive -- Direct comparison of plans
+**アップグレード・アップセル（2〜3週間で3〜5通）：**
+利用の節目や成果を祝う → 現在の機能不足や制限 → 根拠付きの移行メリット → 期間限定の特典 → プランの直接比較
 
-**Educational Drip (5-8 emails over 4-6 weeks):**
-Introduction and what they will learn -- Lesson 1: foundational concept -- Lesson 2: intermediate concept -- Lesson 3: advanced concept -- Practical application or exercise -- Resource roundup -- Graduation and next steps
+**学習用ステップ配信（4〜6週間で5〜8通）：**
+導入と学習内容 → 第1回：基礎 → 第2回：中級 → 第3回：応用 → 実践や演習 → 資料のまとめ → 修了と次の手順
 
-## Tool Integration
+## ツール連携
 
-### If ~~email marketing is connected (e.g., Klaviyo, Mailchimp, Customer.io)
-- Reference how to set up the sequence as a flow or automation in the platform
-- Note any platform-specific features to use (e.g., smart send time, conditional splits, A/B testing)
-- Map the branching logic to the platform's visual flow builder concepts
+### ~~email marketingが接続済みの場合（Klaviyo、Mailchimp、Customer.ioなど）
 
-### If ~~marketing automation or ~~CRM is connected (e.g., HubSpot, Marketo)
-- Reference lead scoring data to inform segmentation and exit conditions
-- Use lifecycle stage data to tailor messaging per segment
-- Note how to set enrollment triggers based on CRM properties or list membership
+- フローや自動化として設定する方法を案内する
+- 最適送信時刻、条件分岐、A/Bテストなど、使うべき固有機能を示す
+- 分岐を、そのツールの視覚的なフロービルダーの概念に対応させる
 
-### If no tools are connected
-- Deliver all email content in copy-paste-ready format
-- Include a setup checklist the user can follow in any email platform:
-  1. Create the automation or flow
-  2. Set the enrollment trigger
-  3. Add each email with the specified delays
-  4. Configure branching and exit conditions
-  5. Set up tracking for the recommended metrics
+### ~~marketing automationまたは~~CRMが接続済みの場合（HubSpot、Marketoなど）
 
-## Output
+- リードスコアをセグメントや終了条件に生かす
+- ライフサイクル段階のデータでメッセージを調整する
+- CRMの属性やリスト所属を基にした参加トリガーの設定方法を示す
 
-Present the complete sequence with the following sections:
+### ツールが未接続の場合
 
-### Sequence Overview Table
+- コピーして使える形式で全文を渡す
+- どのメール基盤でも使える設定チェックリストを添える
+  1. 自動化やフローを作成
+  2. 参加トリガーを設定
+  3. 指定の待機時間を付けて各メールを追加
+  4. 分岐と終了条件を設定
+  5. 推奨指標の追跡を設定
 
-| # | Subject Line | Purpose | Timing | Primary CTA | Condition |
+## 出力
+
+次の構成で全体を提示します。
+
+### 配信概要表
+
+| # | 件名 | 目的 | 時期 | 主要CTA | 条件 |
 |---|-------------|---------|--------|-------------|-----------|
 
-### Full Email Drafts
-Each email with subject line options, preview text, purpose, body copy, CTA, timing, and segment notes.
+### 各メールの全文
 
-### Sequence Flow Diagram
-A text-based diagram showing the email flow, branching paths, and exit points. Use a clear format such as:
+件名候補、プレビューテキスト、目的、本文、CTA、配信時期、セグメントの注記を含めます。
+
+### フロー図
+
+流れ、分岐、終了点をテキストの図で示します。例：
 
 ```
-[Trigger] --> Email 1 (Day 0)
+[トリガー] --> 1通目（0日目）
                 |
-          Opened? --Yes--> Email 2 (Day 3)
+          開封？ --はい--> 2通目（3日目）
                 |              |
-                No        Clicked CTA? --Yes--> [EXIT: Converted]
+              いいえ       CTAクリック？ --はい--> [終了：目的達成]
                 |              |
-                v              No
-          Email 1b (Day 2)     |
+                v            いいえ
+          1b（2日目）          |
                 |              v
-                +--------> Email 3 (Day 7)
+                +--------> 3通目（7日目）
                                |
                                v
-                          Email 4 (Day 10)
+                          4通目（10日目）
                                |
-                          [EXIT: Sequence complete]
+                          [終了：配信完了]
 ```
 
-### Branching Logic Notes
-Summary of all conditions, exits, and suppressions in a reference list.
+### 分岐ロジックの注記
 
-### A/B Test Suggestions
-- 2-3 recommended A/B tests (subject lines, CTA text, send time, email length)
-- What to test, how to split, and how to measure the winner
+すべての条件、終了、抑止ルールを参照用の一覧にします。
 
-### Metrics to Track
-- Primary conversion metric for the sequence
-- Per-email metrics: open rate, CTR, unsubscribe rate
-- Sequence-level metrics: overall conversion rate, time to conversion, drop-off points
-- Recommended review cadence (e.g., "Review performance weekly for the first month, then monthly")
+### A/Bテストの提案
 
-## After the Sequence
+- 2〜3個の推奨テスト（件名、CTA文言、配信時刻、長さ）
+- テスト対象、振り分け方、勝者の判断方法
 
-Ask: "Would you like me to:
-- Revise the copy or tone for any specific email?
-- Add a branching path for a specific scenario?
-- Create a variation of this sequence for a different audience segment?
-- Draft the A/B test variants for the subject lines?
-- Build a companion sequence (e.g., a post-purchase follow-up after this lead nurture converts)?"
+### 追跡する指標
+
+- 配信全体の主要コンバージョン指標
+- 各通：開封率、CTR、配信停止率
+- 全体：総コンバージョン率、達成までの時間、離脱点
+- 確認頻度の提案（例：「最初の月は毎週、その後は毎月」）
+
+## 作成後
+
+「次のような対応が必要ですか？
+- 特定のメールの文章やトーンを修正する
+- 特定の状況向けの分岐を追加する
+- 別の対象セグメント向けの案を作る
+- 件名のA/Bテスト案を下書きする
+- 関連する配信を作る（例：育成配信から購入した後のフォロー）」

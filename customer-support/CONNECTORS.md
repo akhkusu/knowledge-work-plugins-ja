@@ -1,19 +1,19 @@
-# Connectors
+# コネクター
 
-## How tool references work
+## ツール参照の仕組み
 
-Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~support platform` might mean Intercom, Zendesk, or any other support tool with an MCP server.
+プラグイン内の`~~category`は、その分類で利用者が接続しているツールを表すプレースホルダーです。例えば`~~support platform`は、Intercom、Zendesk、またはMCPサーバーを備えた他のサポートツールを指します。
 
-Plugins are **tool-agnostic** — they describe workflows in terms of categories (support platform, CRM, chat, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
+プラグインは**特定の製品に依存しません**。業務手順は製品名ではなく、サポート管理、CRM、チャットなどの分類で記述します。`.mcp.json`には特定のMCPサーバーがあらかじめ設定されていますが、同じ分類に属する他のMCPサーバーでも利用できます。
 
-## Connectors for this plugin
+## このプラグインの接続先
 
-| Category | Placeholder | Included servers | Other options |
+| 分類 | プレースホルダー | 同梱サーバー | その他の選択肢 |
 |----------|-------------|-----------------|---------------|
-| Chat | `~~chat` | Slack | Microsoft Teams |
-| Email | `~~email` | Microsoft 365 | — |
-| Cloud storage | `~~cloud storage` | Microsoft 365 | — |
-| Support platform | `~~support platform` | Intercom | Zendesk, Freshdesk, HubSpot Service Hub |
-| CRM | `~~CRM` | HubSpot | Salesforce, Pipedrive |
-| Knowledge base | `~~knowledge base` | Guru, Notion | Confluence, Help Scout |
-| Project tracker | `~~project tracker` | Atlassian (Jira/Confluence) | Linear, Asana |
+| チャット | `~~chat` | Slack | Microsoft Teams |
+| メール | `~~email` | Microsoft 365 | — |
+| クラウドストレージ | `~~cloud storage` | Microsoft 365 | — |
+| サポート管理 | `~~support platform` | Intercom | Zendesk、Freshdesk、HubSpot Service Hub |
+| CRM | `~~CRM` | HubSpot | Salesforce、Pipedrive |
+| ナレッジベース | `~~knowledge base` | Guru、Notion | Confluence、Help Scout |
+| プロジェクト管理 | `~~project tracker` | Atlassian（Jira/Confluence） | Linear、Asana |

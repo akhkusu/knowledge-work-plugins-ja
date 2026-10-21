@@ -38,9 +38,9 @@
     },
     {
       "name": "sales",
-      "displayName": "Sales",
+      "displayName": "セールス",
       "source": "./sales",
-      "description": "Prep calls, summarize and follow up, research accounts, review deals and pipeline, and write the forecast, using the CRM, email, calendar and chat tools your team already uses, or uploaded files. Updates records, drafts or sends email, posts to chat and books meetings when you ask."
+      "description": "チームで日頃使っているCRM、メール、カレンダー、チャット、商談録画ツールや、アップロードしたファイルを活用する営業スキルです。商談の準備、要約とフォローアップ、顧客企業の調査、案件・営業パイプラインの確認、売上予測の作成を支援します。依頼に応じて、接続済みのツールからCRMの更新、メールの下書き作成や送信、チャットへの投稿、会議の予約も行えます。"
     },
     {
       "name": "finance",
@@ -62,15 +62,15 @@
     },
     {
       "name": "marketing",
-      "displayName": "Marketing",
+      "displayName": "マーケティング",
       "source": "./marketing",
-      "description": "Create content, plan campaigns, and analyze performance across marketing channels. Maintain brand voice consistency, track competitors, and report on what's working."
+      "description": "コンテンツの作成、キャンペーンの計画、マーケティングチャネル別の効果分析を支援します。ブランドの語り口を統一し、競合の動向を把握して、有効な施策を報告します。"
     },
     {
       "name": "customer-support",
-      "displayName": "Customer Support",
+      "displayName": "CS（カスタマーサポート）",
       "source": "./customer-support",
-      "description": "Triage tickets, draft responses, escalate issues, and build your knowledge base. Research customer context and turn resolved issues into self-service content."
+      "description": "問い合わせの振り分け、回答案の作成、問題のエスカレーション、ナレッジベースの整備を支援します。顧客の背景を調べ、解決済みの問題を顧客自身が参照できるコンテンツにまとめます。"
     },
     {
       "name": "product-management",

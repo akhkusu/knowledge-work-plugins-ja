@@ -1,275 +1,280 @@
 ---
 name: ticket-triage
-description: Triage and prioritize a support ticket or customer issue. Use when a new ticket comes in and needs categorization, assigning P1-P4 priority, deciding which team should handle it, or checking whether it's a duplicate or known issue before routing.
+description: 問い合わせや顧客の問題を分類し、優先順位を付けます。新規チケットの分類、P1〜P4の優先度の割り当て、担当チームの判断、振り分け前の重複・既知の問題の確認に使います。
 argument-hint: "<ticket or issue description>"
 ---
 
 # /ticket-triage
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続済みツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Categorize, prioritize, and route an incoming support ticket or customer issue. Produces a structured triage assessment with a suggested initial response.
+新しい問い合わせや顧客の問題を分類し、優先度と振り分け先を決めます。初回返信案を添えて、整理した一次評価を提示します。
 
-## Usage
+## 使い方
 
 ```
 /ticket-triage <ticket text, customer message, or issue description>
 ```
 
-Examples:
-- `/ticket-triage Customer says their dashboard has been showing a blank page since this morning`
-- `/ticket-triage "I was charged twice for my subscription this month"`
-- `/ticket-triage User can't connect their SSO — getting a 403 error on the callback URL`
-- `/ticket-triage Feature request: they want to export reports as PDF`
+例：
+- `/ticket-triage 今朝からダッシュボードが真っ白になるというお問い合わせ`
+- `/ticket-triage 「今月の利用料金が二重に請求されました」`
+- `/ticket-triage SSO接続ができず、コールバックURLで403エラーが出る`
+- `/ticket-triage 機能要望：レポートをPDFでエクスポートしたい`
 
-## Workflow
+## 作業手順
 
-### 1. Parse the Issue
+### 1. 問題を読み解く
 
-Read the input and extract:
+入力から次を抽出します。
 
-- **Core problem**: What is the customer actually experiencing?
-- **Symptoms**: What specific behavior or error are they seeing?
-- **Customer context**: Who is this? Any account details, plan level, or history available?
-- **Urgency signals**: Are they blocked? Is this production? How many users affected?
-- **Emotional state**: Frustrated, confused, matter-of-fact, escalating?
+- **中心的な問題**：顧客に実際に起きていること
+- **症状**：具体的な動作やエラー
+- **顧客の背景**：誰からの連絡か、企業情報、契約プラン、対応履歴
+- **緊急性の兆候**：業務停止か、本番環境か、影響する利用者数
+- **感情・状況**：不満、戸惑い、淡々とした報告、上位者への相談を求めているか
 
-### 2. Categorize and Prioritize
+### 2. 分類と優先度を決める
 
-Using the category taxonomy and priority framework below:
+後述の分類・優先度の基準に従います。
 
-- Assign a **primary category** (bug, how-to, feature request, billing, account, integration, security, data, performance) and an optional secondary category
-- Assign a **priority** (P1–P4) based on impact and urgency
-- Identify the **product area** the issue maps to
+- **主分類**（不具合、操作方法、機能要望、請求、アカウント、外部連携、セキュリティ、データ、パフォーマンス）と、必要なら副分類を付けます。
+- 影響と緊急度に基づき**優先度（P1〜P4）**を付けます。
+- 問題が属する**製品領域**を特定します。
 
-### 3. Check for Duplicates and Known Issues
+### 3. 重複と既知の問題を確認する
 
-Before routing, check available sources:
+振り分け前に、利用できる情報源を確認します。
 
-- **~~support platform**: Search for similar open or recently resolved tickets
-- **~~knowledge base**: Check for known issues or existing documentation
-- **~~project tracker**: Check if there's an existing bug report or feature request
+- **~~support platform**：類似の未解決チケットや最近解決したチケットを検索します。
+- **~~knowledge base**：既知の問題や既存の文書を確認します。
+- **~~project tracker**：既存の不具合報告や機能要望を確認します。
 
-Apply the duplicate detection process below.
+後述の重複確認の手順を適用します。
 
-### 4. Determine Routing
+### 4. 振り分け先を決める
 
-Using the routing rules below, recommend which team or queue should handle this based on category and complexity.
+後述の振り分けルールを使い、分類と複雑さに応じて担当チームや対応キューを提案します。
 
-### 5. Generate Triage Output
+### 5. 評価結果を出力する
 
 ```
-## Triage: [One-line issue summary]
+## 一次評価：[問題の1行要約]
 
-**Category:** [Primary] / [Secondary if applicable]
-**Priority:** [P1-P4] — [Brief justification]
-**Product area:** [Area/team]
+**分類：** [主分類] / [該当する場合は副分類]
+**優先度：** [P1-P4] — [簡潔な理由]
+**製品領域：** [領域／チーム]
 
-### Issue Summary
-[2-3 sentence summary of what the customer is experiencing]
+### 問題の概要
+[顧客に起きていることを2〜3文で説明]
 
-### Key Details
-- **Customer:** [Name/account if known]
-- **Impact:** [Who and what is affected]
-- **Workaround:** [Available / Not available / Unknown]
-- **Related tickets:** [Links to similar issues if found]
-- **Known issue:** [Yes — link / No / Checking]
+### 主な情報
+- **顧客：** [分かる場合は氏名／企業]
+- **影響：** [誰に、何に影響するか]
+- **回避策：** [あり / なし / 不明]
+- **関連チケット：** [見つかった場合は類似問題へのリンク]
+- **既知の問題：** [はい — リンク / いいえ / 確認中]
 
-### Routing Recommendation
-**Route to:** [Team or queue]
-**Why:** [Brief reasoning]
+### 振り分け先の提案
+**担当先：** [チームまたはキュー]
+**理由：** [簡潔な説明]
 
-### Suggested Initial Response
-[Draft first response to the customer — acknowledge the issue,
-set expectations, provide workaround if available.
-Use the auto-response templates below as a starting point.]
+### 初回返信案
+[問題を受け止め、今後の対応を示し、回避策があれば案内する。
+後述の返信テンプレートを出発点にする。]
 
-### Internal Notes
-- [Any additional context for the agent picking this up]
-- [Reproduction hints if it's a bug]
-- [Escalation triggers to watch for]
+### 社内メモ
+- [引き継ぐ担当者に必要な補足情報]
+- [不具合の場合は再現の手掛かり]
+- [注意すべきエスカレーション条件]
 ```
 
-### 6. Offer Next Steps
+### 6. 次の対応を提案する
 
-After presenting the triage:
-- "Want me to draft a full response to the customer?"
-- "Should I search for more context on this issue?"
-- "Want me to check if this is a known bug in the tracker?"
-- "Should I escalate this? I can package it with /customer-escalation."
+評価結果の提示後、次のように提案します。
+- 「お客様への詳しい返信案を作成しますか？」
+- 「この問題の背景をさらに調べますか？」
+- 「課題管理ツールに既知の不具合として登録されていないか確認しますか？」
+- 「エスカレーションしますか？ `/customer-escalation`で資料をまとめられます。」
 
 ---
 
-## Category Taxonomy
+## 分類体系
 
-Assign every ticket a **primary category** and optionally a **secondary category**:
+すべてのチケットに**主分類**を、必要に応じて**副分類**を割り当てます。
 
-| Category | Description | Signal Words |
+| 分類 | 説明 | 手掛かりになる言葉 |
 |----------|-------------|-------------|
-| **Bug** | Product is behaving incorrectly or unexpectedly | Error, broken, crash, not working, unexpected, wrong, failing |
-| **How-to** | Customer needs guidance on using the product | How do I, can I, where is, setting up, configure, help with |
-| **Feature request** | Customer wants a capability that doesn't exist | Would be great if, wish I could, any plans to, requesting |
-| **Billing** | Payment, subscription, invoice, or pricing issues | Charge, invoice, payment, subscription, refund, upgrade, downgrade |
-| **Account** | Account access, permissions, settings, or user management | Login, password, access, permission, SSO, locked out, can't sign in |
-| **Integration** | Issues connecting to third-party tools or APIs | API, webhook, integration, connect, OAuth, sync, third-party |
-| **Security** | Security concerns, data access, or compliance questions | Data breach, unauthorized, compliance, GDPR, SOC 2, vulnerability |
-| **Data** | Data quality, migration, import/export issues | Missing data, export, import, migration, incorrect data, duplicates |
-| **Performance** | Speed, reliability, or availability issues | Slow, timeout, latency, down, unavailable, degraded |
+| **不具合（Bug）** | 製品の動作が誤っている、または想定外 | エラー、壊れた、クラッシュ、動かない、予期しない、間違い、失敗 |
+| **操作方法（How-to）** | 製品の使い方の案内が必要 | どうすれば、できるか、どこに、設定、構成、手伝ってほしい |
+| **機能要望（Feature request）** | 未提供の機能を求めている | できるとよい、できれば、予定はあるか、要望 |
+| **請求（Billing）** | 支払い、契約プラン、請求書、料金の問題 | 請求、請求書、支払い、サブスクリプション、返金、アップグレード、ダウングレード |
+| **アカウント（Account）** | アクセス、権限、設定、利用者管理 | ログイン、パスワード、アクセス、権限、SSO、ロック、サインインできない |
+| **外部連携（Integration）** | 外部ツールやAPIへの接続の問題 | API、Webhook、連携、接続、OAuth、同期、外部サービス |
+| **セキュリティ（Security）** | セキュリティ、データアクセス、コンプライアンスの質問 | データ侵害、不正、コンプライアンス、GDPR、SOC 2、脆弱性 |
+| **データ（Data）** | データ品質、移行、インポート・エクスポートの問題 | データ欠落、エクスポート、インポート、移行、誤ったデータ、重複 |
+| **パフォーマンス（Performance）** | 速度、信頼性、可用性の問題 | 遅い、タイムアウト、遅延、停止、利用不能、性能低下 |
 
-### Category Determination Tips
+### 分類の判断のヒント
 
-- If the customer reports **both** a bug and a feature request, the bug is primary
-- If they can't log in due to a bug, category is **Bug** (not Account) — root cause drives the category
-- "It used to work and now it doesn't" = **Bug**
-- "I want it to work differently" = **Feature request**
-- "How do I make it work?" = **How-to**
-- When in doubt, lean toward **Bug** — it's better to investigate than dismiss
+- 不具合と機能要望の**両方**がある場合、主分類は不具合です。
+- 不具合が原因でログインできない場合、アカウントではなく**不具合**にします。根本原因で分類します。
+- 「前は動いていたのに今は動かない」＝**不具合**。
+- 「別の動きにしてほしい」＝**機能要望**。
+- 「どう使えばよいか」＝**操作方法**。
+- 迷う場合は**不具合**寄りに判断します。問題を退けるより、調査することを優先します。
 
-## Priority Framework
+## 優先度の基準
 
-### P1 — Critical
-**Criteria:** Production system down, data loss or corruption, security breach, all or most users affected.
+### P1 — 緊急
 
-- The customer cannot use the product at all
-- Data is being lost, corrupted, or exposed
-- A security incident is in progress
-- The issue is worsening or expanding in scope
+**基準：** 本番システムの停止、データの喪失・破損、セキュリティ侵害、全体または大半の利用者への影響。
 
-**SLA expectation:** Respond within 1 hour. Continuous work until resolved or mitigated. Updates every 1-2 hours.
+- 製品をまったく使えない。
+- データが失われる、破損する、露出する。
+- セキュリティインシデントが進行中。
+- 問題が悪化または拡大している。
 
-### P2 — High
-**Criteria:** Major feature broken, significant workflow blocked, many users affected, no workaround.
+**SLAの目安：** 1時間以内に返信。解決または影響緩和まで継続対応。1〜2時間ごとに状況を連絡。
 
-- A core workflow is broken but the product is partially usable
-- Multiple users are affected or a key account is impacted
-- The issue is blocking time-sensitive work
-- No reasonable workaround exists
+### P2 — 高
 
-**SLA expectation:** Respond within 4 hours. Active investigation same day. Updates every 4 hours.
+**基準：** 主要機能の不具合、重要な業務の停止、多数の利用者への影響、回避策なし。
 
-### P3 — Medium
-**Criteria:** Feature partially broken, workaround available, single user or small team affected.
+- 主要な業務フローが動かないが、製品の一部は使える。
+- 複数の利用者、または重要顧客に影響する。
+- 期限のある作業が止まっている。
+- 現実的な回避策がない。
 
-- A feature isn't working correctly but a workaround exists
-- The issue is inconvenient but not blocking critical work
-- A single user or small team is affected
-- The customer is not escalating urgently
+**SLAの目安：** 4時間以内に返信。当日中に調査。4時間ごとに状況を連絡。
 
-**SLA expectation:** Respond within 1 business day. Resolution or update within 3 business days.
+### P3 — 中
 
-### P4 — Low
-**Criteria:** Minor inconvenience, cosmetic issue, general question, feature request.
+**基準：** 機能の一部が動かないが回避策があり、1人または小規模チームに影響。
 
-- Cosmetic or UI issues that don't affect functionality
-- Feature requests and enhancement ideas
-- General questions or how-to inquiries
-- Issues with simple, documented solutions
+- 正常に動かない機能があるが、回避策がある。
+- 不便だが、重要な業務は停止していない。
+- 1人または小規模チームに影響する。
+- 顧客が緊急のエスカレーションを求めていない。
 
-**SLA expectation:** Respond within 2 business days. Resolution at normal pace.
+**SLAの目安：** 1営業日以内に返信。3営業日以内に解決または状況を連絡。
 
-### Priority Escalation Triggers
+### P4 — 低
 
-Automatically bump priority up when:
-- Customer has been waiting longer than the SLA allows
-- Multiple customers report the same issue (pattern detected)
-- The customer explicitly escalates or mentions executive involvement
-- A workaround that was in place stops working
-- The issue expands in scope (more users, more data, new symptoms)
+**基準：** 軽微な不便、表示上の問題、一般的な質問、機能要望。
 
-## Routing Rules
+- 機能に影響しない外観・UIの問題。
+- 機能要望や改善案。
+- 一般的な質問や使い方の問い合わせ。
+- 簡単で文書化された解決策がある問題。
 
-Route tickets based on category and complexity:
+**SLAの目安：** 2営業日以内に返信。通常のペースで解決。
 
-| Route to | When |
+### 優先度を引き上げる条件
+
+次の場合は自動的に優先度を引き上げます。
+- 顧客の待ち時間がSLAを超えている。
+- 複数の顧客が同じ問題を報告している。
+- 顧客が明示的にエスカレーション、または経営層の関与を求めている。
+- 利用できていた回避策が使えなくなった。
+- 影響範囲が拡大した（利用者やデータの増加、新しい症状）。
+
+## 振り分けルール
+
+分類と複雑さに応じて振り分けます。
+
+| 担当先 | 条件 |
 |----------|------|
-| **Tier 1 (frontline support)** | How-to questions, known issues with documented solutions, billing inquiries, password resets |
-| **Tier 2 (senior support)** | Bugs requiring investigation, complex configuration, integration troubleshooting, account issues |
-| **Engineering** | Confirmed bugs needing code fixes, infrastructure issues, performance degradation |
-| **Product** | Feature requests with significant demand, design decisions, workflow gaps |
-| **Security** | Data access concerns, vulnerability reports, compliance questions |
-| **Billing/Finance** | Refund requests, contract disputes, complex billing adjustments |
+| **Tier 1（一次サポート）** | 操作方法、文書化された解決策がある既知の問題、請求の質問、パスワードのリセット |
+| **Tier 2（上級サポート）** | 調査が必要な不具合、複雑な設定、外部連携の問題切り分け、アカウントの問題 |
+| **開発** | コード修正が必要な確認済みの不具合、インフラの問題、性能低下 |
+| **プロダクト** | 要望の多い新機能、設計上の判断、業務フローの不足 |
+| **セキュリティ** | データアクセスへの懸念、脆弱性報告、コンプライアンスの質問 |
+| **請求・経理** | 返金依頼、契約上の紛争、複雑な請求調整 |
 
-## Duplicate Detection
+## 重複の確認
 
-Before creating a new ticket or routing, check for duplicates:
+新規作成や振り分けの前に確認します。
 
-1. **Search by symptom**: Look for tickets with similar error messages or descriptions
-2. **Search by customer**: Check if this customer has an open ticket for the same issue
-3. **Search by product area**: Look for recent tickets in the same feature area
-4. **Check known issues**: Compare against documented known issues
+1. **症状で検索**：類似のエラー文や説明があるチケットを探します。
+2. **顧客で検索**：同じ顧客に同じ問題の未解決チケットがないか確認します。
+3. **製品領域で検索**：同じ機能に関する最近のチケットを探します。
+4. **既知の問題を確認**：文書化された既知の問題と比較します。
 
-**If a duplicate is found:**
-- Link the new ticket to the existing one
-- Notify the customer that this is a known issue being tracked
-- Add any new information from the new report to the existing ticket
-- Bump priority if the new report adds urgency (more customers affected, etc.)
+**重複が見つかった場合：**
+- 新しいチケットを既存チケットに関連付けます。
+- 追跡中の既知の問題であることを顧客に伝えます。
+- 新しい報告から得た追加情報を既存チケットに追記します。
+- 影響する顧客の増加などで緊急性が増した場合は、優先度を引き上げます。
 
-## Auto-Response Templates by Category
+## 分類別の初回返信テンプレート
 
-### Bug — Initial Response
+### 不具合 — 初回返信
+
 ```
-Thank you for reporting this. I can see how [specific impact]
-would be disruptive for your work.
+ご報告ありがとうございます。[具体的な影響]により、
+業務に支障が生じていることと存じます。
 
-I've logged this as a [priority] issue and our team is
-investigating. [If workaround exists: "In the meantime, you
-can [workaround]."]
+本件を[優先度]の問題として記録し、担当チームが調査しています。
+[回避策がある場合：「当面は[回避策]をご利用いただけます。」]
 
-I'll update you within [SLA timeframe] with what we find.
-```
-
-### How-to — Initial Response
-```
-Great question! [Direct answer or link to documentation]
-
-[If more complex: "Let me walk you through the steps:"]
-[Steps or guidance]
-
-Let me know if that helps, or if you have any follow-up
-questions.
+[SLAに基づく期限]までに、判明した内容をご連絡します。
 ```
 
-### Feature Request — Initial Response
+### 操作方法 — 初回返信
+
 ```
-Thank you for this suggestion — I can see why [capability]
-would be valuable for your workflow.
+お問い合わせありがとうございます。[直接的な回答または文書へのリンク]
 
-I've documented this and shared it with our product team.
-While I can't commit to a specific timeline, your feedback
-directly informs our roadmap priorities.
+[複雑な場合：「以下の手順で操作してください。」]
+[手順または案内]
 
-[If alternative exists: "In the meantime, you might find
-[alternative] helpful for achieving something similar."]
+解決しない場合や追加のご質問がある場合は、お知らせください。
 ```
 
-### Billing — Initial Response
+### 機能要望 — 初回返信
+
 ```
-I understand billing issues need prompt attention. Let me
-look into this for you.
+ご提案ありがとうございます。[機能]がお客様の業務に
+役立つことを理解しております。
 
-[If straightforward: resolution details]
-[If complex: "I'm reviewing your account now and will have
-an answer for you within [timeframe]."]
-```
+ご要望を記録し、プロダクトチームに共有しました。
+具体的な提供時期はお約束できませんが、いただいたご意見は
+ロードマップの優先順位を検討する際の参考にいたします。
 
-### Security — Initial Response
-```
-Thank you for flagging this — we take security concerns
-seriously and are reviewing this immediately.
-
-I've escalated this to our security team for investigation.
-We'll follow up with you within [timeframe] with our findings.
-
-[If action is needed: "In the meantime, we recommend
-[protective action]."]
+[代替策がある場合：「当面は[代替策]によって、
+近い目的を実現できる可能性があります。」]
 ```
 
-## Triage Best Practices
+### 請求 — 初回返信
 
-1. Read the full ticket before categorizing — context in later messages often changes the assessment
-2. Categorize by **root cause**, not just the symptom described
-3. When in doubt on priority, err on the side of higher — it's easier to de-escalate than to recover from a missed SLA
-4. Always check for duplicates and known issues before routing
-5. Write internal notes that help the next person pick up context quickly
-6. Include what you've already checked or ruled out to avoid duplicate investigation
-7. Flag patterns — if you're seeing the same issue repeatedly, escalate the pattern even if individual tickets are low priority
+```
+請求に関するお問い合わせは、速やかな確認が必要と認識しております。
+状況を確認いたします。
+
+[簡単に解決できる場合：解決内容]
+[調査が必要な場合：「現在、お客様のアカウントを確認しています。
+[期限]までにご回答します。」]
+```
+
+### セキュリティ — 初回返信
+
+```
+ご連絡ありがとうございます。セキュリティに関する懸念を
+重要な問題として受け止め、直ちに確認しています。
+
+セキュリティチームに調査を依頼しました。
+[期限]までに、判明した内容をご連絡します。
+
+[対処が必要な場合：「当面の対策として[保護措置]をお勧めします。」]
+```
+
+## 一次対応の実務上のポイント
+
+1. 分類する前にチケット全体を読みます。後のメッセージで評価が変わることがあります。
+2. 書かれた症状だけでなく、**根本原因**で分類します。
+3. 優先度に迷ったら高めに判断します。SLA違反の後で取り戻すより、後から下げる方が容易です。
+4. 振り分け前に、必ず重複と既知の問題を確認します。
+5. 次の担当者が背景をすぐ理解できる社内メモを書きます。
+6. 重複調査を避けるため、確認済み・除外済みの内容を記載します。
+7. 同じ問題が繰り返される場合は、個々の優先度が低くても、傾向としてエスカレーションします。

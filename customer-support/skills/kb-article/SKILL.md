@@ -1,351 +1,349 @@
 ---
 name: kb-article
-description: Draft a knowledge base article from a resolved issue or common question. Use when a ticket resolution is worth documenting for self-service, the same question keeps coming up, a workaround needs to be published, or a known issue should be communicated to customers.
+description: 解決済みの問題やよくある質問から、ナレッジベースの記事を下書きします。問い合わせの解決方法を自己解決用に残したい場合、同じ質問が繰り返される場合、回避策を公開する場合、既知の問題を顧客に案内する場合に使います。
 argument-hint: "<resolved issue or ticket>"
 ---
 
 # /kb-article
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続済みツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Draft a publish-ready knowledge base article from a resolved support issue, common question, or documented workaround. Structures the content for searchability and self-service.
+解決済みの問い合わせ、よくある質問、文書化された回避策から、公開に向けたナレッジ記事の下書きを作成します。検索しやすく、顧客が自己解決できる構成にします。
 
-## Usage
+## 使い方
 
 ```
 /kb-article <resolved issue, ticket reference, or topic description>
 ```
 
-Examples:
-- `/kb-article How to configure SSO with Okta — resolved this for 3 customers last month`
-- `/kb-article Ticket #4521 — customer couldn't export data over 10k rows`
-- `/kb-article Common question: how to set up webhook notifications`
-- `/kb-article Known issue: dashboard charts not loading on Safari 16`
+例：
+- `/kb-article OktaでSSOを設定する方法 — 先月3社の問い合わせを解決`
+- `/kb-article Ticket #4521 — 1万行を超えるデータをエクスポートできなかった`
+- `/kb-article よくある質問：Webhook通知の設定方法`
+- `/kb-article 既知の問題：Safari 16でダッシュボードのグラフが読み込まれない`
 
-## Workflow
+## 作業手順
 
-### 1. Understand the Source Material
+### 1. 元の情報を理解する
 
-Parse the input to identify:
+入力から次を特定します。
 
-- **What was the problem?** The original issue, question, or error
-- **What was the solution?** The resolution, workaround, or answer
-- **Who does this affect?** User type, plan level, or configuration
-- **How common is this?** One-off or recurring issue
-- **What article type fits best?** How-to, troubleshooting, FAQ, known issue, or reference (see article types below)
+- **問題は何だったか**：元の問題、質問、エラー
+- **解決方法は何か**：解決策、回避策、回答
+- **誰に影響するか**：利用者の種類、契約プラン、設定
+- **どの程度発生するか**：一度限りか、繰り返し起きるか
+- **適した記事の種類**：操作ガイド、トラブルシューティング、FAQ、既知の問題、リファレンス（後述）
 
-If a ticket reference is provided, look up the full context:
+チケットが指定された場合は、背景全体を確認します。
 
-- **~~support platform**: Pull the ticket thread, resolution, and any internal notes
-- **~~knowledge base**: Check if a similar article already exists (update vs. create new)
-- **~~project tracker**: Check if there's a related bug or feature request
+- **~~support platform**：チケット内のやり取り、解決内容、社内メモを取得します。
+- **~~knowledge base**：類似記事があるか確認し、更新か新規作成かを判断します。
+- **~~project tracker**：関連する不具合報告や機能要望を確認します。
 
-### 2. Draft the Article
+### 2. 記事を下書きする
 
-Using the article structure, formatting standards, and searchability best practices below:
+後述の記事構成、書式、検索しやすさの指針に従います。
 
-- Follow the template for the chosen article type (how-to, troubleshooting, FAQ, known issue, or reference)
-- Apply the searchability best practices: customer-language title, plain-language opening sentence, exact error messages, common synonyms
-- Keep it scannable: headers, numbered steps, short paragraphs
+- 選んだ記事の種類（操作ガイド、トラブルシューティング、FAQ、既知の問題、リファレンス）に合うテンプレートを使います。
+- 顧客が使う言葉のタイトル、分かりやすい冒頭文、正確なエラー文、一般的な類義語を使います。
+- 見出し、番号付き手順、短い段落で、必要な箇所を見つけやすくします。
 
-### 3. Generate the Article
+### 3. 記事を出力する
 
-Present the draft with metadata:
+メタデータとともに下書きを提示します。
 
 ```
-## KB Article Draft
+## ナレッジ記事の下書き
 
-**Title:** [Article title]
-**Type:** [How-to / Troubleshooting / FAQ / Known Issue / Reference]
-**Category:** [Product area or topic]
-**Tags:** [Searchable tags]
-**Audience:** [All users / Admins / Developers / Specific plan]
-
----
-
-[Full article content — using the appropriate template below]
+**タイトル：** [記事名]
+**種類：** [操作ガイド / トラブルシューティング / FAQ / 既知の問題 / リファレンス]
+**分類：** [製品領域やテーマ]
+**タグ：** [検索用のタグ]
+**対象読者：** [全利用者 / 管理者 / 開発者 / 特定プラン]
 
 ---
 
-### Publishing Notes
-- **Source:** [Ticket #, customer conversation, or internal discussion]
-- **Existing articles to update:** [If this overlaps with existing content]
-- **Review needed from:** [SME or team if technical accuracy needs verification]
-- **Suggested review date:** [When to revisit for accuracy]
+[適切なテンプレートに基づく記事の全文]
+
+---
+
+### 公開に向けた確認事項
+- **情報源：** [チケット番号、顧客との会話、社内議論]
+- **更新が必要な既存記事：** [既存内容と重なる場合]
+- **確認を依頼する相手：** [技術的な正確さを確認する専門家やチーム]
+- **次回レビューの目安：** [正確さを再確認する時期]
 ```
 
-### 4. Offer Next Steps
+### 4. 次の対応を提案する
 
-After generating the article:
-- "Want me to check if a similar article already exists in your ~~knowledge base?"
-- "Should I adjust the technical depth for a different audience?"
-- "Want me to draft a companion article (e.g., a how-to to go with this troubleshooting guide)?"
-- "Should I create an internal-only version with additional technical detail?"
+作成後、次のように提案します。
+- 「~~knowledge baseに類似記事がないか確認しますか？」
+- 「別の読者層に合わせて、技術的な詳しさを調整しますか？」
+- 「関連する記事も作成しますか？ 例えば、この問題解決ガイドに対応する操作ガイドです」
+- 「技術的な詳細を加えた社内限定版も作成しますか？」
 
 ---
 
-## Article Structure and Formatting Standards
+## 記事構成と書式の基準
 
-### Universal Article Elements
+### すべての記事に必要な要素
 
-Every KB article should include:
+1. **タイトル**：分かりやすく検索しやすい、成果や問題を示すもの。社内用語は避けます。
+2. **概要**：扱う内容と対象読者を1〜2文で示します。
+3. **本文**：記事の種類に合った構成にします。
+4. **関連記事**：関連する補足コンテンツへのリンク。
+5. **メタデータ**：分類、タグ、対象読者、最終更新日。
 
-1. **Title**: Clear, searchable, describes the outcome or problem (not internal jargon)
-2. **Overview**: 1-2 sentences explaining what this article covers and who it's for
-3. **Body**: Structured content appropriate to the article type
-4. **Related articles**: Links to relevant companion content
-5. **Metadata**: Category, tags, audience, last updated date
+### 書式のルール
 
-### Formatting Rules
+- **H2・H3の見出し**で、読み取りやすい節に分けます。
+- 順番がある手順には**番号付きリスト**を使います。
+- 順番のない項目には**箇条書き**を使います。
+- UIの項目名、重要語、強調には**太字**を使います。
+- コマンド、API呼び出し、エラー文、設定値には**コードブロック**を使います。
+- 比較、選択肢、参照データには**表**を使います。
+- 警告、ヒント、重要な注意点には**注記**を使います。
+- **段落は短く**し、最大2〜4文を目安にします。
+- **1節1テーマ**とし、2つのテーマを扱うなら分割します。
 
-- **Use headers (H2, H3)** to break content into scannable sections
-- **Use numbered lists** for sequential steps
-- **Use bullet lists** for non-sequential items
-- **Use bold** for UI element names, key terms, and emphasis
-- **Use code blocks** for commands, API calls, error messages, and configuration values
-- **Use tables** for comparisons, options, or reference data
-- **Use callouts/notes** for warnings, tips, and important caveats
-- **Keep paragraphs short** — 2-4 sentences max
-- **One idea per section** — if a section covers two topics, split it
+## 検索しやすい書き方
 
-## Writing for Searchability
+顧客が見つけられなければ、記事は役に立ちません。すべての記事を検索しやすくします。
 
-Articles are useless if customers can't find them. Optimize every article for search:
+### タイトルの付け方
 
-### Title Best Practices
-
-| Good Title | Bad Title | Why |
+| 良い例 | 避けたい例 | 理由 |
 |------------|-----------|-----|
-| "How to configure SSO with Okta" | "SSO Setup" | Specific, includes the tool name customers search for |
-| "Fix: Dashboard shows blank page" | "Dashboard Issue" | Includes the symptom customers experience |
-| "API rate limits and quotas" | "API Information" | Includes the specific terms customers search for |
-| "Error: 'Connection refused' when importing data" | "Import Problems" | Includes the exact error message |
+| 「OktaでSSOを設定する方法」 | 「SSO設定」 | 具体的で、顧客が検索するツール名を含む |
+| 「対処方法：ダッシュボードが真っ白になる」 | 「ダッシュボードの問題」 | 顧客が見ている症状を含む |
+| 「APIのレート制限と利用上限」 | 「API情報」 | 検索に使われる具体的な用語を含む |
+| 「データ取り込み時に『Connection refused』エラーが出る」 | 「取り込みの問題」 | 正確なエラーメッセージを含む |
 
-### Keyword Optimization
+### キーワードの工夫
 
-- **Include exact error messages** — customers copy-paste error text into search
-- **Use customer language**, not internal terminology — "can't log in" not "authentication failure"
-- **Include common synonyms** — "delete/remove", "dashboard/home page", "export/download"
-- **Add alternate phrasings** — address the same issue from different angles in the overview
-- **Tag with product areas** — make sure category and tags match how customers think about the product
+- **正確なエラーメッセージを含める**：顧客はエラー文をコピーして検索します。
+- **社内用語ではなく顧客の言葉を使う**：「認証失敗」より「ログインできない」など。
+- **一般的な類義語を含める**：「削除／消去」「ダッシュボード／ホーム画面」「エクスポート／ダウンロード」など。
+- **別の言い回しも加える**：概要では、同じ問題を異なる観点から説明します。
+- **製品領域のタグを付ける**：顧客の捉え方に合う分類とタグにします。
 
-### Opening Sentence Formula
+### 冒頭文の書き方
 
-Start every article with a sentence that restates the problem or task in plain language:
+問題や作業内容を、分かりやすい言葉で言い直して始めます。
 
-- **How-to**: "This guide shows you how to [accomplish X]."
-- **Troubleshooting**: "If you're seeing [symptom], this article explains how to fix it."
-- **FAQ**: "[Question in the customer's words]? Here's the answer."
-- **Known issue**: "Some users are experiencing [symptom]. Here's what we know and how to work around it."
+- **操作ガイド**：「このガイドでは、[Xを行う方法]を説明します。」
+- **トラブルシューティング**：「[症状]が起きている場合の対処方法を説明します。」
+- **FAQ**：「[顧客の言葉による質問]について回答します。」
+- **既知の問題**：「一部の利用者に[症状]が発生しています。判明している内容と回避策をご案内します。」
 
-## Article Type Templates
+## 記事の種類別テンプレート
 
-### How-to Articles
+### 操作ガイド
 
-**Purpose**: Step-by-step instructions for accomplishing a task.
+**目的**：作業を完了するための手順を示します。
 
-**Structure**:
+**構成**：
 ```
-# How to [accomplish task]
+# [作業]の方法
 
-[Overview — what this guide covers and when you'd use it]
+[概要：このガイドの内容と利用場面]
 
-## Prerequisites
-- [What's needed before starting]
+## 前提条件
+- [開始前に必要なもの]
 
-## Steps
-### 1. [Action]
-[Instruction with specific details]
+## 手順
+### 1. [操作]
+[具体的な説明]
 
-### 2. [Action]
-[Instruction]
+### 2. [操作]
+[説明]
 
-## Verify It Worked
-[How to confirm success]
+## 動作確認
+[成功を確認する方法]
 
-## Common Issues
-- [Issue]: [Fix]
+## よくある問題
+- [問題]：[対処方法]
 
-## Related Articles
-- [Links]
-```
-
-**Best practices**:
-- Start each step with a verb
-- Include the specific path: "Go to Settings > Integrations > API Keys"
-- Mention what the user should see after each step ("You should see a green confirmation banner")
-- Test the steps yourself or verify with a recent ticket resolution
-
-### Troubleshooting Articles
-
-**Purpose**: Diagnose and resolve a specific problem.
-
-**Structure**:
-```
-# [Problem description — what the user sees]
-
-## Symptoms
-- [What the user observes]
-
-## Cause
-[Why this happens — brief, non-jargon explanation]
-
-## Solution
-### Option 1: [Primary fix]
-[Steps]
-
-### Option 2: [Alternative if Option 1 doesn't work]
-[Steps]
-
-## Prevention
-[How to avoid this in the future]
-
-## Still Having Issues?
-[How to get help]
+## 関連記事
+- [リンク]
 ```
 
-**Best practices**:
-- Lead with symptoms, not causes — customers search for what they see
-- Provide multiple solutions when possible (most likely fix first)
-- Include a "Still having issues?" section that points to support
-- If the root cause is complex, keep the customer-facing explanation simple
+**実務上のポイント**：
+- 各手順は、何をするかが分かる動作で始めます。
+- 「Settings > Integrations > API Keysを開く」のように、具体的な画面経路を示します。
+- 各手順の後に何が表示されるかを書きます（「緑色の確認メッセージが表示されます」など）。
+- 自分で手順を試すか、最近解決したチケットで確かめます。
 
-### FAQ Articles
+### トラブルシューティング記事
 
-**Purpose**: Quick answer to a common question.
+**目的**：特定の問題の原因を切り分け、解決します。
 
-**Structure**:
+**構成**：
 ```
-# [Question — in the customer's words]
+# [問題の説明：利用者に見えている症状]
 
-[Direct answer — 1-3 sentences]
+## 症状
+- [利用者が確認できること]
 
-## Details
-[Additional context, nuance, or explanation if needed]
+## 原因
+[発生理由を、専門用語を避けて簡潔に説明]
 
-## Related Questions
-- [Link to related FAQ]
-- [Link to related FAQ]
-```
+## 解決方法
+### 方法1：[最初に試す方法]
+[手順]
 
-**Best practices**:
-- Answer the question in the first sentence
-- Keep it concise — if the answer needs a walkthrough, it's a how-to, not an FAQ
-- Group related FAQs and link between them
+### 方法2：[方法1で解決しない場合の代替案]
+[手順]
 
-### Known Issue Articles
+## 予防
+[再発を防ぐ方法]
 
-**Purpose**: Document a known bug or limitation with a workaround.
-
-**Structure**:
-```
-# [Known Issue]: [Brief description]
-
-**Status:** [Investigating / Workaround Available / Fix In Progress / Resolved]
-**Affected:** [Who/what is affected]
-**Last updated:** [Date]
-
-## Symptoms
-[What users experience]
-
-## Workaround
-[Steps to work around the issue, or "No workaround available"]
-
-## Fix Timeline
-[Expected fix date or current status]
-
-## Updates
-- [Date]: [Update]
+## 解決しない場合
+[サポートを受ける方法]
 ```
 
-**Best practices**:
-- Keep the status current — nothing erodes trust faster than a stale known issue article
-- Update the article when the fix ships and mark as resolved
-- If resolved, keep the article live for 30 days for customers still searching the old symptoms
+**実務上のポイント**：
+- 原因ではなく症状から始めます。顧客は目に見える症状で検索します。
+- 可能なら複数の解決策を示し、最も有効な可能性が高いものを先にします。
+- サポートへの連絡方法を示す「解決しない場合」を設けます。
+- 根本原因が複雑でも、顧客向けの説明は分かりやすくします。
 
-## Review and Maintenance Cadence
+### FAQ記事
 
-Knowledge bases decay without maintenance. Follow this schedule:
+**目的**：よくある質問にすぐ答えます。
 
-| Activity | Frequency | Who |
+**構成**：
+```
+# [顧客の言葉による質問]
+
+[直接的な回答：1〜3文]
+
+## 詳細
+[必要に応じた背景、留意点、補足説明]
+
+## 関連する質問
+- [関連FAQへのリンク]
+- [関連FAQへのリンク]
+```
+
+**実務上のポイント**：
+- 最初の文で質問に答えます。
+- 簡潔にします。詳しい手順が必要ならFAQではなく操作ガイドにします。
+- 関連するFAQをまとめ、相互にリンクします。
+
+### 既知の問題の記事
+
+**目的**：既知の不具合や制約と、回避策を案内します。
+
+**構成**：
+```
+# [既知の問題]：[短い説明]
+
+**状況：** [調査中 / 回避策あり / 修正中 / 解決済み]
+**影響する対象：** [誰に、何に影響するか]
+**最終更新：** [日付]
+
+## 症状
+[利用者に起きていること]
+
+## 回避策
+[回避手順、または「現時点で回避策はありません」]
+
+## 修正の予定
+[修正予定日、または現在の状況]
+
+## 更新履歴
+- [日付]：[更新内容]
+```
+
+**実務上のポイント**：
+- 状況を最新に保ちます。古いままの既知の問題の記事は、信頼を損ないます。
+- 修正をリリースしたら記事を更新し、解決済みにします。
+- 解決後も、以前の症状で検索する顧客のために30日間は公開を続けます。
+
+## レビューと保守の頻度
+
+保守しないナレッジは古くなります。次の頻度で見直します。
+
+| 作業 | 頻度 | 担当 |
 |----------|-----------|-----|
-| **New article review** | Before publishing | Peer review + SME for technical content |
-| **Accuracy audit** | Quarterly | Support team reviews top-traffic articles |
-| **Stale content check** | Monthly | Flag articles not updated in 6+ months |
-| **Known issue updates** | Weekly | Update status on all open known issues |
-| **Analytics review** | Monthly | Check which articles have low helpfulness ratings or high bounce rates |
-| **Gap analysis** | Quarterly | Identify top ticket topics without KB articles |
+| **新規記事のレビュー** | 公開前 | 同僚による確認。技術内容は専門家も確認 |
+| **正確さの点検** | 四半期ごと | サポートチームが閲覧数の多い記事を確認 |
+| **古い内容の確認** | 毎月 | 6か月以上更新されていない記事を抽出 |
+| **既知の問題の更新** | 毎週 | 未解決の既知の問題すべての状況を更新 |
+| **利用状況の分析** | 毎月 | 役立ち度の評価が低い記事や離脱率の高い記事を確認 |
+| **不足内容の分析** | 四半期ごと | 問い合わせが多いのに記事がないテーマを特定 |
 
-### Article Lifecycle
+### 記事のライフサイクル
 
-1. **Draft**: Written, needs review
-2. **Published**: Live and available to customers
-3. **Needs update**: Flagged for revision (product change, feedback, or age)
-4. **Archived**: No longer relevant but preserved for reference
-5. **Retired**: Removed from the knowledge base
+1. **下書き**：執筆済み、レビュー待ち。
+2. **公開済み**：顧客が閲覧できる状態。
+3. **更新が必要**：製品変更、フィードバック、経過期間によって改訂対象。
+4. **アーカイブ済み**：現在は該当しないが、参考用に保存。
+5. **廃止**：ナレッジベースから削除。
 
-### When to Update vs. Create New
+### 更新と新規作成の使い分け
 
-**Update existing** when:
-- The product changed and steps need refreshing
-- The article is mostly right but missing a detail
-- Feedback indicates customers are confused by a specific section
-- A better workaround or solution was found
+**既存記事を更新する場合**：
+- 製品が変わり、手順の更新が必要。
+- 内容はおおむね正しいが、詳細が不足している。
+- 特定の節が分かりにくいという声がある。
+- より良い回避策や解決策が見つかった。
 
-**Create new** when:
-- A new feature or product area needs documentation
-- A resolved ticket reveals a gap — no article exists for this topic
-- The existing article covers too many topics and should be split
-- A different audience needs the same information explained differently
+**新規記事を作成する場合**：
+- 新機能や新しい製品領域の文書が必要。
+- 解決済みチケットから、対応する記事がないことが分かった。
+- 既存記事が多くのテーマを扱いすぎており、分割が必要。
+- 別の読者層に、同じ情報を異なる説明で伝える必要がある。
 
-## Linking and Categorization Taxonomy
+## リンクと分類体系
 
-### Category Structure
+### 分類の構成
 
-Organize articles into a hierarchy that matches how customers think:
+顧客の考え方に合う階層に整理します。
 
 ```
-Getting Started
-├── Account setup
-├── First-time configuration
-└── Quick start guides
+はじめに
+├── アカウント設定
+├── 初期設定
+└── クイックスタート
 
-Features & How-tos
-├── [Feature area 1]
-├── [Feature area 2]
-└── [Feature area 3]
+機能と操作方法
+├── [機能領域1]
+├── [機能領域2]
+└── [機能領域3]
 
-Integrations
-├── [Integration 1]
-├── [Integration 2]
-└── API reference
+外部連携
+├── [連携先1]
+├── [連携先2]
+└── APIリファレンス
 
-Troubleshooting
-├── Common errors
-├── Performance issues
-└── Known issues
+トラブルシューティング
+├── よくあるエラー
+├── パフォーマンスの問題
+└── 既知の問題
 
-Billing & Account
-├── Plans and pricing
-├── Billing questions
-└── Account management
+請求・アカウント
+├── プランと料金
+├── 請求に関する質問
+└── アカウント管理
 ```
 
-### Linking Best Practices
+### リンクの付け方
 
-- **Link from troubleshooting to how-to**: "For setup instructions, see [How to configure X]"
-- **Link from how-to to troubleshooting**: "If you encounter errors, see [Troubleshooting X]"
-- **Link from FAQ to detailed articles**: "For a full walkthrough, see [Guide to X]"
-- **Link from known issues to workarounds**: Keep the chain from problem to solution short
-- **Use relative links** within the KB — they survive restructuring better than absolute URLs
-- **Avoid circular links** — if A links to B, B shouldn't link back to A unless both are genuinely useful entry points
+- **トラブルシューティングから操作ガイドへ**：「設定手順は[ Xの設定方法]を参照してください」。
+- **操作ガイドからトラブルシューティングへ**：「エラーが出る場合は[ Xのトラブルシューティング]を参照してください」。
+- **FAQから詳細記事へ**：「詳しい手順は[ Xのガイド]を参照してください」。
+- **既知の問題から回避策へ**：問題から解決策まで、少ない遷移で到達できるようにします。
+- ナレッジベース内は**相対リンク**を使います。絶対URLより構成変更の影響を受けにくくなります。
+- **無用な循環リンクを避ける**：AからBにリンクする場合、双方が有用な入口となる場合を除き、BからAへ戻すリンクは付けません。
 
-## KB Writing Best Practices
+## ナレッジ記事作成の実務上のポイント
 
-1. Write for the customer who is frustrated and searching for an answer — be clear, direct, and helpful
-2. Every article should be findable through search using the words a customer would type
-3. Test your articles — follow the steps yourself or have someone unfamiliar with the topic follow them
-4. Keep articles focused — one problem, one solution. Split if an article is growing too long
-5. Maintain aggressively — a wrong article is worse than no article
-6. Track what's missing — every ticket that could have been a KB article is a content gap
-7. Measure impact — articles that don't get traffic or don't reduce tickets need to be improved or retired
+1. 困って答えを探している顧客に向け、明確で直接的な、役立つ文章を書きます。
+2. 顧客が検索に入力する言葉で、すべての記事を見つけられるようにします。
+3. 自分で手順を実行するか、その分野に詳しくない人に試してもらいます。
+4. 1記事では1つの問題と解決を扱います。長くなりすぎたら分割します。
+5. 積極的に保守します。誤った記事は、記事がない場合より害があります。
+6. 不足を追跡します。記事があれば解決できた問い合わせは、すべて内容の不足を示しています。
+7. 効果を測定します。閲覧されない、または問い合わせの削減につながらない記事は、改善か廃止を検討します。

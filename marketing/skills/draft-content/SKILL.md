@@ -1,117 +1,125 @@
 ---
 name: draft-content
-description: Draft blog posts, social media, email newsletters, landing pages, press releases, and case studies with channel-specific formatting and SEO recommendations. Use when writing any marketing content, when you need headline or subject line options, or when adapting a message for a specific platform, audience, and brand voice.
-argument-hint: "<content type and topic>"
+description: チャネルに合った形式とSEOの提案を含め、ブログ、SNS投稿、メールマガジン、ランディングページ、プレスリリース、導入事例を下書きします。マーケティングコンテンツの作成、見出しや件名の候補出し、特定の媒体・読者・ブランドの語り口に合わせたメッセージの調整に使います。
+argument-hint: "<コンテンツの種類とテーマ>"
 ---
 
-# Draft Content
+# コンテンツの下書き
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
+> 見慣れないプレースホルダーがある場合や、接続されているツールを確認したい場合は、[CONNECTORS.md](../../CONNECTORS.md)を参照してください。
 
-Generate marketing content drafts tailored to a specific content type, audience, and brand voice.
+コンテンツの種類、読者、ブランドの語り口に合わせたマーケティング原稿を作成します。
 
-## Trigger
+## 開始条件
 
-User runs `/draft-content` or asks to draft, write, or create marketing content.
+ユーザーが`/draft-content`を実行するか、マーケティングコンテンツの下書き・執筆・作成を依頼したとき。
 
-## Inputs
+## 入力情報
 
-Gather the following from the user. If not provided, ask before proceeding:
+次の情報をユーザーから集めます。未提示の場合は、作業前に確認します。
 
-1. **Content type** — one of:
-   - Blog post
-   - Social media post (specify platform: LinkedIn, Twitter/X, Instagram, Facebook)
-   - Email newsletter
-   - Landing page copy
-   - Press release
-   - Case study
+1. **コンテンツの種類**：次のいずれか
+   - ブログ記事
+   - SNS投稿（LinkedIn、Twitter/X、Instagram、Facebookなどの媒体を指定）
+   - メールマガジン
+   - ランディングページの文章
+   - プレスリリース
+   - 導入事例
 
-2. **Topic** — the subject or theme of the content
+2. **テーマ**：取り上げる題材や主題
 
-3. **Target audience** — who this content is for (role, industry, seniority, pain points)
+3. **対象読者**：誰に届けるか（役割、業界、職位、課題）
 
-4. **Key messages** — 2-4 main points or takeaways to communicate
+4. **主要メッセージ**：伝えたい要点を2〜4点
 
-5. **Tone** — e.g., authoritative, conversational, inspirational, technical, witty (optional if brand voice is configured)
+5. **トーン**：専門性がある、会話調、意欲を引き出す、技術的、機知に富むなど（ブランドの語り口が設定済みなら任意）
 
-6. **Length** — target word count or format constraint (e.g., "1000 words", "280 characters", "3 paragraphs")
+6. **長さ**：目標語数や形式上の制約（例：「1,000語」「280文字」「3段落」）
 
-## Brand Voice
+## ブランドの語り口
 
-- If the user has a brand voice configured in their local settings file, apply it automatically. Inform the user that brand voice settings are being applied.
-- If no brand voice is configured, ask: "Do you have brand voice guidelines you'd like me to follow? If not, I'll use a neutral professional tone."
-- Apply the specified or default tone consistently throughout the draft.
+- ローカル設定ファイルにブランドの語り口が設定されていれば、自動適用し、その旨をユーザーに伝えます。
+- 未設定なら、「従うべきブランドの表現ガイドラインはありますか？ なければ、中立的で業務に適したトーンにします」と確認します。
+- 指定または既定のトーンを原稿全体で一貫させます。
 
-## Content Generation by Type
+## 種類別の作成要領
 
-### Blog Post
-- Engaging headline (provide 2-3 options)
-- Introduction with a hook (question, statistic, bold statement, or story)
-- 3-5 organized sections with descriptive subheadings
-- Supporting points, examples, or data references in each section
-- Conclusion with a clear call to action
-- SEO considerations: suggest a primary keyword, include it in the headline and first paragraph, use related keywords in subheadings
+### ブログ記事
 
-### Social Media Post
-- Platform-appropriate format and length
-- Hook in the first line
-- Hashtag suggestions (3-5 relevant hashtags)
-- Call to action or engagement prompt
-- Emoji usage appropriate to brand and platform
-- If LinkedIn: professional framing, paragraph breaks for readability
-- If Twitter/X: concise, punchy, within character limit
-- If Instagram: visual-first language, story-driven, hashtag block
+- 読者を引きつける見出し（2〜3案）
+- 問い、統計、印象的な主張、ストーリーなどを使った導入
+- 内容が分かる小見出しを付けた3〜5の節
+- 各節の主張を支える論点、例、データの参照
+- 明確な行動喚起を含む結び
+- SEO：主キーワードを提案し、見出しと最初の段落に入れ、小見出しに関連キーワードを使う
 
-### Email Newsletter
-- Subject line (provide 2-3 options with open-rate considerations)
-- Preview text
-- Greeting
-- Body sections with clear hierarchy
-- Call to action button text
-- Sign-off
-- Unsubscribe note reminder
+### SNS投稿
 
-### Landing Page Copy
-- Headline and subheadline
-- Hero section copy
-- Value propositions (3-4 benefit-driven bullets or sections)
-- Social proof placeholder (suggest testimonial or stat placement)
-- Primary and secondary CTAs
-- FAQ section suggestions
-- SEO: meta title and meta description suggestions
+- 媒体に合った形式と長さ
+- 1行目で関心を引く表現
+- 関連ハッシュタグを3〜5個提案
+- 行動喚起または反応を促す問い
+- ブランドと媒体に合った絵文字の使い方
+- LinkedIn：業務向けの切り口と、読みやすい改行
+- Twitter/X：文字数制限内で、簡潔かつ印象的に
+- Instagram：視覚を意識した表現、ストーリー重視、ハッシュタグのまとまり
 
-### Press Release
-- Headline following press release conventions
-- Dateline and location
-- Lead paragraph (who, what, when, where, why)
-- Supporting quotes (provide placeholder guidance)
-- Company boilerplate placeholder
-- Media contact placeholder
-- Standard press release formatting
+### メールマガジン
 
-### Case Study
-- Title emphasizing the result
-- Customer overview (industry, size, challenge)
-- Challenge section
-- Solution section (what was implemented)
-- Results section with metrics (prompt user for data)
-- Customer quote placeholder
-- Call to action
+- 開封率を考慮した件名（2〜3案）
+- プレビューテキスト
+- 挨拶
+- 階層が明確な本文
+- 行動喚起ボタンの文言
+- 結びの挨拶
+- 配信停止案内を入れるよう注意喚起
 
-## SEO Considerations (for web content)
+### ランディングページの文章
 
-For blog posts, landing pages, and other web-facing content:
-- Suggest a primary keyword based on the topic
-- Recommend keyword placement: headline, first paragraph, subheadings, meta description
-- Suggest internal and external linking opportunities
-- Recommend a meta description (under 160 characters)
-- Note image alt text opportunities
+- 見出しと補足見出し
+- ファーストビューの文章
+- 価値提案（便益を中心に3〜4項目、または節）
+- 社会的証明のプレースホルダー（推薦コメントや統計の掲載位置を提案）
+- 主・副のCTA
+- FAQの提案
+- SEO：メタタイトルとメタディスクリプションの提案
 
-## Output
+### プレスリリース
 
-Present the draft with clear formatting. After the draft, include:
-- A brief note on what brand voice and tone were applied
-- Any SEO recommendations (for web content)
-- Suggestions for next steps (e.g., "Review with your team", "Add customer quotes", "Pair with a visual")
+- プレスリリースの慣例に沿った見出し
+- 発表日と発表場所
+- リード文（誰が、何を、いつ、どこで、なぜ）
+- 主張を支える引用（プレースホルダーと記入の指針）
+- 会社概要のプレースホルダー
+- 報道機関向け連絡先のプレースホルダー
+- 標準的なプレスリリース形式
 
-Ask: "Would you like me to revise any section, adjust the tone, or create a variation for a different channel?"
+### 導入事例
+
+- 成果を強調したタイトル
+- 顧客の概要（業界、規模、課題）
+- 課題の節
+- 解決策の節（導入したもの）
+- 指標を含む成果の節（ユーザーにデータを確認）
+- 顧客コメントのプレースホルダー
+- 行動喚起
+
+## SEOの考慮事項（Webコンテンツ）
+
+ブログ、ランディングページ、その他の公開Webコンテンツでは、次を行います。
+
+- テーマに基づいて主キーワードを提案
+- 見出し、最初の段落、小見出し、メタディスクリプションへの配置を提案
+- 内部リンク・外部リンクを追加できる箇所を提案
+- 160文字未満のメタディスクリプションを提案
+- 画像の代替テキストを付ける箇所を指摘
+
+## 出力
+
+読みやすく整形した原稿を提示し、その後に次を添えます。
+
+- 適用したブランドの語り口とトーンの簡単な説明
+- SEOの提案（Webコンテンツの場合）
+- 次の作業の提案（例：「チームでレビューする」「顧客のコメントを追加する」「画像を組み合わせる」）
+
+「修正したい節、トーンの調整、別のチャネル向けの展開はありますか？」と確認します。
